@@ -20,9 +20,7 @@ struct MobileConfigResponse: Codable {
 // MARK: - IconGeek API
 
 extension AppModel {
-	/// N.B. the trailing slash on the URL is important. Without it, the request becomes a redirect and changes from a POST to a GET.
-	static let UploadURL = "http://imac.local/ig/upload/"
-	
+
 	func addToHomeScreen(_ iconSet: IconSet) -> UploadRequest {
 		// 1. Generate the .mobileconfig file
 		let mobileConfig = generateMobileConfig(iconSet)
@@ -31,18 +29,25 @@ extension AppModel {
 		let data = Data(mobileConfig.utf8)
 		let req = AF.upload(multipartFormData: { (form) in
 			form.append(data, withName: "file1")
-		}, to: AppModel.UploadURL)
+		}, to: AppConfig.UploadURL)
 			.responseJSON { resp in
 				// 3. Check JSON response
-				let json = resp.value as! Dictionary<String, String>
-				if json["status"] == "OK" {
-					// 4. Post notification
+				if let value = resp.value {
+					let json: Dictionary<String, String> = value as! Dictionary<String, String>
+					if json["status"] == "OK" {
+						// 4. Post notification
+						NotificationCenter.default.post(name: .ReceivedMobileConfigResponse,
+														object: nil,
+														userInfo: [AppModel.ConfigResponseUUID: UUID(uuidString: json["uuid"]!)!])
+					} else {
+						NotificationCenter.default.post(name: .ReceivedMobileConfigResponse,
+														object: nil,
+														userInfo: [AppModel.ConfigResponseError: MobileConfigError.signingError])
+					}
+				} else {
 					NotificationCenter.default.post(name: .ReceivedMobileConfigResponse,
 													object: nil,
-													userInfo: [AppModel.ConfigResponseUUID: UUID(uuidString: json["uuid"]!)!])
-				} else {
-					// TODO: Inform user of error
-					NSLog("Error signing mobileconfig: \(json["error"]!)")
+													userInfo: [AppModel.ConfigResponseError: MobileConfigError.jsonMissing])
 				}
 			}
 		return req

@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum MobileConfigError: Error {
+	case jsonMissing
+	case signingError
+}
+
 extension Notification.Name {
 	
 	/// Sent by the App Model when server responds to mobile config signing request

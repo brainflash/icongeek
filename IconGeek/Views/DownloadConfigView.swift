@@ -17,9 +17,10 @@ struct DownloadConfigView: View {
     var body: some View {
         Text("Hello, World! \(mobileConfigUUID!.uuidString)")
 //			.navigationBarBackButtonHidden(true)
-		
-		Link("Download icon configuration", destination: URL(string: "http://imac.local/ig/upload/\(mobileConfigUUID!).mobileconfig")!)
+
+		Link("Download icon configuration", destination: URL(string: "\(AppConfig.DownloadURL)\(mobileConfigUUID!).mobileconfig")!)
 			.font(.largeTitle)
+
     }
 }
 

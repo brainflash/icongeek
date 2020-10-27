@@ -34,8 +34,7 @@ extension Icon {
 		name: "App Store",
 		targetAppID: "com.apple.AppStore",
 		UUID: "4402090B-6219-461E-B2D4-4FA167425063",
-		appURL: "itms-apps://"
-		
+		appURL: "itms-apps://itunes.apple.com"
 	)
 	
 	static let music = Icon(
@@ -51,7 +50,7 @@ extension Icon {
 		name: "Photos",
 		targetAppID: "com.apple.mobileslideshow",
 		UUID: "39F6DAC6-31B2-4FF5-AEE7-B858646370B8",
-		appURL: "photos://"
+		appURL: "photos-redirect://"
 	)
 	
 	// MARK: - Third party apps

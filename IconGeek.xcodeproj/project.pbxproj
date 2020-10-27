@@ -28,7 +28,9 @@
 		CD7C0FA4254737AF00CB62DC /* DownloadConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */; };
 		CD7C0FCA254820D200CB62DC /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0FC9254820D200CB62DC /* VisualEffectBlur.swift */; };
 		CD7C0FD2254823D500CB62DC /* IconSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0FD1254823D500CB62DC /* IconSetTests.swift */; };
-		CD7C0FD7254823E500CB62DC /* IconTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0FD6254823E500CB62DC /* IconTest.swift */; };
+		CD7C0FD7254823E500CB62DC /* IconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0FD6254823E500CB62DC /* IconTests.swift */; };
+		CD8A7E982548A5400042FC6E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7E972548A5400042FC6E /* AppConfig.swift */; };
+		CD8A7EA02548A59D0042FC6E /* AppConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7E9F2548A59D0042FC6E /* AppConfigTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +79,9 @@
 		CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadConfigView.swift; sourceTree = "<group>"; };
 		CD7C0FC9254820D200CB62DC /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
 		CD7C0FD1254823D500CB62DC /* IconSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSetTests.swift; sourceTree = "<group>"; };
-		CD7C0FD6254823E500CB62DC /* IconTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTest.swift; sourceTree = "<group>"; };
+		CD7C0FD6254823E500CB62DC /* IconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTests.swift; sourceTree = "<group>"; };
+		CD8A7E972548A5400042FC6E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		CD8A7E9F2548A59D0042FC6E /* AppConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigTests.swift; sourceTree = "<group>"; };
 		FEF98B8B2A67FAF8AF7F4441 /* libPods-IconGeek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IconGeek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -175,7 +179,8 @@
 			children = (
 				CD7C0EFD25435FF700CB62DC /* IconGeekTests.swift */,
 				CD7C0EFF25435FF700CB62DC /* Info.plist */,
-				CD7C0FD6254823E500CB62DC /* IconTest.swift */,
+				CD8A7E9F2548A59D0042FC6E /* AppConfigTests.swift */,
+				CD7C0FD6254823E500CB62DC /* IconTests.swift */,
 				CD7C0FD1254823D500CB62DC /* IconSetTests.swift */,
 			);
 			path = IconGeekTests;
@@ -204,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				CD7C0F3C25449B4200CB62DC /* AppAppearance.swift */,
+				CD8A7E972548A5400042FC6E /* AppConfig.swift */,
 				CD7C0F9E25472F3900CB62DC /* AppNotifications.swift */,
 				CD7C0FC9254820D200CB62DC /* VisualEffectBlur.swift */,
 			);
@@ -395,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD7C0FCA254820D200CB62DC /* VisualEffectBlur.swift in Sources */,
+				CD8A7E982548A5400042FC6E /* AppConfig.swift in Sources */,
 				CD7C0F9F25472F3900CB62DC /* AppNotifications.swift in Sources */,
 				CD7C0F2E25449A7E00CB62DC /* IconSetNameView.swift in Sources */,
 				CD7C0F3525449AF500CB62DC /* IconView.swift in Sources */,
@@ -417,7 +424,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD7C0EFE25435FF700CB62DC /* IconGeekTests.swift in Sources */,
-				CD7C0FD7254823E500CB62DC /* IconTest.swift in Sources */,
+				CD8A7EA02548A59D0042FC6E /* AppConfigTests.swift in Sources */,
+				CD7C0FD7254823E500CB62DC /* IconTests.swift in Sources */,
 				CD7C0FD2254823D500CB62DC /* IconSetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

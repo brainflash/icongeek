@@ -1,5 +1,5 @@
 //
-//  IconTest.swift
+//  IconTests.swift
 //  IconGeekTests
 //
 //  Created by Brainflash on 27/10/2020.

@@ -10,6 +10,8 @@ import SwiftUI
 struct DetailView: View {
 	@EnvironmentObject private var model: AppModel
 	@State private var isShowingSecondView = false
+	@State private var isShowingAlert = false
+	@State private var errorMessage = ""
 	
 	var iconSet: IconSet = IconSet.defaultSet
 	
@@ -59,12 +61,25 @@ struct DetailView: View {
 					.padding(.horizontal, 16)
 					.frame(maxWidth: .infinity)
 				}
+				.alert(isPresented: $isShowingAlert) {
+					Alert(title: Text("Error message"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+				}
 			}
 			.onReceive(pub) { obj in
-				if let userInfo = obj.userInfo, let info = userInfo[AppModel.ConfigResponseUUID] as? UUID {
-					self.mobileConfigUUID = info
+				if let userInfo = obj.userInfo {
+					if let info = userInfo[AppModel.ConfigResponseUUID] as? UUID {
+						self.mobileConfigUUID = info
+						isShowingSecondView = true
+					} else if let err = userInfo[AppModel.ConfigResponseError] as? MobileConfigError {
+						switch err {
+						case .jsonMissing:
+							errorMessage = "There was an error in the server response (JSON missing)\n\nPlease try again later."
+						case .signingError:
+							errorMessage = "There was an error in the server response (signing error)\n\nPlease try again later."
+						}
+						isShowingAlert = true
+					}
 				}
-				isShowingSecondView = true
 			}
 		}
 		.navigationTitle("Select your icons")
