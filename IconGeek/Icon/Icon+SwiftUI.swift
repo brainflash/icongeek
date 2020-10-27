@@ -21,6 +21,8 @@ extension Icon {
 // MARK: - All icons
 
 extension Icon {
+	static let IconGeekAppID = "com.brainflash.icongeek"
+	
 	static let blank = Icon(
 		id: "blank",
 		name: "Blank Icon",
@@ -32,25 +34,25 @@ extension Icon {
 	static let appstore = Icon(
 		id: "appstore",
 		name: "App Store",
-		targetAppID: "com.apple.AppStore",
+		targetAppID: IconGeekAppID,
 		UUID: "4402090B-6219-461E-B2D4-4FA167425063",
-		appURL: "itms-apps://itunes.apple.com"
+		appURL: "icongeek://com.apple.AppStore"
 	)
 	
 	static let music = Icon(
 		id: "music",
 		name: "Music",
-		targetAppID: "com.apple.Music",
+		targetAppID: IconGeekAppID,
 		UUID: "0359FE4C-3DAB-40F6-AA78-30869BE1D75D",
-		appURL: "music://"
+		appURL: "icongeek://com.apple.Music"
 	)
 	
 	static let photos = Icon(
 		id: "photos",
 		name: "Photos",
-		targetAppID: "com.apple.mobileslideshow",
+		targetAppID: IconGeekAppID,
 		UUID: "39F6DAC6-31B2-4FF5-AEE7-B858646370B8",
-		appURL: "photos-redirect://"
+		appURL: "icongeek://com.apple.mobileslideshow"
 	)
 	
 	// MARK: - Third party apps
