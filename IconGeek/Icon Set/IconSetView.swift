@@ -35,13 +35,14 @@ struct IconSetView: View {
 	}
 	
 	var content: some View {
+
 		VStack(spacing: 0) {
 			VStack(alignment: .leading) {
 				Text("Icon Set")
 					.font(Font.title).bold()
-					.foregroundColor(.primary)
+					.foregroundColor(iconSet.display.foregroundColor)
 				
-				LazyVGrid(columns: [GridItem(.adaptive(minimum: 80), spacing: 16, alignment: .top)],
+				LazyVGrid(columns: [GridItem(.adaptive(minimum: 70), spacing: 16, alignment: .top)],
 						  alignment: .center,
 						  spacing: 16) {
 					ForEach(iconSet.icons) { icon in
@@ -54,32 +55,6 @@ struct IconSetView: View {
 			.padding()
 		}
 	}
-		
-/*
-//		let gradient = LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .top, endPoint: .bottom)
-		let gradient = LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .topLeading, endPoint: .bottomTrailing)
-
-		ZStack {
-			RoundedRectangle(cornerRadius: 20, style: .continuous)
-//				.fill(Color.white)
-				.fill(gradient)
-			VStack {
-				Text("10:31")
-					.lineLimit(1)
-					.font(.custom("AmericanTypewriter", size: 80.0))
-//					.foregroundGradient(gradient)
-					.foregroundColor(.black)
-//					.opacity(0.5)
-//					.blendMode(.overlay)
-					.minimumScaleFactor(0.5)
-					.padding(.all, 10)
-//					.multilineTextAlignment(.trailing)
-//					)
-
-//				Text("Widget View 🦄")
-			}
-		}
-*/
 }
 
 struct IconSetView_Previews: PreviewProvider {

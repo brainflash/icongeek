@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023ED6EC8024075FF003F55A /* libPods-IconGeek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF98B8B2A67FAF8AF7F4441 /* libPods-IconGeek.a */; };
 		CD7C0EEC25435FF600CB62DC /* IconGeekApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0EEB25435FF600CB62DC /* IconGeekApp.swift */; };
 		CD7C0EEE25435FF600CB62DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0EED25435FF600CB62DC /* ContentView.swift */; };
 		CD7C0EF025435FF700CB62DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD7C0EEF25435FF700CB62DC /* Assets.xcassets */; };
@@ -23,7 +24,8 @@
 		CD7C0F512546C16700CB62DC /* IconSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F502546C16700CB62DC /* IconSet.swift */; };
 		CD7C0F81254719E200CB62DC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F80254719E200CB62DC /* AppModel.swift */; };
 		CD7C0F8925471D0D00CB62DC /* AppModel+MobileConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */; };
-		CD7C0F8E2547210F00CB62DC /* AppModel+TestMobileConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F8D2547210F00CB62DC /* AppModel+TestMobileConfig.swift */; };
+		CD7C0F9F25472F3900CB62DC /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F9E25472F3900CB62DC /* AppNotifications.swift */; };
+		CD7C0FA4254737AF00CB62DC /* DownloadConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20EB9E78A08CEB30F635C244 /* Pods-IconGeek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconGeek.debug.xcconfig"; path = "Target Support Files/Pods-IconGeek/Pods-IconGeek.debug.xcconfig"; sourceTree = "<group>"; };
+		64D9C242C61AF30C7A7C4B62 /* Pods-IconGeek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconGeek.release.xcconfig"; path = "Target Support Files/Pods-IconGeek/Pods-IconGeek.release.xcconfig"; sourceTree = "<group>"; };
 		CD7C0EE825435FF600CB62DC /* IconGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IconGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7C0EEB25435FF600CB62DC /* IconGeekApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGeekApp.swift; sourceTree = "<group>"; };
 		CD7C0EED25435FF600CB62DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,7 +70,9 @@
 		CD7C0F502546C16700CB62DC /* IconSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSet.swift; sourceTree = "<group>"; };
 		CD7C0F80254719E200CB62DC /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppModel+MobileConfig.swift"; sourceTree = "<group>"; };
-		CD7C0F8D2547210F00CB62DC /* AppModel+TestMobileConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppModel+TestMobileConfig.swift"; sourceTree = "<group>"; };
+		CD7C0F9E25472F3900CB62DC /* AppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
+		CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadConfigView.swift; sourceTree = "<group>"; };
+		FEF98B8B2A67FAF8AF7F4441 /* libPods-IconGeek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IconGeek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				023ED6EC8024075FF003F55A /* libPods-IconGeek.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +101,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180E17B9D7435FF8866A5F55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FEF98B8B2A67FAF8AF7F4441 /* libPods-IconGeek.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7409EBEB96135439BB4F84E1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				20EB9E78A08CEB30F635C244 /* Pods-IconGeek.debug.xcconfig */,
+				64D9C242C61AF30C7A7C4B62 /* Pods-IconGeek.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CD7C0EDF25435FF600CB62DC = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +125,8 @@
 				CD7C0EFC25435FF700CB62DC /* IconGeekTests */,
 				CD7C0F0725435FF700CB62DC /* IconGeekUITests */,
 				CD7C0EE925435FF600CB62DC /* Products */,
+				7409EBEB96135439BB4F84E1 /* Pods */,
+				180E17B9D7435FF8866A5F55 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +187,7 @@
 			children = (
 				CD7C0EED25435FF600CB62DC /* ContentView.swift */,
 				CD7C0F1F2544995F00CB62DC /* DetailView.swift */,
+				CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				CD7C0F3C25449B4200CB62DC /* AppAppearance.swift */,
+				CD7C0F9E25472F3900CB62DC /* AppNotifications.swift */,
 			);
 			path = "App Support";
 			sourceTree = "<group>";
@@ -198,7 +226,6 @@
 			children = (
 				CD7C0F80254719E200CB62DC /* AppModel.swift */,
 				CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */,
-				CD7C0F8D2547210F00CB62DC /* AppModel+TestMobileConfig.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,6 +237,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD7C0F0D25435FF700CB62DC /* Build configuration list for PBXNativeTarget "IconGeek" */;
 			buildPhases = (
+				1323412BE22E7A27B11A0E71 /* [CP] Check Pods Manifest.lock */,
 				CD7C0EE425435FF600CB62DC /* Sources */,
 				CD7C0EE525435FF600CB62DC /* Frameworks */,
 				CD7C0EE625435FF600CB62DC /* Resources */,
@@ -327,19 +355,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1323412BE22E7A27B11A0E71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IconGeek-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CD7C0EE425435FF600CB62DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD7C0F9F25472F3900CB62DC /* AppNotifications.swift in Sources */,
 				CD7C0F2E25449A7E00CB62DC /* IconSetNameView.swift in Sources */,
-				CD7C0F8E2547210F00CB62DC /* AppModel+TestMobileConfig.swift in Sources */,
 				CD7C0F3525449AF500CB62DC /* IconView.swift in Sources */,
 				CD7C0F29254499C600CB62DC /* IconSetView.swift in Sources */,
 				CD7C0EEE25435FF600CB62DC /* ContentView.swift in Sources */,
 				CD7C0F4B25461E4900CB62DC /* Icon+SwiftUI.swift in Sources */,
 				CD7C0F8925471D0D00CB62DC /* AppModel+MobileConfig.swift in Sources */,
 				CD7C0F202544995F00CB62DC /* DetailView.swift in Sources */,
+				CD7C0FA4254737AF00CB62DC /* DownloadConfigView.swift in Sources */,
 				CD7C0F3D25449B4200CB62DC /* AppAppearance.swift in Sources */,
 				CD7C0F512546C16700CB62DC /* IconSet.swift in Sources */,
 				CD7C0F4325461C4600CB62DC /* Icon.swift in Sources */,
@@ -498,6 +552,7 @@
 		};
 		CD7C0F0E25435FF700CB62DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20EB9E78A08CEB30F635C244 /* Pods-IconGeek.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -522,6 +577,7 @@
 		};
 		CD7C0F0F25435FF700CB62DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64D9C242C61AF30C7A7C4B62 /* Pods-IconGeek.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

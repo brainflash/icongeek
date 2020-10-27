@@ -9,9 +9,9 @@ struct Icon: Identifiable, Codable {
 	var id: String
 	var name: String
 	var group: String = ""
-	var bundleId: String
-	var iconUUID: String? = ""
-	var appURL: String? = ""
+	var targetAppID: String			// Also known as the 'bundleID'
+	var iconUUID: String = ""
+	var appURL: String = ""
 
 	// User variables
 	var selected: Bool = true
@@ -19,22 +19,24 @@ struct Icon: Identifiable, Codable {
 	enum CodingKeys: String, CodingKey {
 		case id
 		case name
-		case bundleId
+		case targetAppID
 	}
 	
 	init(_ icon: Icon, group: String) {
 		self.id = icon.id
 		self.name = icon.name
 		self.group = group
-		self.bundleId = icon.bundleId
+		self.targetAppID = icon.targetAppID
+		self.iconUUID = icon.iconUUID
+		self.appURL = icon.appURL
 	}
 	
-	init(id: String, name: String, bundleId: String, iconUUID: String? = "", appURL: String? = "") {
+	init(id: String, name: String, targetAppID: String, iconUUID: String = "", appURL: String = "") {
 		self.id = id
 		self.name = name
-		self.bundleId = bundleId
-		self.iconUUID = iconUUID
-		self.appURL = appURL
+		self.targetAppID = targetAppID
+		if iconUUID != "" { self.iconUUID = iconUUID }
+		if appURL != "" { self.appURL = appURL }
 	}
 }
 
@@ -53,5 +55,18 @@ extension Icon {
 			icons.append(icon)
 		}
 		return icons
+	}
+	
+	var imageName: String {
+		"\(group)/\(name)"
+	}
+	
+	func isValid() -> Bool {
+		// appURL and iconUUID must be present, otherwise the web clip configuration
+		// will fail on installation ("profile corrupt" error)
+		return (
+//			appURL != "" &&
+			iconUUID != ""
+		)
 	}
 }

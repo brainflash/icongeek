@@ -16,7 +16,13 @@ struct IconSet: Identifiable {
 	var group: String
 	var background: String = "default"
 	var icons: [Icon]
+	
 	var options: Dictionary<String, Any>
+	struct IconSetOptions {
+		var foregroundColor: Color?
+		var backgroundColor: Color?
+	}
+	var display = IconSetOptions()
 	
 	init(id: String, title: String, group: String, options: Dictionary<String, Any>?) {
 		self.id = id
@@ -24,6 +30,8 @@ struct IconSet: Identifiable {
 		self.group = group
 		self.icons = Icon.allWithGroup(group)
 		self.options = options ?? [:]
+		self.display.foregroundColor = self.options["foreground"] as? Color ?? Color.primary
+		self.display.backgroundColor = self.options["background"] as? Color ?? Color.appBackground
 	}
 }
 
@@ -57,7 +65,8 @@ extension IconSet {
 		title: "Gradient Line",
 		group: "icon-set-3",
 		options: [
-			"background": Color.white
+			"foreground": Color.white,
+			"background": Color.black
 		]
 	)
 
