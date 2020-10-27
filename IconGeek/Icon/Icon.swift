@@ -10,8 +10,8 @@ struct Icon: Identifiable, Codable {
 	var name: String
 	var group: String = ""
 	var targetAppID: String			// Also known as the 'bundleID'
-	var iconUUID: String = ""
-	var appURL: String = ""
+	var UUID: String = ""
+	var appURL: String = " "		// Must not be zero-length
 
 	// User variables
 	var selected: Bool = true
@@ -27,15 +27,15 @@ struct Icon: Identifiable, Codable {
 		self.name = icon.name
 		self.group = group
 		self.targetAppID = icon.targetAppID
-		self.iconUUID = icon.iconUUID
+		self.UUID = icon.UUID
 		self.appURL = icon.appURL
 	}
 	
-	init(id: String, name: String, targetAppID: String, iconUUID: String = "", appURL: String = "") {
+	init(id: String, name: String, targetAppID: String, UUID: String = "", appURL: String = "") {
 		self.id = id
 		self.name = name
 		self.targetAppID = targetAppID
-		if iconUUID != "" { self.iconUUID = iconUUID }
+		if UUID != "" { self.UUID = UUID }
 		if appURL != "" { self.appURL = appURL }
 	}
 }
@@ -65,8 +65,8 @@ extension Icon {
 		// appURL and iconUUID must be present, otherwise the web clip configuration
 		// will fail on installation ("profile corrupt" error)
 		return (
-//			appURL != "" &&
-			iconUUID != ""
+			appURL != "" &&
+			UUID != ""
 		)
 	}
 }

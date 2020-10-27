@@ -35,18 +35,13 @@ struct IconSetView: View {
 	}
 	
 	var content: some View {
-
 		VStack(spacing: 0) {
 			VStack(alignment: .leading) {
-				Text("Icon Set")
-					.font(Font.title).bold()
-					.foregroundColor(iconSet.display.foregroundColor)
-				
 				LazyVGrid(columns: [GridItem(.adaptive(minimum: 70), spacing: 16, alignment: .top)],
 						  alignment: .center,
 						  spacing: 16) {
 					ForEach(iconSet.icons) { icon in
-						IconView(icon)
+						IconView(icon, bgColor: iconSet.display.backgroundColor!)
 							.contentShape(Rectangle())
 							.aspectRatio(contentMode: .fit)
 					}

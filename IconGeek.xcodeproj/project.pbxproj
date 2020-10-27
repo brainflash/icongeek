@@ -26,6 +26,9 @@
 		CD7C0F8925471D0D00CB62DC /* AppModel+MobileConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */; };
 		CD7C0F9F25472F3900CB62DC /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F9E25472F3900CB62DC /* AppNotifications.swift */; };
 		CD7C0FA4254737AF00CB62DC /* DownloadConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */; };
+		CD7C0FCA254820D200CB62DC /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0FC9254820D200CB62DC /* VisualEffectBlur.swift */; };
+		CD7C0FD2254823D500CB62DC /* IconSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0FD1254823D500CB62DC /* IconSetTests.swift */; };
+		CD7C0FD7254823E500CB62DC /* IconTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0FD6254823E500CB62DC /* IconTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,9 @@
 		CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppModel+MobileConfig.swift"; sourceTree = "<group>"; };
 		CD7C0F9E25472F3900CB62DC /* AppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
 		CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadConfigView.swift; sourceTree = "<group>"; };
+		CD7C0FC9254820D200CB62DC /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
+		CD7C0FD1254823D500CB62DC /* IconSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSetTests.swift; sourceTree = "<group>"; };
+		CD7C0FD6254823E500CB62DC /* IconTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTest.swift; sourceTree = "<group>"; };
 		FEF98B8B2A67FAF8AF7F4441 /* libPods-IconGeek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IconGeek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -143,8 +149,8 @@
 		CD7C0EEA25435FF600CB62DC /* IconGeek */ = {
 			isa = PBXGroup;
 			children = (
-				CD7C0F3225449AB600CB62DC /* App Support */,
 				CD7C0EEB25435FF600CB62DC /* IconGeekApp.swift */,
+				CD7C0F3225449AB600CB62DC /* App Support */,
 				CD7C0F7F254719C300CB62DC /* Model */,
 				CD7C0F242544996600CB62DC /* Views */,
 				CD7C0F4125461C2800CB62DC /* Icon */,
@@ -169,6 +175,8 @@
 			children = (
 				CD7C0EFD25435FF700CB62DC /* IconGeekTests.swift */,
 				CD7C0EFF25435FF700CB62DC /* Info.plist */,
+				CD7C0FD6254823E500CB62DC /* IconTest.swift */,
+				CD7C0FD1254823D500CB62DC /* IconSetTests.swift */,
 			);
 			path = IconGeekTests;
 			sourceTree = "<group>";
@@ -197,6 +205,7 @@
 			children = (
 				CD7C0F3C25449B4200CB62DC /* AppAppearance.swift */,
 				CD7C0F9E25472F3900CB62DC /* AppNotifications.swift */,
+				CD7C0FC9254820D200CB62DC /* VisualEffectBlur.swift */,
 			);
 			path = "App Support";
 			sourceTree = "<group>";
@@ -385,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD7C0FCA254820D200CB62DC /* VisualEffectBlur.swift in Sources */,
 				CD7C0F9F25472F3900CB62DC /* AppNotifications.swift in Sources */,
 				CD7C0F2E25449A7E00CB62DC /* IconSetNameView.swift in Sources */,
 				CD7C0F3525449AF500CB62DC /* IconView.swift in Sources */,
@@ -407,6 +417,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD7C0EFE25435FF700CB62DC /* IconGeekTests.swift in Sources */,
+				CD7C0FD7254823E500CB62DC /* IconTest.swift in Sources */,
+				CD7C0FD2254823D500CB62DC /* IconSetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

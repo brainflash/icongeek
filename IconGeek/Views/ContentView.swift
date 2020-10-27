@@ -17,7 +17,7 @@ struct ContentView: View {
 			List {
 				ForEach(iconSets) { iconSet in
 					NavigationLink(
-						destination: DetailView(iconSet: iconSet)) {
+						destination: DetailView(iconSet)) {
 						TableRow(title: iconSet.title)
 					}
 				}

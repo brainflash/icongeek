@@ -8,6 +8,19 @@
 import Foundation
 import UIKit
 
+// Placeholder constants
+// –––––––––––––––––––––––––
+// Configuration Profile
+// IG_PROFILE_NAME
+// IG_ICONSET_UUID
+//
+// Web Clips
+// IG_SHORTCUT_NAME
+// IG_ICON_UUID
+// IG_APP_URL
+// IG_TARGET_APP_ID
+
+
 let IconGeekMobileConfigHeader = """
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\
 <plist version="1.0"><dict>\
@@ -18,12 +31,12 @@ let IconGeekMobileConfigHeader = """
 let IconGeekMobileConfigFooter = """
 </array>\
 <key>PayloadDescription</key><string>Icon Geek Web Clip</string>\
-<key>PayloadDisplayName</key><string>Icon Geek</string>\
+<key>PayloadDisplayName</key><string>{IG_PROFILE_NAME}</string>\
 <key>PayloadIdentifier</key><string>profiles.icongeek.app.webclip</string>\
 <key>PayloadOrganization</key><string>Icon Geek App</string>\
 <key>PayloadRemovalDisallowed</key><false/>\
 <key>PayloadType</key><string>Configuration</string>\
-<key>PayloadUUID</key><string>fa8a6b9e-0fed-406f-9571-8ec98722b713</string>\
+<key>PayloadUUID</key><string>{IG_ICONSET_UUID}</string>\
 <key>PayloadVersion</key><integer>1</integer>\
 </dict>\
 </plist>
@@ -57,6 +70,10 @@ extension AppModel {
 	func generateMobileConfig(_ iconSet: IconSet) -> String {
 		var mobileconfig = String(IconGeekMobileConfigHeader)
 		
+		if iconSet.isValid() == false {
+			NSLog("ERROR! -->  iconSet not valid, UUID: '\(iconSet.UUID)'")
+		}
+		
 		iconSet.icons.forEach { icon in
 			if let image = UIImage(named: icon.imageName) {
 				if icon.isValid() {
@@ -65,7 +82,7 @@ extension AppModel {
 						mobileconfig.append(imageData.base64EncodedString())
 						var webClip = String(IconGeekWebClip)
 						webClip = webClip.replacingOccurrences(of: "{IG_SHORTCUT_NAME}", with: icon.name)
-						webClip = webClip.replacingOccurrences(of: "{IG_ICON_UUID}", with: icon.iconUUID)
+						webClip = webClip.replacingOccurrences(of: "{IG_ICON_UUID}", with: icon.UUID)
 						webClip = webClip.replacingOccurrences(of: "{IG_APP_URL}", with: icon.appURL)
 						webClip = webClip.replacingOccurrences(of: "{IG_TARGET_APP_ID}", with: icon.targetAppID)
 						mobileconfig.append(webClip)
@@ -80,7 +97,11 @@ extension AppModel {
 			}
 		}
 		
-		mobileconfig.append(IconGeekMobileConfigFooter)
+		var footer = String(IconGeekMobileConfigFooter)
+		footer = footer.replacingOccurrences(of: "{IG_ICONSET_UUID}", with: iconSet.UUID)
+//		footer = footer.replacingOccurrences(of: "{IG_PROFILE_NAME}", with: "Icon Geek")
+		footer = footer.replacingOccurrences(of: "{IG_PROFILE_NAME}", with: "\(iconSet.title) Icon Set")
+		mobileconfig.append(footer)
 		
 		return mobileconfig
 	}

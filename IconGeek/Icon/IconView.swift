@@ -9,6 +9,7 @@ import SwiftUI
 
 struct IconView: View {
 	var icon: Icon
+	var bgColor: Color
 	
     var body: some View {
 //		let gradient = LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -16,8 +17,11 @@ struct IconView: View {
 		ZStack {
 //			RoundedRectangle(cornerRadius: 20, style: .continuous)
 //				.fill(gradient)
+//			Button()
 			image
 		}
+		.background(bgColor)
+		.cornerRadius(14)
 		.contentShape(Rectangle())
 		.frame(maxWidth: 80)
 	}
@@ -34,10 +38,12 @@ struct IconView: View {
 	
 	init() {
 		self.icon = Icon(.blank, group: "")
+		self.bgColor = Color.white
 	}
 	
-	init(_ icon: Icon) {
+	init(_ icon: Icon, bgColor: Color) {
 		self.icon = icon
+		self.bgColor = bgColor
 	}
 }
 

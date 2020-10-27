@@ -11,6 +11,12 @@ import Alamofire
 class AppModel: ObservableObject {
 }
 
+struct MobileConfigResponse: Codable {
+	var status: String
+	var error: String?
+	var uuid: String?
+}
+
 // MARK: - IconGeek API
 
 extension AppModel {
@@ -26,14 +32,18 @@ extension AppModel {
 		let req = AF.upload(multipartFormData: { (form) in
 			form.append(data, withName: "file1")
 		}, to: AppModel.UploadURL)
-			.responseString { response in
-				print("Response string: \(response.value ?? "")")
-				// 3. Decode JSON response
-
-				// 4. Post notification
-				NotificationCenter.default.post(name: .ReceivedMobileConfigResponse,
-												object: nil,
-												userInfo: [AppModel.ConfigResponseUUID: UUID(uuidString: "6b9efd8a-def0-6f40-7195-8722b7138ec9")!])
+			.responseJSON { resp in
+				// 3. Check JSON response
+				let json = resp.value as! Dictionary<String, String>
+				if json["status"] == "OK" {
+					// 4. Post notification
+					NotificationCenter.default.post(name: .ReceivedMobileConfigResponse,
+													object: nil,
+													userInfo: [AppModel.ConfigResponseUUID: UUID(uuidString: json["uuid"]!)!])
+				} else {
+					// TODO: Inform user of error
+					NSLog("Error signing mobileconfig: \(json["error"]!)")
+				}
 			}
 		return req
 	}

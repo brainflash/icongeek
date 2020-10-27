@@ -17,5 +17,6 @@ extension AppModel {
 	
 	/// Dictionary keys used in App Model notification
 	static let ConfigResponseUUID = "ConfigResponseUUID"
+	static let ConfigResponseError = "ConfigResponseError"
 }
 

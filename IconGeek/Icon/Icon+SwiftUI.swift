@@ -33,7 +33,7 @@ extension Icon {
 		id: "appstore",
 		name: "App Store",
 		targetAppID: "com.apple.AppStore",
-		iconUUID: "fd8a6b9e-0fed-406f-9571-8ec98722b713",
+		UUID: "4402090B-6219-461E-B2D4-4FA167425063",
 		appURL: "itms-apps://"
 		
 	)
@@ -42,7 +42,7 @@ extension Icon {
 		id: "music",
 		name: "Music",
 		targetAppID: "com.apple.Music",
-		iconUUID: "ed8a6b9e-0fed-406f-9571-8ec98722b713",
+		UUID: "0359FE4C-3DAB-40F6-AA78-30869BE1D75D",
 		appURL: "music://"
 	)
 	
@@ -50,7 +50,7 @@ extension Icon {
 		id: "photos",
 		name: "Photos",
 		targetAppID: "com.apple.mobileslideshow",
-		iconUUID: "dd8a6b9e-0fed-406f-9571-8ec98722b713",
+		UUID: "39F6DAC6-31B2-4FF5-AEE7-B858646370B8",
 		appURL: "photos://"
 	)
 	
@@ -60,7 +60,7 @@ extension Icon {
 		id: "facebook",
 		name: "Facebook",
 		targetAppID: "com.facebook.Facebook",
-		iconUUID: "cd8a6b9e-0fed-406f-9571-8ec98722b713",
+		UUID: "CCDDE505-9953-4F3E-AAE5-E4DCFFF83869",
 		appURL: "fb://"
 	)
 
