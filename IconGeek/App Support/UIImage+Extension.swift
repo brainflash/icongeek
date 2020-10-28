@@ -10,9 +10,8 @@ import UIKit
 public extension UIImage {
 	/// Create a UIImage with solid color background with specified image overlaid
 	convenience init?(color: UIColor, image: UIImage, scale: CGFloat?) {
-		let imageSize = CGSize(width: image.size.width / image.scale, height: image.size.height / image.scale)
-		let rect = CGRect(origin: .zero, size: imageSize)
-		UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+		let rect = CGRect(origin: .zero, size: image.size)
+		UIGraphicsBeginImageContextWithOptions(rect.size, false, scale ?? 0.0)
 		color.setFill()
 		UIRectFill(rect)
 		
