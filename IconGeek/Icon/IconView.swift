@@ -8,27 +8,30 @@
 import SwiftUI
 
 struct IconView: View {
-	var icon: Icon
+	var icon: Icon?
 	var bgColor: Color
 	
+	@Environment(\.colorScheme) var colorScheme
+	@State private var iconSelected: Bool = false
+	
     var body: some View {
-//		let gradient = LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .topLeading, endPoint: .bottomTrailing)
-
 		ZStack {
-//			RoundedRectangle(cornerRadius: 20, style: .continuous)
-//				.fill(gradient)
-//			Button()
-			image
+			Button(action: { iconSelected.toggle() }) {
+				image
+			}
+			
 		}
 		.background(bgColor)
 		.cornerRadius(14)
 		.contentShape(Rectangle())
 		.frame(maxWidth: 80)
+		.overlay(Toggle("Selected", isOn: $iconSelected))
+		.toggleStyle(CircleToggleStyle(colorScheme: colorScheme))
 	}
 	
 	var image: some View {
 		GeometryReader { geo in
-			icon.image
+			icon?.image
 				.resizable()
 				.aspectRatio(contentMode: .fill)
 				.frame(width: geo.size.width, height: geo.size.height)
@@ -47,34 +50,29 @@ struct IconView: View {
 	}
 }
 
+struct CircleToggleStyle: ToggleStyle {
+	let colorScheme: ColorScheme
+	
+	func makeBody(configuration: Configuration) -> some View {
+		ZStack {
+			configuration.label.hidden()
+			if configuration.isOn {
+			Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
+				.font(.system(size: 25, weight: .bold))
+				.foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+				.background(colorScheme == .dark ? Color.black : Color.white)
+				.accessibility(label: Text(configuration.isOn ? "Checked" : "Unchecked"))
+				.imageScale(.large)
+				.clipShape(Circle())
+				.frame(width: 80, height: 80)
+				.offset(x: 30, y:30)
+			}
+		}
+	}
+}
+
 struct IconView_Previews: PreviewProvider {
     static var previews: some View {
         IconView()
     }
 }
-
-/*
-//		let gradient = LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .top, endPoint: .bottom)
-		let gradient = LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .topLeading, endPoint: .bottomTrailing)
-
-		ZStack {
-			RoundedRectangle(cornerRadius: 20, style: .continuous)
-//				.fill(Color.white)
-				.fill(gradient)
-			VStack {
-				Text("10:31")
-					.lineLimit(1)
-					.font(.custom("AmericanTypewriter", size: 80.0))
-//					.foregroundGradient(gradient)
-					.foregroundColor(.black)
-//					.opacity(0.5)
-//					.blendMode(.overlay)
-					.minimumScaleFactor(0.5)
-					.padding(.all, 10)
-//					.multilineTextAlignment(.trailing)
-//					)
-
-//				Text("Widget View 🦄")
-			}
-		}
-*/

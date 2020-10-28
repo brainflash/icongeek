@@ -18,7 +18,7 @@ struct ContentView: View {
 				ForEach(iconSets) { iconSet in
 					NavigationLink(
 						destination: DetailView(iconSet)) {
-						TableRow(title: iconSet.title)
+						TableRow(iconSet: iconSet)
 					}
 				}
 			}
@@ -34,12 +34,28 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct TableRow: View {
-	let title: String
+	@Environment(\.colorScheme) var colorScheme
+	
+	let iconSet: IconSet
 	
 	var body: some View {
 		HStack {
-			IconSetThumb()
-			IconSetNameView(title: title)
+			if iconSet.isLocked {
+				IconSetThumb()
+					.overlay(
+						Image(systemName: "lock.circle")
+							.font(.system(size: 20))
+							.foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+							.background(colorScheme == .dark ? Color.black : Color.white)
+							.imageScale(.large)
+							.clipShape(Circle())
+							.frame(width: 100, height: 100)
+							.offset(x: 20, y:20)
+					)
+			} else {
+				IconSetThumb()
+			}
+			IconSetNameView(title: iconSet.title)
 		}
 	}
 }

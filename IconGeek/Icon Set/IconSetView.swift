@@ -23,6 +23,8 @@ struct IconSetThumb: View {
 }
 
 struct IconSetView: View {
+	@Environment(\.colorScheme) var colorScheme
+	
 	var iconSet: IconSet = IconSet.iconSet1
 
 	var body: some View {
@@ -41,9 +43,14 @@ struct IconSetView: View {
 						  alignment: .center,
 						  spacing: 16) {
 					ForEach(iconSet.icons) { icon in
-						IconView(icon, bgColor: iconSet.display.backgroundColor!)
-							.contentShape(Rectangle())
-							.aspectRatio(contentMode: .fit)
+						VStack(alignment: .center) {
+							IconView(icon, bgColor: iconSet.display.backgroundColor!)
+								.contentShape(Rectangle())
+								.aspectRatio(contentMode: .fit)
+							Text(icon.name)
+								.font(.caption)
+								.bold()
+						}
 					}
 				}
 			}
