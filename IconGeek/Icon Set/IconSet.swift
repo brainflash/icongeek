@@ -97,8 +97,8 @@ extension IconSet {
 		UUID: "C88F3187-FF2D-4BA8-84C6-B0519A682CED",
 		isLocked: true,
 		options: [
-			"foreground": Color.black,
-			"background": Color.white,
+			"foreground": Color.white,
+			"background": Color.black,
 			"icon-background": Color.black,
 			"tint": Color.purple
 		]

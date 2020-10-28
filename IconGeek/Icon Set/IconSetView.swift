@@ -32,6 +32,7 @@ struct IconSetView: View {
 			ScrollView {
 				content
 			}
+			.clipped()
 		}
 		.background(iconSet.display.backgroundColor)
 	}

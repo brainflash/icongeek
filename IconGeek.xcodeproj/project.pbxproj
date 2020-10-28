@@ -34,6 +34,7 @@
 		CD8A7EB42548BBF00042FC6E /* AppList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7EB32548BBF00042FC6E /* AppList.swift */; };
 		CD8A7EBE2549869A0042FC6E /* IconList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7EBD2549869A0042FC6E /* IconList.swift */; };
 		CD8A7EC325499EA70042FC6E /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7EC225499EA70042FC6E /* UIImage+Extension.swift */; };
+		CD8D01BB2549E8D100D47459 /* AppModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D01BA2549E8D100D47459 /* AppModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,8 @@
 		CD8A7EB32548BBF00042FC6E /* AppList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppList.swift; sourceTree = "<group>"; };
 		CD8A7EBD2549869A0042FC6E /* IconList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconList.swift; sourceTree = "<group>"; };
 		CD8A7EC225499EA70042FC6E /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		CD8D01BA2549E8D100D47459 /* AppModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelTests.swift; sourceTree = "<group>"; };
+		CD8D01C22549E8E100D47459 /* Snippets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snippets.swift; sourceTree = "<group>"; };
 		FEF98B8B2A67FAF8AF7F4441 /* libPods-IconGeek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IconGeek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -186,9 +189,11 @@
 			children = (
 				CD7C0EFD25435FF700CB62DC /* IconGeekTests.swift */,
 				CD7C0EFF25435FF700CB62DC /* Info.plist */,
+				CD8D01BA2549E8D100D47459 /* AppModelTests.swift */,
 				CD8A7E9F2548A59D0042FC6E /* AppConfigTests.swift */,
 				CD7C0FD6254823E500CB62DC /* IconTests.swift */,
 				CD7C0FD1254823D500CB62DC /* IconSetTests.swift */,
+				CD8D01C22549E8E100D47459 /* Snippets.swift */,
 			);
 			path = IconGeekTests;
 			sourceTree = "<group>";
@@ -444,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD7C0EFE25435FF700CB62DC /* IconGeekTests.swift in Sources */,
+				CD8D01BB2549E8D100D47459 /* AppModelTests.swift in Sources */,
 				CD8A7EA02548A59D0042FC6E /* AppConfigTests.swift in Sources */,
 				CD7C0FD7254823E500CB62DC /* IconTests.swift in Sources */,
 				CD7C0FD2254823D500CB62DC /* IconSetTests.swift in Sources */,

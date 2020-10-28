@@ -80,7 +80,7 @@ extension AppModel {
 		selected.forEach { icon in
 			// Create a UIImage with the background color of the icon set and icon image overlaid
 			if let iconImage = UIImage(named: icon.imageName),
-			   let image = UIImage(color: UIColor(iconSet.iconsBackground), image: iconImage) {
+			   let image = UIImage(color: UIColor(iconSet.iconsBackground), image: iconImage, scale: 1) {
 				
 				if icon.isValid() {
 					if let imageData = image.pngData() {
