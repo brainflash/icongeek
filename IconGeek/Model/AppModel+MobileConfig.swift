@@ -74,8 +74,15 @@ extension AppModel {
 			NSLog("ERROR! -->  iconSet not valid, UUID: '\(iconSet.UUID)'")
 		}
 		
-		iconSet.icons.forEach { icon in
+		let selectedIcons = iconSet.icons.filter { icon in
+			icon.selected
+		}
+		
+		selectedIcons.forEach { icon in
 			if let image = UIImage(named: icon.imageName) {
+				//
+				// TODO: - save the image using the chosen background colour in the icon set
+				//
 				if icon.isValid() {
 					if let imageData = image.pngData() {
 						mobileconfig.append(IconGeekWebClipHeader)

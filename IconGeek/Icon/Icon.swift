@@ -5,7 +5,9 @@
 //  Created by Brainflash on 25/10/2020.
 //
 
-struct Icon: Identifiable, Codable {
+import SwiftUI
+
+class Icon: ObservableObject, Identifiable, Codable {
 	var id: String
 	var name: String
 	var group: String = ""
@@ -14,7 +16,7 @@ struct Icon: Identifiable, Codable {
 	var appURL: String = " "		// Must not be zero-length
 
 	// User variables
-	var selected: Bool = true
+	@Published var selected: Bool = false
 
 	enum CodingKeys: String, CodingKey {
 		case id

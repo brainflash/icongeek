@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct IconView: View {
-	var icon: Icon?
-	var bgColor: Color
-	
 	@Environment(\.colorScheme) var colorScheme
-	@State private var iconSelected: Bool = false
+	
+	@ObservedObject var icon: Icon
+	var bgColor: Color
 	
     var body: some View {
 		ZStack {
-			Button(action: { iconSelected.toggle() }) {
+			Button(action: { icon.selected.toggle() }) {
 				image
 			}
 			
@@ -25,28 +24,18 @@ struct IconView: View {
 		.cornerRadius(14)
 		.contentShape(Rectangle())
 		.frame(maxWidth: 80)
-		.overlay(Toggle("Selected", isOn: $iconSelected))
+		.overlay(Toggle("Selected", isOn: $icon.selected))
 		.toggleStyle(CircleToggleStyle(colorScheme: colorScheme))
 	}
 	
 	var image: some View {
 		GeometryReader { geo in
-			icon?.image
+			icon.image
 				.resizable()
 				.aspectRatio(contentMode: .fill)
 				.frame(width: geo.size.width, height: geo.size.height)
 		}
 		.accessibility(hidden: true)
-	}
-	
-	init() {
-		self.icon = Icon(.blank, group: "")
-		self.bgColor = Color.white
-	}
-	
-	init(_ icon: Icon, bgColor: Color) {
-		self.icon = icon
-		self.bgColor = bgColor
 	}
 }
 
@@ -57,15 +46,15 @@ struct CircleToggleStyle: ToggleStyle {
 		ZStack {
 			configuration.label.hidden()
 			if configuration.isOn {
-			Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
-				.font(.system(size: 25, weight: .bold))
-				.foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-				.background(colorScheme == .dark ? Color.black : Color.white)
-				.accessibility(label: Text(configuration.isOn ? "Checked" : "Unchecked"))
-				.imageScale(.large)
-				.clipShape(Circle())
-				.frame(width: 80, height: 80)
-				.offset(x: 30, y:30)
+				Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
+					.font(.system(size: 25, weight: .bold))
+					.foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+					.background(colorScheme == .dark ? Color.black : Color.white)
+					.accessibility(label: Text(configuration.isOn ? "Checked" : "Unchecked"))
+					.imageScale(.large)
+					.clipShape(Circle())
+					.frame(width: 80, height: 80)
+					.offset(x: 30, y:30)
 			}
 		}
 	}
@@ -73,6 +62,6 @@ struct CircleToggleStyle: ToggleStyle {
 
 struct IconView_Previews: PreviewProvider {
     static var previews: some View {
-        IconView()
+		IconView(icon: Icon(.blank, group: ""), bgColor: Color.white)
     }
 }

@@ -44,7 +44,7 @@ struct IconSetView: View {
 						  spacing: 16) {
 					ForEach(iconSet.icons) { icon in
 						VStack(alignment: .center) {
-							IconView(icon, bgColor: iconSet.display.backgroundColor!)
+							IconView(icon: icon, bgColor: iconSet.display.backgroundColor!)
 								.contentShape(Rectangle())
 								.aspectRatio(contentMode: .fit)
 							Text(icon.name)
