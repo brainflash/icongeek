@@ -32,6 +32,8 @@
 		CD8A7E982548A5400042FC6E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7E972548A5400042FC6E /* AppConfig.swift */; };
 		CD8A7EA02548A59D0042FC6E /* AppConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7E9F2548A59D0042FC6E /* AppConfigTests.swift */; };
 		CD8A7EB42548BBF00042FC6E /* AppList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7EB32548BBF00042FC6E /* AppList.swift */; };
+		CD8A7EBE2549869A0042FC6E /* IconList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7EBD2549869A0042FC6E /* IconList.swift */; };
+		CD8A7EC325499EA70042FC6E /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7EC225499EA70042FC6E /* UIImage+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		CD8A7E972548A5400042FC6E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		CD8A7E9F2548A59D0042FC6E /* AppConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigTests.swift; sourceTree = "<group>"; };
 		CD8A7EB32548BBF00042FC6E /* AppList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppList.swift; sourceTree = "<group>"; };
+		CD8A7EBD2549869A0042FC6E /* IconList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconList.swift; sourceTree = "<group>"; };
+		CD8A7EC225499EA70042FC6E /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		FEF98B8B2A67FAF8AF7F4441 /* libPods-IconGeek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IconGeek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -159,6 +163,7 @@
 				CD7C0F3225449AB600CB62DC /* App Support */,
 				CD7C0F7F254719C300CB62DC /* Model */,
 				CD7C0F242544996600CB62DC /* Views */,
+				CD8A7EBC254986880042FC6E /* Lists */,
 				CD7C0F4125461C2800CB62DC /* Icon */,
 				CD7C0F4F2546C14000CB62DC /* Icon Set */,
 				CD7C0EEF25435FF700CB62DC /* Assets.xcassets */,
@@ -212,9 +217,9 @@
 			children = (
 				CD7C0F3C25449B4200CB62DC /* AppAppearance.swift */,
 				CD8A7E972548A5400042FC6E /* AppConfig.swift */,
-				CD8A7EB32548BBF00042FC6E /* AppList.swift */,
 				CD7C0F9E25472F3900CB62DC /* AppNotifications.swift */,
 				CD7C0FC9254820D200CB62DC /* VisualEffectBlur.swift */,
+				CD8A7EC225499EA70042FC6E /* UIImage+Extension.swift */,
 			);
 			path = "App Support";
 			sourceTree = "<group>";
@@ -246,6 +251,15 @@
 				CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CD8A7EBC254986880042FC6E /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				CD8A7EB32548BBF00042FC6E /* AppList.swift */,
+				CD8A7EBD2549869A0042FC6E /* IconList.swift */,
+			);
+			path = Lists;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +433,8 @@
 				CD7C0F4325461C4600CB62DC /* Icon.swift in Sources */,
 				CD8A7EB42548BBF00042FC6E /* AppList.swift in Sources */,
 				CD7C0F81254719E200CB62DC /* AppModel.swift in Sources */,
+				CD8A7EC325499EA70042FC6E /* UIImage+Extension.swift in Sources */,
+				CD8A7EBE2549869A0042FC6E /* IconList.swift in Sources */,
 				CD7C0EEC25435FF600CB62DC /* IconGeekApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

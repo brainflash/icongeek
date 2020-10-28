@@ -10,6 +10,7 @@ import Foundation
 enum MobileConfigError: Error {
 	case jsonMissing
 	case signingError
+	case mobileConfigEmpty
 }
 
 extension Notification.Name {

@@ -21,9 +21,16 @@ struct MobileConfigResponse: Codable {
 
 extension AppModel {
 
-	func addToHomeScreen(_ iconSet: IconSet) -> UploadRequest {
+	func addToHomeScreen(_ iconSet: IconSet) -> UploadRequest? {
 		// 1. Generate the .mobileconfig file
 		let mobileConfig = generateMobileConfig(iconSet)
+		
+		guard mobileConfig.count > 0 else {
+			NotificationCenter.default.post(name: .ReceivedMobileConfigResponse,
+											object: nil,
+											userInfo: [AppModel.ConfigResponseError: MobileConfigError.mobileConfigEmpty])
+			return nil
+		}
 		
 		// 2. Upload the mobile config for signing
 		let data = Data(mobileConfig.utf8)

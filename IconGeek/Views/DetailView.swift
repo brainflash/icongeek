@@ -55,7 +55,7 @@ struct DetailView: View {
 					.cornerRadius(20)
 					.overlay(
 						Capsule()
-							.stroke(Color.purple, lineWidth: 6)
+							.stroke(iconSet.display.tintColor, lineWidth: 6)
 					)
 					.padding(.vertical, 20)
 					.padding(.horizontal, 16)
@@ -73,9 +73,11 @@ struct DetailView: View {
 					} else if let err = userInfo[AppModel.ConfigResponseError] as? MobileConfigError {
 						switch err {
 						case .jsonMissing:
-							errorMessage = "There was an error in the server response (JSON missing)\n\nPlease try again later."
+							errorMessage = "There was an error in the server response\n\n(Code: 0x01 JSON missing)\n\nPlease try again later."
 						case .signingError:
-							errorMessage = "There was an error in the server response (signing error)\n\nPlease try again later."
+							errorMessage = "There was an error in the server response\n\n(Code: 0x02 signing error)\n\nPlease try again later."
+						case .mobileConfigEmpty:
+							errorMessage = "There was an error generating the icon set\n\n(Code: 0x03 config empty)"
 						}
 						isShowingAlert = true
 					}

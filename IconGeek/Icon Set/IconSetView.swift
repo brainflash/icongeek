@@ -28,12 +28,12 @@ struct IconSetView: View {
 	var iconSet: IconSet = IconSet.iconSet1
 
 	var body: some View {
-		
 		ZStack {
 			ScrollView {
 				content
 			}
 		}
+		.background(iconSet.display.backgroundColor)
 	}
 	
 	var content: some View {
@@ -44,7 +44,7 @@ struct IconSetView: View {
 						  spacing: 16) {
 					ForEach(iconSet.icons) { icon in
 						VStack(alignment: .center) {
-							IconView(icon: icon, bgColor: iconSet.display.backgroundColor!)
+							IconView(icon: icon, bgColor: iconSet.display.iconBackground)
 								.contentShape(Rectangle())
 								.aspectRatio(contentMode: .fit)
 							Text(icon.name)

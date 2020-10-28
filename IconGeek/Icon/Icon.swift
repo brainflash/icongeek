@@ -43,18 +43,17 @@ class Icon: ObservableObject, Identifiable, Codable {
 }
 
 extension Icon {
-	static let all: [Icon] = [
-		.appstore,
-		.music,
-		.photos,
-		.facebook
-	]
-	
 	static func allWithGroup(_ group: String) -> [Icon] {
 		var icons: [Icon] = []
 		Icon.all.forEach { (icon) in
 			let icon = Icon(icon, group: group)
-			icons.append(icon)
+			let exists = icon.imageExists
+			if !exists {
+				NSLog("No icon with asset name \(icon.imageName)")
+			}
+			if icon.isValid() && exists {
+				icons.append(icon)
+			}
 		}
 		return icons
 	}

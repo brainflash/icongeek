@@ -10,5 +10,5 @@ import Foundation
 // Things to test:
 //
 // 1. Make sure all IconSets have a unique iconSetUUID
-//
+// 2. Make sure selected flag on Icon works
 //

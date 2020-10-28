@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DownloadConfigView: View {
+	@Environment(\.openURL) var openURL
+	
 	private var mobileConfigUUID: UUID?
 	
 	init(_ mobileConfigUUID: UUID) {
@@ -15,12 +17,24 @@ struct DownloadConfigView: View {
 	}
 	
     var body: some View {
-        Text("Hello, World! \(mobileConfigUUID!.uuidString)")
-//			.navigationBarBackButtonHidden(true)
+		HStack(alignment: .top) {
+			VStack(alignment: .center) {
+	//			Text("Hello, World! \(mobileConfigUUID!.uuidString)")
+		//			.navigationBarBackButtonHidden(true)
 
-		Link("Download icon configuration", destination: URL(string: "\(AppConfig.DownloadURL)\(mobileConfigUUID!).mobileconfig")!)
-			.font(.largeTitle)
+				Link("Download icon configuration", destination: URL(string: "\(AppConfig.DownloadURL)\(mobileConfigUUID!).mobileconfig")!)
+					.font(.largeTitle)
+					.padding()
 
+				let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+	//			Button(action: { openURL(settingsURL) }) {
+	//				Label("Open Settings", systemImage: "gear")
+	//			}
+				Link("Install downloaded profile in Settings", destination: settingsURL)
+					.font(.title)
+					.padding()
+			}
+		}
     }
 }
 
