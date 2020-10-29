@@ -75,7 +75,7 @@ extension IconSet {
 	static let defaultSet: IconSet = .iconSet1
 	
 	static let iconSet1 = IconSet(
-		id: "icongeek.app.iconset1",
+		id: "app.icongeek.iconset1",
 		title: "Doodle",
 		group: "icon-set-1",
 		UUID: "5A952F19-0ECD-4781-ABF4-9A1AA89BD02F",
@@ -83,7 +83,7 @@ extension IconSet {
 	)
 	
 	static let iconSet2 = IconSet(
-		id: "icongeek.app.iconset2",
+		id: "app.icongeek.iconset2",
 		title: "Cute Color",
 		group: "icon-set-2-cutecolor",
 		UUID: "01832E06-B08F-4935-A916-0A2AD7B81BE5",
@@ -91,9 +91,9 @@ extension IconSet {
 	)
 
 	static let iconSet3 = IconSet(
-		id: "icongeek.app.iconset3",
+		id: "app.icongeek.iconset3",
 		title: "Gradient Line",
-		group: "icon-set-3",
+		group: "icon-set-3-gradient",
 		UUID: "C88F3187-FF2D-4BA8-84C6-B0519A682CED",
 		isLocked: true,
 		options: [
@@ -105,7 +105,7 @@ extension IconSet {
 	)
 	
 	static let iconSet4 = IconSet(
-		id: "icongeek.app.iconset4",
+		id: "app.icongeek.iconset4",
 		title: "Dotty",
 		group: "icon-set-4-dotty",
 		UUID: "E58F53CD-CA0C-424C-BADA-C1CA434D7A9D",

@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		023ED6EC8024075FF003F55A /* libPods-IconGeek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF98B8B2A67FAF8AF7F4441 /* libPods-IconGeek.a */; };
+		023ED6EC8024075FF003F55A /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		183990110707A291268AC5C9 /* libPods-IconGeekTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DF2DB5694F7D965A0F8F3D /* libPods-IconGeekTests.a */; };
+		56B3FCB09BEEF4862B6F05F8 /* libPods-IconGeek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 995433D291668EF860D06313 /* libPods-IconGeek.a */; };
 		CD7C0EEC25435FF600CB62DC /* IconGeekApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0EEB25435FF600CB62DC /* IconGeekApp.swift */; };
 		CD7C0EEE25435FF600CB62DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0EED25435FF600CB62DC /* ContentView.swift */; };
 		CD7C0EF025435FF700CB62DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD7C0EEF25435FF700CB62DC /* Assets.xcassets */; };
@@ -32,9 +34,13 @@
 		CD8A7E982548A5400042FC6E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7E972548A5400042FC6E /* AppConfig.swift */; };
 		CD8A7EA02548A59D0042FC6E /* AppConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7E9F2548A59D0042FC6E /* AppConfigTests.swift */; };
 		CD8A7EB42548BBF00042FC6E /* AppList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7EB32548BBF00042FC6E /* AppList.swift */; };
-		CD8A7EBE2549869A0042FC6E /* IconList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7EBD2549869A0042FC6E /* IconList.swift */; };
 		CD8A7EC325499EA70042FC6E /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7EC225499EA70042FC6E /* UIImage+Extension.swift */; };
 		CD8D01BB2549E8D100D47459 /* AppModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D01BA2549E8D100D47459 /* AppModelTests.swift */; };
+		CD8D01CE254A06E000D47459 /* AppListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D01CD254A06E000D47459 /* AppListTests.swift */; };
+		CD8D01D5254A079E00D47459 /* AppList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7EB32548BBF00042FC6E /* AppList.swift */; };
+		CD8D026A254A348400D47459 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8D0269254A348400D47459 /* StoreKit.framework */; };
+		CD8D026F254A3B7900D47459 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D026E254A3B7900D47459 /* Store.swift */; };
+		CD8D0277254ABE5200D47459 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D0276254ABE5200D47459 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +61,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E525A8650D4A29BE52997AA /* Pods-IconGeekTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconGeekTests.release.xcconfig"; path = "Target Support Files/Pods-IconGeekTests/Pods-IconGeekTests.release.xcconfig"; sourceTree = "<group>"; };
 		20EB9E78A08CEB30F635C244 /* Pods-IconGeek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconGeek.debug.xcconfig"; path = "Target Support Files/Pods-IconGeek/Pods-IconGeek.debug.xcconfig"; sourceTree = "<group>"; };
+		54DF2DB5694F7D965A0F8F3D /* libPods-IconGeekTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IconGeekTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D9C242C61AF30C7A7C4B62 /* Pods-IconGeek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconGeek.release.xcconfig"; path = "Target Support Files/Pods-IconGeek/Pods-IconGeek.release.xcconfig"; sourceTree = "<group>"; };
+		7A967909B7C9EF63A8D2ECC0 /* Pods-IconGeekTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconGeekTests.debug.xcconfig"; path = "Target Support Files/Pods-IconGeekTests/Pods-IconGeekTests.debug.xcconfig"; sourceTree = "<group>"; };
+		995433D291668EF860D06313 /* libPods-IconGeek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IconGeek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7C0EE825435FF600CB62DC /* IconGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IconGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7C0EEB25435FF600CB62DC /* IconGeekApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGeekApp.swift; sourceTree = "<group>"; };
 		CD7C0EED25435FF600CB62DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,11 +97,13 @@
 		CD8A7E972548A5400042FC6E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		CD8A7E9F2548A59D0042FC6E /* AppConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigTests.swift; sourceTree = "<group>"; };
 		CD8A7EB32548BBF00042FC6E /* AppList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppList.swift; sourceTree = "<group>"; };
-		CD8A7EBD2549869A0042FC6E /* IconList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconList.swift; sourceTree = "<group>"; };
 		CD8A7EC225499EA70042FC6E /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CD8D01BA2549E8D100D47459 /* AppModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelTests.swift; sourceTree = "<group>"; };
 		CD8D01C22549E8E100D47459 /* Snippets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snippets.swift; sourceTree = "<group>"; };
-		FEF98B8B2A67FAF8AF7F4441 /* libPods-IconGeek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IconGeek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD8D01CD254A06E000D47459 /* AppListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListTests.swift; sourceTree = "<group>"; };
+		CD8D0269254A348400D47459 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CD8D026E254A3B7900D47459 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		CD8D0276254ABE5200D47459 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +111,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				023ED6EC8024075FF003F55A /* libPods-IconGeek.a in Frameworks */,
+				CD8D026A254A348400D47459 /* StoreKit.framework in Frameworks */,
+				023ED6EC8024075FF003F55A /* (null) in Frameworks */,
+				56B3FCB09BEEF4862B6F05F8 /* libPods-IconGeek.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183990110707A291268AC5C9 /* libPods-IconGeekTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +138,9 @@
 		180E17B9D7435FF8866A5F55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FEF98B8B2A67FAF8AF7F4441 /* libPods-IconGeek.a */,
+				CD8D0269254A348400D47459 /* StoreKit.framework */,
+				54DF2DB5694F7D965A0F8F3D /* libPods-IconGeekTests.a */,
+				995433D291668EF860D06313 /* libPods-IconGeek.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -133,6 +150,8 @@
 			children = (
 				20EB9E78A08CEB30F635C244 /* Pods-IconGeek.debug.xcconfig */,
 				64D9C242C61AF30C7A7C4B62 /* Pods-IconGeek.release.xcconfig */,
+				7A967909B7C9EF63A8D2ECC0 /* Pods-IconGeekTests.debug.xcconfig */,
+				1E525A8650D4A29BE52997AA /* Pods-IconGeekTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -189,6 +208,7 @@
 			children = (
 				CD7C0EFD25435FF700CB62DC /* IconGeekTests.swift */,
 				CD7C0EFF25435FF700CB62DC /* Info.plist */,
+				CD8D01CD254A06E000D47459 /* AppListTests.swift */,
 				CD8D01BA2549E8D100D47459 /* AppModelTests.swift */,
 				CD8A7E9F2548A59D0042FC6E /* AppConfigTests.swift */,
 				CD7C0FD6254823E500CB62DC /* IconTests.swift */,
@@ -224,6 +244,7 @@
 				CD8A7E972548A5400042FC6E /* AppConfig.swift */,
 				CD7C0F9E25472F3900CB62DC /* AppNotifications.swift */,
 				CD7C0FC9254820D200CB62DC /* VisualEffectBlur.swift */,
+				CD8D0276254ABE5200D47459 /* String+Extension.swift */,
 				CD8A7EC225499EA70042FC6E /* UIImage+Extension.swift */,
 			);
 			path = "App Support";
@@ -254,6 +275,7 @@
 			children = (
 				CD7C0F80254719E200CB62DC /* AppModel.swift */,
 				CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */,
+				CD8D026E254A3B7900D47459 /* Store.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,7 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				CD8A7EB32548BBF00042FC6E /* AppList.swift */,
-				CD8A7EBD2549869A0042FC6E /* IconList.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -292,6 +313,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD7C0F1025435FF700CB62DC /* Build configuration list for PBXNativeTarget "IconGeekTests" */;
 			buildPhases = (
+				BCE3DAA9F52EE66CA9B73210 /* [CP] Check Pods Manifest.lock */,
 				CD7C0EF525435FF700CB62DC /* Sources */,
 				CD7C0EF625435FF700CB62DC /* Frameworks */,
 				CD7C0EF725435FF700CB62DC /* Resources */,
@@ -415,6 +437,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BCE3DAA9F52EE66CA9B73210 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IconGeekTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -430,6 +474,7 @@
 				CD7C0F29254499C600CB62DC /* IconSetView.swift in Sources */,
 				CD7C0EEE25435FF600CB62DC /* ContentView.swift in Sources */,
 				CD7C0F4B25461E4900CB62DC /* Icon+SwiftUI.swift in Sources */,
+				CD8D0277254ABE5200D47459 /* String+Extension.swift in Sources */,
 				CD7C0F8925471D0D00CB62DC /* AppModel+MobileConfig.swift in Sources */,
 				CD7C0F202544995F00CB62DC /* DetailView.swift in Sources */,
 				CD7C0FA4254737AF00CB62DC /* DownloadConfigView.swift in Sources */,
@@ -439,7 +484,7 @@
 				CD8A7EB42548BBF00042FC6E /* AppList.swift in Sources */,
 				CD7C0F81254719E200CB62DC /* AppModel.swift in Sources */,
 				CD8A7EC325499EA70042FC6E /* UIImage+Extension.swift in Sources */,
-				CD8A7EBE2549869A0042FC6E /* IconList.swift in Sources */,
+				CD8D026F254A3B7900D47459 /* Store.swift in Sources */,
 				CD7C0EEC25435FF600CB62DC /* IconGeekApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,7 +495,9 @@
 			files = (
 				CD7C0EFE25435FF700CB62DC /* IconGeekTests.swift in Sources */,
 				CD8D01BB2549E8D100D47459 /* AppModelTests.swift in Sources */,
+				CD8D01D5254A079E00D47459 /* AppList.swift in Sources */,
 				CD8A7EA02548A59D0042FC6E /* AppConfigTests.swift in Sources */,
+				CD8D01CE254A06E000D47459 /* AppListTests.swift in Sources */,
 				CD7C0FD7254823E500CB62DC /* IconTests.swift in Sources */,
 				CD7C0FD2254823D500CB62DC /* IconSetTests.swift in Sources */,
 			);
@@ -469,6 +516,7 @@
 /* Begin PBXTargetDependency section */
 		CD7C0EFB25435FF700CB62DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = CD7C0EE725435FF600CB62DC /* IconGeek */;
 			targetProxy = CD7C0EFA25435FF700CB62DC /* PBXContainerItemProxy */;
 		};
@@ -613,9 +661,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.brainflash.icongeek;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainflash.app.icongeek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Brainflash Wildcard Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "Icon Geek Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -638,9 +686,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.brainflash.icongeek;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainflash.app.icongeek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Brainflash Wildcard Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "Icon Geek Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -648,6 +696,7 @@
 		};
 		CD7C0F1125435FF700CB62DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A967909B7C9EF63A8D2ECC0 /* Pods-IconGeekTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -670,6 +719,7 @@
 		};
 		CD7C0F1225435FF700CB62DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E525A8650D4A29BE52997AA /* Pods-IconGeekTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

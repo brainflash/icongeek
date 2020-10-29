@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct IconView: View {
-	@Environment(\.colorScheme) var colorScheme
-	
 	@ObservedObject var icon: Icon
 	var bgColor: Color
 	
@@ -25,7 +23,7 @@ struct IconView: View {
 		.contentShape(Rectangle())
 		.frame(maxWidth: 80)
 		.overlay(Toggle("Selected", isOn: $icon.selected))
-		.toggleStyle(CircleToggleStyle(colorScheme: colorScheme))
+		.toggleStyle(CircleToggleStyle())
 	}
 	
 	var image: some View {
@@ -40,7 +38,6 @@ struct IconView: View {
 }
 
 struct CircleToggleStyle: ToggleStyle {
-	let colorScheme: ColorScheme
 	
 	func makeBody(configuration: Configuration) -> some View {
 		ZStack {
@@ -48,11 +45,12 @@ struct CircleToggleStyle: ToggleStyle {
 			if configuration.isOn {
 				Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
 					.font(.system(size: 25, weight: .bold))
-					.foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-					.background(colorScheme == .dark ? Color.black : Color.white)
+					.foregroundColor(Color.black)
+					.background(Color.white)
 					.accessibility(label: Text(configuration.isOn ? "Checked" : "Unchecked"))
 					.imageScale(.large)
 					.clipShape(Circle())
+					.overlay(Circle().stroke(Color.white, lineWidth: 3))
 					.frame(width: 80, height: 80)
 					.offset(x: 30, y:30)
 			}

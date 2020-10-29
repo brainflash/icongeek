@@ -10,5 +10,4 @@ import Foundation
 // Things to test:
 //
 // 1. Check that appURL and iconUUID are not empty string (" " is valid for appURL)
-// 2. Check that all icons have unique iconUUIDs
-//
+// 2. Test different label styles: normal, none, lower & uppercase
