@@ -66,13 +66,27 @@ extension IconSet {
 
 extension IconSet {
 	static let all: [IconSet] = [
-		.iconSet2,		// Cute Color
+		.iconSetFree1,	// Cute Color
 		.iconSet1,		// Doodle
-		.iconSet3,		// Gradient Line
-		.iconSet4		// Dotty
+		.iconSet2,		// Gradient Line
+//		.iconSet3,		// Line
+		.iconSet4,		// Dotty
+//		.iconSet5		//
 	]
 	
 	static let defaultSet: IconSet = .iconSet1
+	
+	// MARK: - Free icon sets
+	
+	static let iconSetFree1 = IconSet(
+		id: "app.icongeek.iconset.free1",
+		title: "Cute Color",
+		group: "icon-set-cutecolor",
+		UUID: "01832E06-B08F-4935-A916-0A2AD7B81BE5",
+		isLocked: false
+	)
+	
+	// MARK: - Icon sets for purchase
 	
 	static let iconSet1 = IconSet(
 		id: "app.icongeek.iconset1",
@@ -81,17 +95,9 @@ extension IconSet {
 		UUID: "5A952F19-0ECD-4781-ABF4-9A1AA89BD02F",
 		isLocked: true
 	)
-	
+
 	static let iconSet2 = IconSet(
 		id: "app.icongeek.iconset2",
-		title: "Cute Color",
-		group: "icon-set-2-cutecolor",
-		UUID: "01832E06-B08F-4935-A916-0A2AD7B81BE5",
-		isLocked: false
-	)
-
-	static let iconSet3 = IconSet(
-		id: "app.icongeek.iconset3",
 		title: "Gradient Line",
 		group: "icon-set-3-gradient",
 		UUID: "C88F3187-FF2D-4BA8-84C6-B0519A682CED",
@@ -101,6 +107,18 @@ extension IconSet {
 			"background": Color.black,
 			"icon-background": Color.black,
 			"tint": Color.purple
+		]
+	)
+	
+	static let iconSet3 = IconSet(
+		id: "app.icongeek.iconset3",
+		title: "Line",
+		group: "icon-set-3-line",
+		UUID: "DE6D4810-4BD9-4A09-983B-05DF8EC75893",
+		isLocked: true,
+		options: [
+			"icon-background": Color.white,
+			"background": Color.gray
 		]
 	)
 	

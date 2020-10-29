@@ -18,6 +18,7 @@ struct IconGeekApp: App {
         WindowGroup {
             ContentView()
 				.environmentObject(model)
+				.environmentObject(store)
 				.onOpenURL { url in
 					if let host = url.host, let appURL = AppList.URLs[host] {
 						openURL.callAsFunction(URL(string: appURL)!) { accepted in

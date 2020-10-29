@@ -78,7 +78,8 @@ extension AppModel {
 		}
 		
 		let selected = iconSet.selected
-		guard selected.count > 0 else { return "" }
+		guard !selected.isEmpty else { return "" }
+		
 		selected.forEach { icon in
 			// Create a UIImage with the background color of the icon set and icon image overlaid
 			if let iconImage = UIImage(named: icon.imageName),

@@ -1,0 +1,64 @@
+{
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : true,
+      "internalID" : "1F767065",
+      "localizations" : [
+        {
+          "description" : "Collection of shortcut icons",
+          "displayName" : "Unlock Icon Set 1",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Collection of shortcut icons",
+          "displayName" : "Unlock Icon Set 1",
+          "locale" : "en_GB"
+        }
+      ],
+      "productID" : "app.icongeek.iconset1",
+      "referenceName" : "Icon Set 1",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "6D6074F2",
+      "localizations" : [
+        {
+          "description" : "from StoreKit Configuration File",
+          "displayName" : "Unlock Icon Set 2",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "app.icongeek.iconset2",
+      "referenceName" : "Icon Set 2",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "2BE69746",
+      "localizations" : [
+        {
+          "description" : "Collection of shortcut icons",
+          "displayName" : "Unlock Icon Set 3",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "app.icongeek.iconset3",
+      "referenceName" : "Icon Set 3",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 0
+  }
+}

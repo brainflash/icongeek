@@ -28,7 +28,7 @@ class AppListTests: XCTestCase {
 		var appIDs: [String:AppData] = [:]
 		AppList.all.forEach { app in
 			let existing: AppData? = appIDs[app.UUID]
-			XCTAssert(existing == nil, "\(existing!.UUID) exists already (\(existing!.name) / \(app.name)")
+			XCTAssert(existing == nil, "🔴 UUID exists already (\(existing!.name) / \(app.name) - \(existing!.UUID))")
 			appIDs[app.UUID] = app
 		}
 	}

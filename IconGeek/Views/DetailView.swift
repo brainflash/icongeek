@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DetailView: View {
 	@EnvironmentObject private var model: AppModel
+	@EnvironmentObject private var store: Store
+	
 	@State private var isShowingSecondView = false
 	@State private var isShowingAlert = false
 	@State private var errorMessage = ""
@@ -22,6 +24,18 @@ struct DetailView: View {
 	init(_ iconSet: IconSet) {
 		self.iconSet = iconSet
 		UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.green]
+	}
+	
+	var unlockButton: some View {
+		Group {
+			if let product = store.product(for: iconSet.id) {
+				UnlockButton(product: .init(for: product), purchaseAction: {
+					store.purchaseProduct(product)
+				})
+			} else {
+				Text("🔴 Product not found for '\(iconSet.title)'")
+			}
+		}
 	}
 	
     var body: some View {
@@ -41,6 +55,11 @@ struct DetailView: View {
 				}
 				
 				HStack(alignment: .bottom) {
+					
+					if iconSet.isLocked {
+						unlockButton
+					} else {
+					
 					Button(action: addToHomeScreen) {
 						Text("Add to home screen")
 							.font(.headline)
@@ -60,6 +79,7 @@ struct DetailView: View {
 					.padding(.vertical, 20)
 					.padding(.horizontal, 16)
 					.frame(maxWidth: .infinity)
+					}
 				}
 				.alert(isPresented: $isShowingAlert) {
 					Alert(title: Text("Error message"), message: Text(errorMessage), dismissButton: .default(Text("OK")))

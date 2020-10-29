@@ -41,6 +41,13 @@
 		CD8D026A254A348400D47459 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8D0269254A348400D47459 /* StoreKit.framework */; };
 		CD8D026F254A3B7900D47459 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D026E254A3B7900D47459 /* Store.swift */; };
 		CD8D0277254ABE5200D47459 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D0276254ABE5200D47459 /* String+Extension.swift */; };
+		CD8D027F254AFE7400D47459 /* UnlockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D027E254AFE7400D47459 /* UnlockButton.swift */; };
+		CD8D0288254B007F00D47459 /* SquishableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D0287254B007F00D47459 /* SquishableButtonStyle.swift */; };
+		CD8D029A254B1A8300D47459 /* IconSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F502546C16700CB62DC /* IconSet.swift */; };
+		CD8D029E254B1AA500D47459 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F3C25449B4200CB62DC /* AppAppearance.swift */; };
+		CD8D02A2254B1AAD00D47459 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F4225461C4600CB62DC /* Icon.swift */; };
+		CD8D02A6254B1AC100D47459 /* Icon+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F4A25461E4900CB62DC /* Icon+SwiftUI.swift */; };
+		CD8D02AA254B1AEC00D47459 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D026E254A3B7900D47459 /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +111,9 @@
 		CD8D0269254A348400D47459 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CD8D026E254A3B7900D47459 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		CD8D0276254ABE5200D47459 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		CD8D027E254AFE7400D47459 /* UnlockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockButton.swift; sourceTree = "<group>"; };
+		CD8D0287254B007F00D47459 /* SquishableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquishableButtonStyle.swift; sourceTree = "<group>"; };
+		CD8D0292254B048500D47459 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +195,7 @@
 				CD7C0F3225449AB600CB62DC /* App Support */,
 				CD7C0F7F254719C300CB62DC /* Model */,
 				CD7C0F242544996600CB62DC /* Views */,
+				CD8D0286254B006A00D47459 /* Styles */,
 				CD8A7EBC254986880042FC6E /* Lists */,
 				CD7C0F4125461C2800CB62DC /* Icon */,
 				CD7C0F4F2546C14000CB62DC /* Icon Set */,
@@ -232,6 +243,7 @@
 			children = (
 				CD7C0EED25435FF600CB62DC /* ContentView.swift */,
 				CD7C0F1F2544995F00CB62DC /* DetailView.swift */,
+				CD8D027E254AFE7400D47459 /* UnlockButton.swift */,
 				CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */,
 			);
 			path = Views;
@@ -246,6 +258,7 @@
 				CD7C0FC9254820D200CB62DC /* VisualEffectBlur.swift */,
 				CD8D0276254ABE5200D47459 /* String+Extension.swift */,
 				CD8A7EC225499EA70042FC6E /* UIImage+Extension.swift */,
+				CD8D0292254B048500D47459 /* Configuration.storekit */,
 			);
 			path = "App Support";
 			sourceTree = "<group>";
@@ -286,6 +299,14 @@
 				CD8A7EB32548BBF00042FC6E /* AppList.swift */,
 			);
 			path = Lists;
+			sourceTree = "<group>";
+		};
+		CD8D0286254B006A00D47459 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				CD8D0287254B007F00D47459 /* SquishableButtonStyle.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,6 +493,7 @@
 				CD7C0F2E25449A7E00CB62DC /* IconSetNameView.swift in Sources */,
 				CD7C0F3525449AF500CB62DC /* IconView.swift in Sources */,
 				CD7C0F29254499C600CB62DC /* IconSetView.swift in Sources */,
+				CD8D027F254AFE7400D47459 /* UnlockButton.swift in Sources */,
 				CD7C0EEE25435FF600CB62DC /* ContentView.swift in Sources */,
 				CD7C0F4B25461E4900CB62DC /* Icon+SwiftUI.swift in Sources */,
 				CD8D0277254ABE5200D47459 /* String+Extension.swift in Sources */,
@@ -483,6 +505,7 @@
 				CD7C0F4325461C4600CB62DC /* Icon.swift in Sources */,
 				CD8A7EB42548BBF00042FC6E /* AppList.swift in Sources */,
 				CD7C0F81254719E200CB62DC /* AppModel.swift in Sources */,
+				CD8D0288254B007F00D47459 /* SquishableButtonStyle.swift in Sources */,
 				CD8A7EC325499EA70042FC6E /* UIImage+Extension.swift in Sources */,
 				CD8D026F254A3B7900D47459 /* Store.swift in Sources */,
 				CD7C0EEC25435FF600CB62DC /* IconGeekApp.swift in Sources */,
@@ -496,9 +519,14 @@
 				CD7C0EFE25435FF700CB62DC /* IconGeekTests.swift in Sources */,
 				CD8D01BB2549E8D100D47459 /* AppModelTests.swift in Sources */,
 				CD8D01D5254A079E00D47459 /* AppList.swift in Sources */,
+				CD8D02AA254B1AEC00D47459 /* Store.swift in Sources */,
+				CD8D029E254B1AA500D47459 /* AppAppearance.swift in Sources */,
+				CD8D02A6254B1AC100D47459 /* Icon+SwiftUI.swift in Sources */,
 				CD8A7EA02548A59D0042FC6E /* AppConfigTests.swift in Sources */,
 				CD8D01CE254A06E000D47459 /* AppListTests.swift in Sources */,
+				CD8D029A254B1A8300D47459 /* IconSet.swift in Sources */,
 				CD7C0FD7254823E500CB62DC /* IconTests.swift in Sources */,
+				CD8D02A2254B1AAD00D47459 /* Icon.swift in Sources */,
 				CD7C0FD2254823D500CB62DC /* IconSetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
