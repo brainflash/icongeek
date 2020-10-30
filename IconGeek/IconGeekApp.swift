@@ -19,6 +19,9 @@ struct IconGeekApp: App {
             ContentView()
 				.environmentObject(model)
 				.environmentObject(store)
+				.onAppear() {
+					store.inject(model)
+				}
 				.onOpenURL { url in
 					if let host = url.host, let appURL = AppList.URLs[host] {
 						openURL.callAsFunction(URL(string: appURL)!) { accepted in

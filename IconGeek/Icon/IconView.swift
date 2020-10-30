@@ -9,11 +9,12 @@ import SwiftUI
 
 struct IconView: View {
 	@ObservedObject var icon: Icon
+	@ObservedObject var iconSet: IconSet
 	var bgColor: Color
 	
     var body: some View {
 		ZStack {
-			Button(action: { icon.selected.toggle() }) {
+			Button(action: { icon.toggleSelected() }) {
 				image
 			}
 			
@@ -23,7 +24,8 @@ struct IconView: View {
 		.contentShape(Rectangle())
 		.frame(maxWidth: 80)
 		.overlay(Toggle("Selected", isOn: $icon.selected))
-		.toggleStyle(CircleToggleStyle())
+		.toggleStyle(CircleToggleStyle(isLocked: iconSet.isLocked))
+		.disabled(iconSet.isLocked)
 	}
 	
 	var image: some View {
@@ -38,11 +40,22 @@ struct IconView: View {
 }
 
 struct CircleToggleStyle: ToggleStyle {
+	var isLocked: Bool = false
 	
 	func makeBody(configuration: Configuration) -> some View {
 		ZStack {
 			configuration.label.hidden()
-			if configuration.isOn {
+			if isLocked {
+				Image(systemName: "lock.circle")
+					.font(.system(size: 25, weight: .bold))
+					.foregroundColor(Color.black)
+					.background(Color.white)
+					.accessibility(label: Text("Locked"))
+					.imageScale(.large)
+					.clipShape(Circle())
+					.frame(width: 80, height: 80)
+					.offset(x: 30, y:30)
+			} else if configuration.isOn {
 				Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
 					.font(.system(size: 25, weight: .bold))
 					.foregroundColor(Color.black)
@@ -59,7 +72,9 @@ struct CircleToggleStyle: ToggleStyle {
 }
 
 struct IconView_Previews: PreviewProvider {
+	
     static var previews: some View {
-		IconView(icon: Icon(.blank, group: ""), bgColor: Color.white)
+		IconView(icon: Icon(.appstore, group: IconSet.iconSet1.group), iconSet: IconSet.iconSet1, bgColor: Color.white)
+			.frame(width:80, height:80)
     }
 }

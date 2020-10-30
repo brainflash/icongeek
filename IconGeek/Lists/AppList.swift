@@ -108,54 +108,17 @@ extension AppData {
 
 	
 	// MARK: - Third party apps
-
-	static let facebook = AppData(
-		id: "facebook",
-		name: "Facebook",
-		targetAppID: "com.facebook.Facebook",
-		UUID: "CCDDE505-9953-4F3E-AAE5-E4DCFFF83869",
-		appURL: "fb://"
-	)
 	
-	static let snapchat = AppData(
-		id: "snapchat",
-		name: "Snapchat",
-		targetAppID: "com.toyopagroup.picaboo",
-		UUID: "81FC2076-AD22-4009-970A-2483CCF9D2AB",
-		appURL: "snapchat://"
-	)
-	
-	static let spotify = AppData(
-		id: "spotify",
-		name: "Spotify",
-		targetAppID: "com.spotify.client",
-		UUID: "E8088781-2245-4175-9789-BABCD5889B5B",
-		appURL: "spotify://"
-	)
-	
-	static let tiktok = AppData(
-		id: "tiktok",
-		name: "TikTok",
-		targetAppID: "com.zhiliaoapp.musically",
-		UUID: "2993B48D-4659-4E86-9261-276BCFE09A4A",
-		appURL: " "
-	)
-	
-	static let whatsapp = AppData(
-		id: "whatsapp",
-		name: "WhatsApp",
-		targetAppID: "net.whatsapp.WhatsApp",
-		UUID: "52CF4B70-CFD1-469B-A434-119E61AE2787",
-		appURL: " "
-	)
-	
-	static let youtube = AppData(
-		id: "youtube",
-		name: "YouTube",
-		targetAppID: "com.google.ios.youtube",
-		UUID: "6C177148-4532-4846-8176-6738C8B592BF",
-		appURL: " "
-	)
+	static let facebook = 		AppData(id: "facebook", 	name: "Facebook", 	targetAppID: "com.facebook.Messenger", 		UUID: "CCDDE505-9953-4F3E-AAE5-E4DCFFF83869", 	appURL: "fb://")
+	static let fbMessenger = 	AppData(id: "fbMessenger", 	name: "Messenger",	targetAppID: "com.facebook.Facebook", 		UUID: "87EAE7E3-B1DC-4AF9-B336-6A75388BD7A3", 	appURL: "fb-messenger://")
+	static let kik = 			AppData(id: "kik", 			name: "Kik", 		targetAppID: "com.kik.chat", 				UUID: "71D52F2C-DE6A-496C-87DE-F18D4A1050EF", 	appURL: "kik://")
+	static let instagram = 		AppData(id: "instagram",	name: "Instagram", 	targetAppID: "com.burbn.instagram", 		UUID: "658340D3-CFB0-4A4A-A47D-68C4F90348C2", 	appURL: " ")
+	static let reddit = 		AppData(id: "reddit", 		name: "Reddit", 	targetAppID: "pinterest", 					UUID: "BD904A52-764F-43A7-A2E0-E60D34485649", 	appURL: " ")
+	static let snapchat = 		AppData(id: "snapchat",		name: "Snapchat",	targetAppID: "com.toyopagroup.picaboo",		UUID: "81FC2076-AD22-4009-970A-2483CCF9D2AB",	appURL: "snapchat://")
+	static let spotify = 		AppData(id: "spotify",		name: "Spotify",	targetAppID: "com.spotify.client",			UUID: "E8088781-2245-4175-9789-BABCD5889B5B",	appURL: "spotify://")
+	static let tiktok = 		AppData(id: "tiktok",		name: "TikTok",		targetAppID: "com.zhiliaoapp.musically",	UUID: "2993B48D-4659-4E86-9261-276BCFE09A4A",	appURL: " ")
+	static let whatsapp = 		AppData(id: "whatsapp",		name: "WhatsApp",	targetAppID: "net.whatsapp.WhatsApp",		UUID: "52CF4B70-CFD1-469B-A434-119E61AE2787",	appURL: " ")
+	static let youtube = 		AppData(id: "youtube",		name: "YouTube",	targetAppID: "com.google.ios.youtube",		UUID: "6C177148-4532-4846-8176-6738C8B592BF",	appURL: " ")
 }
 
 extension AppList {
@@ -168,6 +131,10 @@ extension AppList {
 		
 		// 3rd party
 		.facebook,
+		.fbMessenger,
+		.kik,
+		.instagram,
+		.reddit,
 		.snapchat,
 		.spotify,
 		.tiktok,

@@ -7,8 +7,21 @@
 
 import Foundation
 import Alamofire
+import Combine
 
 class AppModel: ObservableObject {
+	@Published var iconSets = IconSet.all
+	var cancellables = [AnyCancellable]()
+
+	init() {
+		self.iconSets.forEach({
+			let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
+
+			// Important: You have to keep the returned value allocated,
+			// otherwise the sink subscription gets cancelled
+			self.cancellables.append(c)
+		})
+	}
 }
 
 struct MobileConfigResponse: Codable {

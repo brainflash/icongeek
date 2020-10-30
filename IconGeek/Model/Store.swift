@@ -12,19 +12,18 @@ typealias FetchCompletionHandler = (([SKProduct]) -> Void)
 typealias PurchaseCompletionHandler = ((SKPaymentTransaction?) -> Void)
 
 class Store: NSObject, ObservableObject {
-	@Published var unlockedIconSet1: Bool = false
-	@Published var unlockedIconSet2: Bool = false
-	// Dictionary of unlockedIconSets, Bool flag indicates if set is unlocked
-	@Published var unlockedIconSets = [String:Bool]()
+	
+	// Array of productIconSets, from fetchProducts call
+	@Published var productIconSets: [SKProduct]?
 
-	@Published var productIconSet1: SKProduct?
-	@Published var productIconSet2: SKProduct?
-	// Dictionary of productIconSets, Bool flag indicates if set is unlocked
-//	@Published var productIconSets: [SKProduct:Bool]?
-
+	private var model: AppModel?
+	
 	private let allProductIdentifiers = Set([
 		Store.ProductIdentifier.IconSet1,
-		Store.ProductIdentifier.IconSet2
+		Store.ProductIdentifier.IconSet2,
+		Store.ProductIdentifier.IconSet3,
+		Store.ProductIdentifier.IconSet4,
+		Store.ProductIdentifier.IconSet5
 	])
 	
 	private var completedPurchases = [String]()
@@ -35,14 +34,17 @@ class Store: NSObject, ObservableObject {
 
 	override init() {
 		super.init()
-		
+	
 		// Get notified when access to a product is revoked
 		startObservingPaymentQueue()
 		fetchProducts { [weak self] products in
 			guard let self = self else { return }
-			self.productIconSet1 = products.first(where: { $0.productIdentifier == Store.ProductIdentifier.IconSet1 })
-			self.productIconSet2 = products.first(where: { $0.productIdentifier == Store.ProductIdentifier.IconSet2 })
+			self.productIconSets = products.filter { self.allProductIdentifiers.contains($0.productIdentifier) }
 		}
+	}
+	
+	func inject(_ model: AppModel) {
+		self.model = model
 	}
 }
 
@@ -78,20 +80,16 @@ extension Store {
 				  let transaction = transaction else {
 				return
 			}
-			
-			if transaction.payment.productIdentifier == ProductIdentifier.IconSet1,
-			   transaction.transactionState == .purchased {
-				self.unlockedIconSet1 = true
-			}
-			
-			if transaction.payment.productIdentifier == ProductIdentifier.IconSet2,
-			   transaction.transactionState == .purchased {
-				self.unlockedIconSet2 = true
-			}
-			
+
+			// Unlock the product(s)
 			if self.allProductIdentifiers.contains(transaction.payment.productIdentifier),
 			   transaction.transactionState == .purchased {
-				self.unlockedIconSets[transaction.payment.productIdentifier] = true
+
+				if let model = self.model {
+					if let iconSet = model.iconSets.first(where: { $0.id == transaction.payment.productIdentifier }) {
+						iconSet.unlock()
+					}
+				}
 			}
 
 		}
@@ -163,16 +161,11 @@ extension Store: SKPaymentTransactionObserver {
 	func paymentQueue(_ queue: SKPaymentQueue, didRevokeEntitlementsForProductIdentifiers productIdentifiers: [String]) {
 		completedPurchases.removeAll(where: { productIdentifiers.contains($0) })
 		DispatchQueue.main.async {
-			if productIdentifiers.contains(ProductIdentifier.IconSet1) {
-				self.unlockedIconSet1 = false
-			}
-			if productIdentifiers.contains(ProductIdentifier.IconSet2) {
-				self.unlockedIconSet2 = false
-			}
-			
 			ProductIdentifier.all.forEach { identifier in
-				if productIdentifiers.contains(identifier) {
-					self.unlockedIconSets[identifier] = false
+				if let model = self.model {
+					if let iconSet = model.iconSets.first(where: { $0.id == identifier }) {
+						iconSet.lock()
+					}
 				}
 			}
 		}

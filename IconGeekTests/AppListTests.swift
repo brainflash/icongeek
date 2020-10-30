@@ -10,6 +10,8 @@ import XCTest
 
 // What to test:
 // 1. Make sure all AppData UUIDs are unique
+// 2.
+//
 
 
 class AppListTests: XCTestCase {

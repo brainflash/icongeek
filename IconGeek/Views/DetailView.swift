@@ -12,10 +12,13 @@ struct DetailView: View {
 	@EnvironmentObject private var store: Store
 	
 	@State private var isShowingSecondView = false
+	@State private var isOptionsPresented = false
 	@State private var isShowingAlert = false
+	@State private var errorTitle = ""
 	@State private var errorMessage = ""
+	@State private var iconsSelected = false
 	
-	var iconSet: IconSet = IconSet.defaultSet
+	@ObservedObject var iconSet: IconSet
 	
 	let pub = NotificationCenter.default
 		.publisher(for: .ReceivedMobileConfigResponse)
@@ -33,9 +36,32 @@ struct DetailView: View {
 					store.purchaseProduct(product)
 				})
 			} else {
-				Text("🔴 Product not found for '\(iconSet.title)'")
+				Text("🔴 Product ID not found for '\(iconSet.title)'")
+					.padding()
 			}
 		}
+	}
+	
+	var addToHomeButton: some View {
+		Button(action: addToHomeScreen) {
+			Text("Add to home screen")
+				.font(.headline)
+				.bold()
+				.padding(.horizontal, 16)
+				.padding(.vertical, 16)
+				.contentShape(Capsule())
+				.foregroundColor(Color.white)
+				.background(Color.black)
+		}
+		.accessibility(label: Text("Add to Home Screen"))
+		.cornerRadius(20)
+		.overlay(
+			Capsule()
+				.stroke(iconSet.display.tintColor, lineWidth: 6)
+		)
+		.padding(.vertical, 20)
+		.padding(.horizontal, 16)
+		.frame(maxWidth: .infinity)
 	}
 	
     var body: some View {
@@ -49,40 +75,24 @@ struct DetailView: View {
 				NavigationLink(destination: DownloadConfigView(mobileConfigUUID ?? UUID()), isActive: $isShowingSecondView) { EmptyView() }
 				
 				HStack(alignment: .bottom) {
-					Text("Change background color")
-						.bold()
-						.font(.headline)
+					Button(action: { self.isOptionsPresented = true }) {
+						Text("Icon settings")
+							.bold()
+							.font(.headline)
+					}
 				}
 				
 				HStack(alignment: .bottom) {
 					
-					if iconSet.isLocked {
-						unlockButton
+					if !iconSet.isLocked {
+						addToHomeButton
+//							.disabled(iconSet.selected.isEmpty)
 					} else {
-					
-					Button(action: addToHomeScreen) {
-						Text("Add to home screen")
-							.font(.headline)
-							.bold()
-							.padding(.horizontal, 16)
-							.padding(.vertical, 16)
-							.contentShape(Capsule())
-							.foregroundColor(Color.white)
-							.background(Color.black)
-					}
-					.accessibility(label: Text("Add to Home Screen"))
-					.cornerRadius(20)
-					.overlay(
-						Capsule()
-							.stroke(iconSet.display.tintColor, lineWidth: 6)
-					)
-					.padding(.vertical, 20)
-					.padding(.horizontal, 16)
-					.frame(maxWidth: .infinity)
+						unlockButton
 					}
 				}
 				.alert(isPresented: $isShowingAlert) {
-					Alert(title: Text("Error message"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+					Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
 				}
 			}
 			.onReceive(pub) { obj in
@@ -91,6 +101,7 @@ struct DetailView: View {
 						self.mobileConfigUUID = info
 						isShowingSecondView = true
 					} else if let err = userInfo[AppModel.ConfigResponseError] as? MobileConfigError {
+						errorTitle = "Error message"
 						switch err {
 						case .jsonMissing:
 							errorMessage = "There was an error in the server response\n\n(Code: 0x01 JSON missing)\n\nPlease try again later."
@@ -104,17 +115,28 @@ struct DetailView: View {
 				}
 			}
 		}
+		.sheet(isPresented: $isOptionsPresented,
+				content: { IconOptionsForm() }
+		)
 		.navigationTitle("Select your icons")
 	}
-	
+
 	func addToHomeScreen() {
 		NSLog("addToHomeScreen")
+		
+		guard !iconSet.selected.isEmpty else {
+			errorTitle = "No icons selected"
+			errorMessage = "Please select at least one icon. Tap on the icon image to toggle its selection"
+			isShowingAlert = true
+			return
+		}
 		
 		// TODO: - display a spinner alert here
 		model.addToHomeScreen(iconSet)
 	}
 }
 
+// MARK: - Previews
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
 		DetailView(IconSet.iconSet1)

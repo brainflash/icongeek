@@ -48,6 +48,8 @@
 		CD8D02A2254B1AAD00D47459 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F4225461C4600CB62DC /* Icon.swift */; };
 		CD8D02A6254B1AC100D47459 /* Icon+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F4A25461E4900CB62DC /* Icon+SwiftUI.swift */; };
 		CD8D02AA254B1AEC00D47459 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D026E254A3B7900D47459 /* Store.swift */; };
+		CD8D02DE254B9A2C00D47459 /* SettingsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */; };
+		CD8D02E3254B9FCA00D47459 /* IconOptionsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D02E2254B9FCA00D47459 /* IconOptionsForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,8 @@
 		CD8D027E254AFE7400D47459 /* UnlockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockButton.swift; sourceTree = "<group>"; };
 		CD8D0287254B007F00D47459 /* SquishableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquishableButtonStyle.swift; sourceTree = "<group>"; };
 		CD8D0292254B048500D47459 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsForm.swift; sourceTree = "<group>"; };
+		CD8D02E2254B9FCA00D47459 /* IconOptionsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconOptionsForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,8 +247,10 @@
 			children = (
 				CD7C0EED25435FF600CB62DC /* ContentView.swift */,
 				CD7C0F1F2544995F00CB62DC /* DetailView.swift */,
+				CD8D02E2254B9FCA00D47459 /* IconOptionsForm.swift */,
 				CD8D027E254AFE7400D47459 /* UnlockButton.swift */,
 				CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */,
+				CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -488,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD7C0FCA254820D200CB62DC /* VisualEffectBlur.swift in Sources */,
+				CD8D02E3254B9FCA00D47459 /* IconOptionsForm.swift in Sources */,
 				CD8A7E982548A5400042FC6E /* AppConfig.swift in Sources */,
 				CD7C0F9F25472F3900CB62DC /* AppNotifications.swift in Sources */,
 				CD7C0F2E25449A7E00CB62DC /* IconSetNameView.swift in Sources */,
@@ -498,6 +505,7 @@
 				CD7C0F4B25461E4900CB62DC /* Icon+SwiftUI.swift in Sources */,
 				CD8D0277254ABE5200D47459 /* String+Extension.swift in Sources */,
 				CD7C0F8925471D0D00CB62DC /* AppModel+MobileConfig.swift in Sources */,
+				CD8D02DE254B9A2C00D47459 /* SettingsForm.swift in Sources */,
 				CD7C0F202544995F00CB62DC /* DetailView.swift in Sources */,
 				CD7C0FA4254737AF00CB62DC /* DownloadConfigView.swift in Sources */,
 				CD7C0F3D25449B4200CB62DC /* AppAppearance.swift in Sources */,

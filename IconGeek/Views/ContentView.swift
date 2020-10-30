@@ -8,34 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
-	@State var iconSetActive: Bool = true
+	@EnvironmentObject private var model: AppModel
 	
-	var iconSets = IconSet.all
+	@State private var isSettingsPresented = false
+	
+	var settingsButton: some View {
+		Button(action: { self.isSettingsPresented = true }) {
+			HStack {
+				Image(systemName: "wrench")
+					.imageScale(.large)
+			}
+			.frame(width: 30, height: 30)
+		}
+	}
 	
     var body: some View {
 		NavigationView {
 			List {
-				ForEach(iconSets) { iconSet in
+				ForEach(model.iconSets) { iconSet in
 					NavigationLink(destination: DetailView(iconSet)) {
 						TableRow(iconSet: iconSet)
 					}
 				}
 			}
+			.navigationBarItems(trailing:
+									HStack {
+										settingsButton
+									}
+			).sheet(isPresented: $isSettingsPresented,
+					content: { SettingsForm() }
+			)
 			.navigationTitle("Choose an icon set")
 		}
 	}
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
 struct TableRow: View {
 	@Environment(\.colorScheme) var colorScheme
 	
-	let iconSet: IconSet
+	@ObservedObject var iconSet: IconSet
 	
 	var body: some View {
 		HStack {
@@ -56,5 +67,12 @@ struct TableRow: View {
 			}
 			IconSetNameView(title: iconSet.title)
 		}
+	}
+}
+
+// MARK: - Previews
+struct ContentView_Previews: PreviewProvider {
+	static var previews: some View {
+		ContentView()
 	}
 }

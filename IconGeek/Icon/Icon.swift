@@ -8,6 +8,9 @@
 import SwiftUI
 
 class Icon: ObservableObject, Identifiable {
+	// User variables
+	@Published var selected: Bool = false
+
 	var app: AppData
 	var group: String
 	var labelStyle: LabelStyle = .normal
@@ -19,9 +22,6 @@ class Icon: ObservableObject, Identifiable {
 		case uppercase
 	}
 
-	// User variables
-	@Published var selected: Bool = false
-	
 	init(_ app: AppData, group: String) {
 		self.app = app
 		self.group = group
@@ -36,6 +36,8 @@ class Icon: ObservableObject, Identifiable {
 		}
 	}
 }
+
+// MARK: - Icon API
 
 extension Icon {
 	static func allWithGroup(_ group: String) -> [Icon] {
@@ -55,5 +57,9 @@ extension Icon {
 	
 	var imageName: String {
 		"\(group)/\(app.name)"
+	}
+	
+	func toggleSelected() {
+		selected.toggle()
 	}
 }

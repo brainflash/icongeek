@@ -6,18 +6,22 @@
 //
 
 import SwiftUI
+import Combine
 
 // TODO: make IconSet comply with Codable (change or handle the 'Any' in options dict)
 // struct IconSet: Identifiable, Codable {
 
-struct IconSet: Identifiable {
+class IconSet: ObservableObject, Identifiable {
+	@Published var icons: [Icon] = []
+	@Published var isLocked = false
+	var cancellables = [AnyCancellable]()
+	
 	var id: String
 	var title: String
 	var group: String
 	var UUID: String
-	var isLocked = false
+	
 	var background: String = "default"
-	var icons: [Icon]
 	var iconsBackground: Color
 	
 	var options: Dictionary<String, Any>
@@ -35,7 +39,6 @@ struct IconSet: Identifiable {
 		self.group = group
 		self.UUID = UUID
 		self.isLocked = isLocked
-		self.icons = Icon.allWithGroup(group)
 		self.options = options ?? [:]
 		self.display.foregroundColor = self.options["foreground"] as? Color ?? Color.appForeground
 		self.display.backgroundColor = self.options["background"] as? Color ?? Color.appBackground
@@ -44,6 +47,15 @@ struct IconSet: Identifiable {
 		
 		/// The user-chosen colour that will be applied to the generated icons
 		self.iconsBackground = self.display.iconBackground
+
+		self.icons = Icon.allWithGroup(group)
+		self.icons.forEach({
+			let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
+
+			// Important: You have to keep the returned value allocated,
+			// otherwise the sink subscription gets cancelled
+			self.cancellables.append(c)
+		})
 	}
 }
 
@@ -52,6 +64,14 @@ struct IconSet: Identifiable {
 extension IconSet {
 	func isValid() -> Bool {
 		return UUID != ""
+	}
+	
+	func lock() {
+		isLocked = true
+	}
+	
+	func unlock() {
+		isLocked = false
 	}
 	
 	/// Returns an array of Icons that are selected
@@ -69,7 +89,7 @@ extension IconSet {
 		.iconSetFree1,	// Cute Color
 		.iconSet1,		// Doodle
 		.iconSet2,		// Gradient Line
-//		.iconSet3,		// Line
+		.iconSet3,		// Line
 		.iconSet4,		// Dotty
 //		.iconSet5		//
 	]
@@ -91,7 +111,7 @@ extension IconSet {
 	static let iconSet1 = IconSet(
 		id: "app.icongeek.iconset1",
 		title: "Doodle",
-		group: "icon-set-1",
+		group: "icon-set-doodle",
 		UUID: "5A952F19-0ECD-4781-ABF4-9A1AA89BD02F",
 		isLocked: true
 	)
@@ -99,7 +119,7 @@ extension IconSet {
 	static let iconSet2 = IconSet(
 		id: "app.icongeek.iconset2",
 		title: "Gradient Line",
-		group: "icon-set-3-gradient",
+		group: "icon-set-gradient",
 		UUID: "C88F3187-FF2D-4BA8-84C6-B0519A682CED",
 		isLocked: true,
 		options: [
@@ -113,7 +133,7 @@ extension IconSet {
 	static let iconSet3 = IconSet(
 		id: "app.icongeek.iconset3",
 		title: "Line",
-		group: "icon-set-3-line",
+		group: "icon-set-line",
 		UUID: "DE6D4810-4BD9-4A09-983B-05DF8EC75893",
 		isLocked: true,
 		options: [
@@ -125,7 +145,7 @@ extension IconSet {
 	static let iconSet4 = IconSet(
 		id: "app.icongeek.iconset4",
 		title: "Dotty",
-		group: "icon-set-4-dotty",
+		group: "icon-set-dotty",
 		UUID: "E58F53CD-CA0C-424C-BADA-C1CA434D7A9D",
 		isLocked: true,
 		options: [

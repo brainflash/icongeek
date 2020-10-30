@@ -25,6 +25,8 @@ struct DownloadConfigView: View {
 				Link("Download icon configuration", destination: URL(string: "\(AppConfig.DownloadURL)\(mobileConfigUUID!).mobileconfig")!)
 					.font(.largeTitle)
 					.padding()
+					.border(Color.black, width: 4)
+					.cornerRadius(10)
 
 				let settingsURL = URL(string: UIApplication.openSettingsURLString)!
 	//			Button(action: { openURL(settingsURL) }) {
@@ -33,6 +35,7 @@ struct DownloadConfigView: View {
 				Link("Install downloaded profile in Settings", destination: settingsURL)
 					.font(.title)
 					.padding()
+
 			}
 		}
     }
