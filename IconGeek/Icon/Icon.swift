@@ -5,15 +5,16 @@
 //  Created by Brainflash on 25/10/2020.
 //
 
-import SwiftUI
+import Combine
 
 class Icon: ObservableObject, Identifiable {
 	// User variables
 	@Published var selected: Bool = false
-
+	@Published var labelStyle: LabelStyle = .normal
+	var cancellables = Set<AnyCancellable>()
+	
 	var app: AppData
 	var group: String
-	var labelStyle: LabelStyle = .normal
 
 	enum LabelStyle {
 		case normal
@@ -45,9 +46,10 @@ extension Icon {
 		AppList.all.forEach { (app) in
 			let icon = Icon(app, group: group)
 			let iconExists = icon.imageExists
-			if !iconExists {
-				NSLog("No icon with asset name \(icon.imageName)")
-			}
+			// Added a unit test: IconSetTest.testIconSetIconsExist which outputs the missing icon names to the console
+//			if !iconExists {
+//				print("No icon with asset name \(icon.imageName)")
+//			}
 			if app.isValid() && iconExists {
 				icons.append(icon)
 			}

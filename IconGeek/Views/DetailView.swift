@@ -6,17 +6,22 @@
 //
 
 import SwiftUI
+import PartialSheet
 
 struct DetailView: View {
+	@Environment(\.colorScheme) var colorScheme
 	@EnvironmentObject private var model: AppModel
 	@EnvironmentObject private var store: Store
+	@EnvironmentObject private var sheetManager: PartialSheetManager
 	
 	@State private var isShowingSecondView = false
 	@State private var isOptionsPresented = false
 	@State private var isShowingAlert = false
 	@State private var errorTitle = ""
 	@State private var errorMessage = ""
-	@State private var iconsSelected = false
+	
+	// Options
+	@State private var showIconText = false
 	
 	@ObservedObject var iconSet: IconSet
 	
@@ -76,9 +81,12 @@ struct DetailView: View {
 				
 				HStack(alignment: .bottom) {
 					Button(action: { self.isOptionsPresented = true }) {
-						Text("Icon settings")
-							.bold()
-							.font(.headline)
+						Text("Options")
+					}
+					.padding()
+					.frame(maxWidth: .infinity)
+					.partialSheet(isPresented: $isOptionsPresented) {
+						OptionsView(iconSet: iconSet, showLabels: $iconSet.showLabels)
 					}
 				}
 				
@@ -115,9 +123,7 @@ struct DetailView: View {
 				}
 			}
 		}
-		.sheet(isPresented: $isOptionsPresented,
-				content: { IconOptionsForm() }
-		)
+		.addPartialSheet(style: PartialSheetStyle.optionsViewStyle(colorScheme))
 		.navigationTitle("Select your icons")
 	}
 

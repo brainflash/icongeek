@@ -14,4 +14,6 @@ extension Color {
 	static let appForeground = Color.black
 	static let appTint = Color.gray
 //	static let iconBackground = Color(red: 0.478, green: 0.808, blue: 1)
+	
+	static let lightGrey = Color(red: 0.8, green: 0.8, blue: 0.8)
 }

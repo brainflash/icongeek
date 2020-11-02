@@ -10,6 +10,8 @@
 		023ED6EC8024075FF003F55A /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		183990110707A291268AC5C9 /* libPods-IconGeekTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DF2DB5694F7D965A0F8F3D /* libPods-IconGeekTests.a */; };
 		56B3FCB09BEEF4862B6F05F8 /* libPods-IconGeek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 995433D291668EF860D06313 /* libPods-IconGeek.a */; };
+		CD69E06F254C322400FD8C8C /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CD69E06E254C322400FD8C8C /* PartialSheet */; };
+		CD69E07B254CBE5400FD8C8C /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD69E07A254CBE5400FD8C8C /* OptionsView.swift */; };
 		CD7C0EEC25435FF600CB62DC /* IconGeekApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0EEB25435FF600CB62DC /* IconGeekApp.swift */; };
 		CD7C0EEE25435FF600CB62DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0EED25435FF600CB62DC /* ContentView.swift */; };
 		CD7C0EF025435FF700CB62DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD7C0EEF25435FF700CB62DC /* Assets.xcassets */; };
@@ -49,7 +51,10 @@
 		CD8D02A6254B1AC100D47459 /* Icon+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F4A25461E4900CB62DC /* Icon+SwiftUI.swift */; };
 		CD8D02AA254B1AEC00D47459 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D026E254A3B7900D47459 /* Store.swift */; };
 		CD8D02DE254B9A2C00D47459 /* SettingsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */; };
-		CD8D02E3254B9FCA00D47459 /* IconOptionsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D02E2254B9FCA00D47459 /* IconOptionsForm.swift */; };
+		CD9104C8254DBD11006CAA98 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F80254719E200CB62DC /* AppModel.swift */; };
+		CD9104CC254DBD25006CAA98 /* AppModel+MobileConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */; };
+		CD9104D0254DBD34006CAA98 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7E972548A5400042FC6E /* AppConfig.swift */; };
+		CD9104D4254DBD49006CAA98 /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F9E25472F3900CB62DC /* AppNotifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +81,7 @@
 		64D9C242C61AF30C7A7C4B62 /* Pods-IconGeek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconGeek.release.xcconfig"; path = "Target Support Files/Pods-IconGeek/Pods-IconGeek.release.xcconfig"; sourceTree = "<group>"; };
 		7A967909B7C9EF63A8D2ECC0 /* Pods-IconGeekTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconGeekTests.debug.xcconfig"; path = "Target Support Files/Pods-IconGeekTests/Pods-IconGeekTests.debug.xcconfig"; sourceTree = "<group>"; };
 		995433D291668EF860D06313 /* libPods-IconGeek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IconGeek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD69E07A254CBE5400FD8C8C /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		CD7C0EE825435FF600CB62DC /* IconGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IconGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7C0EEB25435FF600CB62DC /* IconGeekApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGeekApp.swift; sourceTree = "<group>"; };
 		CD7C0EED25435FF600CB62DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,7 +123,6 @@
 		CD8D0287254B007F00D47459 /* SquishableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquishableButtonStyle.swift; sourceTree = "<group>"; };
 		CD8D0292254B048500D47459 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsForm.swift; sourceTree = "<group>"; };
-		CD8D02E2254B9FCA00D47459 /* IconOptionsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconOptionsForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +132,7 @@
 			files = (
 				CD8D026A254A348400D47459 /* StoreKit.framework in Frameworks */,
 				023ED6EC8024075FF003F55A /* (null) in Frameworks */,
+				CD69E06F254C322400FD8C8C /* PartialSheet in Frameworks */,
 				56B3FCB09BEEF4862B6F05F8 /* libPods-IconGeek.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,7 +253,7 @@
 			children = (
 				CD7C0EED25435FF600CB62DC /* ContentView.swift */,
 				CD7C0F1F2544995F00CB62DC /* DetailView.swift */,
-				CD8D02E2254B9FCA00D47459 /* IconOptionsForm.swift */,
+				CD69E07A254CBE5400FD8C8C /* OptionsView.swift */,
 				CD8D027E254AFE7400D47459 /* UnlockButton.swift */,
 				CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */,
 				CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */,
@@ -332,6 +338,9 @@
 			dependencies = (
 			);
 			name = IconGeek;
+			packageProductDependencies = (
+				CD69E06E254C322400FD8C8C /* PartialSheet */,
+			);
 			productName = IconGeek;
 			productReference = CD7C0EE825435FF600CB62DC /* IconGeek.app */;
 			productType = "com.apple.product-type.application";
@@ -404,6 +413,9 @@
 				Base,
 			);
 			mainGroup = CD7C0EDF25435FF600CB62DC;
+			packageReferences = (
+				CD69E06D254C322400FD8C8C /* XCRemoteSwiftPackageReference "PartialSheet" */,
+			);
 			productRefGroup = CD7C0EE925435FF600CB62DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -494,9 +506,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD7C0FCA254820D200CB62DC /* VisualEffectBlur.swift in Sources */,
-				CD8D02E3254B9FCA00D47459 /* IconOptionsForm.swift in Sources */,
 				CD8A7E982548A5400042FC6E /* AppConfig.swift in Sources */,
 				CD7C0F9F25472F3900CB62DC /* AppNotifications.swift in Sources */,
+				CD69E07B254CBE5400FD8C8C /* OptionsView.swift in Sources */,
 				CD7C0F2E25449A7E00CB62DC /* IconSetNameView.swift in Sources */,
 				CD7C0F3525449AF500CB62DC /* IconView.swift in Sources */,
 				CD7C0F29254499C600CB62DC /* IconSetView.swift in Sources */,
@@ -530,9 +542,13 @@
 				CD8D02AA254B1AEC00D47459 /* Store.swift in Sources */,
 				CD8D029E254B1AA500D47459 /* AppAppearance.swift in Sources */,
 				CD8D02A6254B1AC100D47459 /* Icon+SwiftUI.swift in Sources */,
+				CD9104D0254DBD34006CAA98 /* AppConfig.swift in Sources */,
 				CD8A7EA02548A59D0042FC6E /* AppConfigTests.swift in Sources */,
+				CD9104CC254DBD25006CAA98 /* AppModel+MobileConfig.swift in Sources */,
+				CD9104C8254DBD11006CAA98 /* AppModel.swift in Sources */,
 				CD8D01CE254A06E000D47459 /* AppListTests.swift in Sources */,
 				CD8D029A254B1A8300D47459 /* IconSet.swift in Sources */,
+				CD9104D4254DBD49006CAA98 /* AppNotifications.swift in Sources */,
 				CD7C0FD7254823E500CB62DC /* IconTests.swift in Sources */,
 				CD8D02A2254B1AAD00D47459 /* Icon.swift in Sources */,
 				CD7C0FD2254823D500CB62DC /* IconSetTests.swift in Sources */,
@@ -856,6 +872,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD69E06D254C322400FD8C8C /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.11;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD69E06E254C322400FD8C8C /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD69E06D254C322400FD8C8C /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD7C0EE025435FF600CB62DC /* Project object */;
 }

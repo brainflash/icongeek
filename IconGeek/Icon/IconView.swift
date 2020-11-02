@@ -12,20 +12,29 @@ struct IconView: View {
 	@ObservedObject var iconSet: IconSet
 	var bgColor: Color
 	
+	let iconSize: CGFloat = 80.0
+	
     var body: some View {
 		ZStack {
-			Button(action: { icon.toggleSelected() }) {
-				image
+			VStack {
+				Button(action: { icon.toggleSelected() }) {
+					image
+				}
+				.background(bgColor)
+				.cornerRadius(14)
+				.contentShape(Rectangle())
+				.frame(width: iconSize, height: iconSize)
+				.overlay(Toggle("Selected", isOn: $icon.selected))
+				.toggleStyle(CircleToggleStyle(isLocked: iconSet.isLocked, iconSize: iconSize))
+				.disabled(iconSet.isLocked)
+				
+				Text(icon.name)
+					.font(.caption)
+					.foregroundColor(iconSet.display.foregroundColor)
+					.bold()
+
 			}
-			
 		}
-		.background(bgColor)
-		.cornerRadius(14)
-		.contentShape(Rectangle())
-		.frame(maxWidth: 80)
-		.overlay(Toggle("Selected", isOn: $icon.selected))
-		.toggleStyle(CircleToggleStyle(isLocked: iconSet.isLocked))
-		.disabled(iconSet.isLocked)
 	}
 	
 	var image: some View {
@@ -41,6 +50,8 @@ struct IconView: View {
 
 struct CircleToggleStyle: ToggleStyle {
 	var isLocked: Bool = false
+	let iconSize: CGFloat
+	let iconOffset: CGFloat = 30.0
 	
 	func makeBody(configuration: Configuration) -> some View {
 		ZStack {
@@ -53,8 +64,8 @@ struct CircleToggleStyle: ToggleStyle {
 					.accessibility(label: Text("Locked"))
 					.imageScale(.large)
 					.clipShape(Circle())
-					.frame(width: 80, height: 80)
-					.offset(x: 30, y:30)
+					.frame(width: iconSize, height: iconSize)
+					.offset(x: iconOffset, y:iconOffset)
 			} else if configuration.isOn {
 				Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
 					.font(.system(size: 25, weight: .bold))
@@ -64,13 +75,14 @@ struct CircleToggleStyle: ToggleStyle {
 					.imageScale(.large)
 					.clipShape(Circle())
 					.overlay(Circle().stroke(Color.white, lineWidth: 3))
-					.frame(width: 80, height: 80)
-					.offset(x: 30, y:30)
+					.frame(width: iconSize, height: iconSize)
+					.offset(x: iconOffset, y:iconOffset)
 			}
 		}
 	}
 }
 
+// MARK: - Previews
 struct IconView_Previews: PreviewProvider {
 	
     static var previews: some View {

@@ -14,6 +14,8 @@ import Combine
 class IconSet: ObservableObject, Identifiable {
 	@Published var icons: [Icon] = []
 	@Published var isLocked = false
+	@Published var labelStyle = Icon.LabelStyle.normal
+	@Published var showLabels = true
 	var cancellables = [AnyCancellable]()
 	
 	var id: String
@@ -72,6 +74,21 @@ extension IconSet {
 	
 	func unlock() {
 		isLocked = false
+	}
+	
+	func labelStyle(_ style: Icon.LabelStyle) {
+		icons.forEach { icon in
+			icon.labelStyle = style
+		}
+	}
+	
+	func toggleLabels() {
+		self.showLabels = !self.showLabels
+		
+		// TODO: should be able to do this more elegantly, i.e. using Combine
+		icons.forEach { icon in
+			icon.labelStyle = showLabels ? .normal : .none
+		}
 	}
 	
 	/// Returns an array of Icons that are selected

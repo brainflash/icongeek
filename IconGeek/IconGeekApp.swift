@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PartialSheet
 
 @main
 struct IconGeekApp: App {
@@ -13,12 +14,14 @@ struct IconGeekApp: App {
 	
 	@StateObject private var model = AppModel()
 	@StateObject private var store = Store()
+	@StateObject private var sheetManager = PartialSheetManager()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
 				.environmentObject(model)
 				.environmentObject(store)
+				.environmentObject(sheetManager)
 				.onAppear() {
 					store.inject(model)
 				}
@@ -29,6 +32,7 @@ struct IconGeekApp: App {
 								NSLog("App opened successfully")
 							} else {
 								NSLog("Unable to open custom URL: \(url)")
+								// TODO: send notification so that user is informed that app didn't open
 							}
 						}
 					} else {

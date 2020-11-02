@@ -25,6 +25,8 @@ struct IconSetThumb: View {
 struct IconSetView: View {
 	@Environment(\.colorScheme) var colorScheme
 	
+	@State var labelStyle: Icon.LabelStyle = .normal
+	
 	var iconSet: IconSet = IconSet.iconSet1
 
 	var body: some View {
@@ -48,9 +50,6 @@ struct IconSetView: View {
 							IconView(icon: icon, iconSet: iconSet, bgColor: iconSet.display.iconBackground)
 								.contentShape(Rectangle())
 								.aspectRatio(contentMode: .fit)
-							Text(icon.name)
-								.font(.caption)
-								.bold()
 						}
 					}
 				}
@@ -60,6 +59,7 @@ struct IconSetView: View {
 	}
 }
 
+// MARK: - Previews
 struct IconSetView_Previews: PreviewProvider {
     static var previews: some View {
         IconSetView()

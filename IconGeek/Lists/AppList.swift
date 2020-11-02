@@ -113,6 +113,7 @@ extension AppData {
 	static let fbMessenger = 	AppData(id: "fbMessenger", 	name: "Messenger",	targetAppID: "com.facebook.Facebook", 		UUID: "87EAE7E3-B1DC-4AF9-B336-6A75388BD7A3", 	appURL: "fb-messenger://")
 	static let kik = 			AppData(id: "kik", 			name: "Kik", 		targetAppID: "com.kik.chat", 				UUID: "71D52F2C-DE6A-496C-87DE-F18D4A1050EF", 	appURL: "kik://")
 	static let instagram = 		AppData(id: "instagram",	name: "Instagram", 	targetAppID: "com.burbn.instagram", 		UUID: "658340D3-CFB0-4A4A-A47D-68C4F90348C2", 	appURL: " ")
+	static let linkedIn =		AppData(id: "linkedin",		name: "LinkedIn",	targetAppID: "com.linkedin.LinkedIn",		UUID: "5FD2F0C5-0A82-4BDA-BF5D-2C243E5A57A7", 	appURL: " ")
 	static let reddit = 		AppData(id: "reddit", 		name: "Reddit", 	targetAppID: "pinterest", 					UUID: "BD904A52-764F-43A7-A2E0-E60D34485649", 	appURL: " ")
 	static let snapchat = 		AppData(id: "snapchat",		name: "Snapchat",	targetAppID: "com.toyopagroup.picaboo",		UUID: "81FC2076-AD22-4009-970A-2483CCF9D2AB",	appURL: "snapchat://")
 	static let spotify = 		AppData(id: "spotify",		name: "Spotify",	targetAppID: "com.spotify.client",			UUID: "E8088781-2245-4175-9789-BABCD5889B5B",	appURL: "spotify://")
@@ -134,6 +135,7 @@ extension AppList {
 		.fbMessenger,
 		.kik,
 		.instagram,
+		.linkedIn,
 		.reddit,
 		.snapchat,
 		.spotify,

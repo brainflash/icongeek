@@ -40,7 +40,7 @@ class IconSetTests: XCTestCase {
 	}
 	
 	func testIconSetForUniqueIDs() throws {
-		// 1. Make sure all IconSets have a unique iconSetUUID
+		// Make sure all IconSets have a unique iconSetUUID
 		var existingIDs: [String:IconSet] = [:]
 		IconSet.all.forEach { iconSet in
 			let existing: IconSet? = existingIDs[iconSet.UUID]
@@ -49,4 +49,72 @@ class IconSetTests: XCTestCase {
 		}
 	}
 	
+	func testIconSetIconsExist() throws {
+		// Test to see if all icons exist in each IconSet
+		var totalIconsMissing = 0
+
+		let expectedMissing: [String : Int] = [
+			"Cute Color" : 7,
+			"Doodle" : 10
+		]
+		var actualMissing = [String : Int]()
+		
+		IconSet.all.forEach { iconSet in
+			print("Testing icon set '\(iconSet.title)'")
+
+			var iconsMissing = 0
+			let icons = Icon.testAllWithGroup(iconSet.group)
+			icons.forEach { icon in
+				if icon.imageExists == false {
+					print("\t🟡 Icon missing: '\(icon.imageName)'")
+					iconsMissing += 1
+				}
+			}
+			actualMissing[iconSet.title] = iconsMissing
+			totalIconsMissing += iconsMissing
+			print("\t🔴 \(iconsMissing) icons missing")
+		}
+		
+		// Test will always fail due to all of the sets having some icons/apps unavailable.
+		// The sets may be updated over time to be complete or have substitutes added,
+		// however this is more of an 'informational'/'warning' test rather than an outright pass/fail test.
+		//
+		// A test could be made for the expected number of missing icons in each set once the sets are finalised.
+		// (as has been done now, see below)
+		//
+		actualMissing.forEach { dict in
+			if let expected = expectedMissing[dict.key] {
+				let actual = actualMissing[dict.key]!
+				
+				// TODO: Add a new macro 'XCTFailIf'
+				//
+				// XCTFail: Test keeps running and failures are counted
+				// XCTAssert: Test stops on first failure
+				//
+				// Proposed XCTFailIf will keep test running and only fail test if test condition is not met.
+				//
+				if (actual != expected) { XCTFail("\n\t🔴 Actual missing icons different to expected (\(actual) vs \(expected))") }
+				// XCTAssert(actual == expected, "\n\t🔴 Actual missing icons different to expected (\(actual) vs \(expected))")
+			} else {
+				XCTFail("\n\t🔴 Test code error: no expected value for key '\(dict.key)'\n")
+			}
+		}
+		
+//		XCTAssert(totalIconsMissing == 0, "\n\t🔴 \(totalIconsMissing)' icons missing")
+	}
+	
+}
+
+// Special test extension method, this is a modification of allWithGroup but adds missing icons
+extension Icon {
+	static func testAllWithGroup(_ group: String) -> [Icon] {
+		var icons: [Icon] = []
+		AppList.all.forEach { (app) in
+			let icon = Icon(app, group: group)
+			if app.isValid() {
+				icons.append(icon)
+			}
+		}
+		return icons
+	}
 }
