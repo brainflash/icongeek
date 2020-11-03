@@ -25,9 +25,7 @@ struct IconSetThumb: View {
 struct IconSetView: View {
 	@Environment(\.colorScheme) var colorScheme
 	
-	@State var labelStyle: Icon.LabelStyle = .normal
-	
-	var iconSet: IconSet = IconSet.iconSet1
+	@ObservedObject var iconSet: IconSet = IconSet.iconSet1
 
 	var body: some View {
 		ZStack {
@@ -47,7 +45,7 @@ struct IconSetView: View {
 						  spacing: 16) {
 					ForEach(iconSet.icons) { icon in
 						VStack(alignment: .center) {
-							IconView(icon: icon, iconSet: iconSet, bgColor: iconSet.display.iconBackground)
+							IconView(icon: icon, iconSet: iconSet)
 								.contentShape(Rectangle())
 								.aspectRatio(contentMode: .fit)
 						}

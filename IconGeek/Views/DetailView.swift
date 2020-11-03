@@ -15,13 +15,10 @@ struct DetailView: View {
 	@EnvironmentObject private var sheetManager: PartialSheetManager
 	
 	@State private var isShowingSecondView = false
-	@State private var isOptionsPresented = false
 	@State private var isShowingAlert = false
+	@State private var showingColorPicker = false
 	@State private var errorTitle = ""
 	@State private var errorMessage = ""
-	
-	// Options
-	@State private var showIconText = false
 	
 	@ObservedObject var iconSet: IconSet
 	
@@ -80,14 +77,20 @@ struct DetailView: View {
 				NavigationLink(destination: DownloadConfigView(mobileConfigUUID ?? UUID()), isActive: $isShowingSecondView) { EmptyView() }
 				
 				HStack(alignment: .bottom) {
-					Button(action: { self.isOptionsPresented = true }) {
+					Button(action: { sheetManager.showPartialSheet({
+							print("Sheet dismissed")
+						
+						}) {
+							OptionsView(iconSet: iconSet,
+										showLabels: $iconSet.showLabels,
+										iconsBackground: $iconSet.iconsBackground,
+										onlySelected: $iconSet.onlySelected)
+							}
+					}, label: {
 						Text("Options")
-					}
+					})
 					.padding()
 					.frame(maxWidth: .infinity)
-					.partialSheet(isPresented: $isOptionsPresented) {
-						OptionsView(iconSet: iconSet, showLabels: $iconSet.showLabels)
-					}
 				}
 				
 				HStack(alignment: .bottom) {

@@ -10,7 +10,6 @@ import SwiftUI
 struct IconView: View {
 	@ObservedObject var icon: Icon
 	@ObservedObject var iconSet: IconSet
-	var bgColor: Color
 	
 	let iconSize: CGFloat = 80.0
 	
@@ -20,7 +19,8 @@ struct IconView: View {
 				Button(action: { icon.toggleSelected() }) {
 					image
 				}
-				.background(bgColor)
+//				.background(bgColor)
+				.background(iconSet.iconsBackground)
 				.cornerRadius(14)
 				.contentShape(Rectangle())
 				.frame(width: iconSize, height: iconSize)
@@ -86,7 +86,7 @@ struct CircleToggleStyle: ToggleStyle {
 struct IconView_Previews: PreviewProvider {
 	
     static var previews: some View {
-		IconView(icon: Icon(.appstore, group: IconSet.iconSet1.group), iconSet: IconSet.iconSet1, bgColor: Color.white)
+		IconView(icon: Icon(.appstore, group: IconSet.iconSet1.group, background: .white), iconSet: IconSet.iconSet1)
 			.frame(width:80, height:80)
     }
 }

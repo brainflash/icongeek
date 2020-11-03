@@ -16,6 +16,11 @@ class IconSet: ObservableObject, Identifiable {
 	@Published var isLocked = false
 	@Published var labelStyle = Icon.LabelStyle.normal
 	@Published var showLabels = true
+	@Published var onlySelected = false
+	
+	/// The user-chosen colour that will be applied to the generated icons
+	@Published var iconsBackground: Color = .white
+	
 	var cancellables = [AnyCancellable]()
 	
 	var id: String
@@ -24,7 +29,6 @@ class IconSet: ObservableObject, Identifiable {
 	var UUID: String
 	
 	var background: String = "default"
-	var iconsBackground: Color
 	
 	var options: Dictionary<String, Any>
 	struct IconSetOptions {
@@ -46,11 +50,8 @@ class IconSet: ObservableObject, Identifiable {
 		self.display.backgroundColor = self.options["background"] as? Color ?? Color.appBackground
 		self.display.iconBackground = self.options["icon-background"] as? Color ?? Color.iconBackground
 		self.display.tintColor = self.options["tint"] as? Color ?? Color.appTint
-		
-		/// The user-chosen colour that will be applied to the generated icons
-		self.iconsBackground = self.display.iconBackground
 
-		self.icons = Icon.allWithGroup(group)
+		self.icons = Icon.allWithGroup(group, background: iconsBackground)
 		self.icons.forEach({
 			let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
 
@@ -58,6 +59,10 @@ class IconSet: ObservableObject, Identifiable {
 			// otherwise the sink subscription gets cancelled
 			self.cancellables.append(c)
 		})
+		
+		$iconsBackground
+			.sink(receiveValue: self.iconsBackgroundChanged(value:))
+			.store(in: &cancellables)
 	}
 }
 
@@ -80,6 +85,10 @@ extension IconSet {
 		icons.forEach { icon in
 			icon.labelStyle = style
 		}
+	}
+	
+	func iconsBackgroundChanged(value: Color) {
+		print("IconSet bg color changed")
 	}
 	
 	func toggleLabels() {

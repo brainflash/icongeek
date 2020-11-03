@@ -35,9 +35,9 @@ struct ContentView: View {
 									HStack {
 										settingsButton
 									}
-			).sheet(isPresented: $isSettingsPresented,
-					content: { SettingsForm() }
-			)
+			).sheet(isPresented: $isSettingsPresented) {
+				SettingsForm()
+			}
 			.navigationTitle("Choose an icon set")
 		}
 	}
