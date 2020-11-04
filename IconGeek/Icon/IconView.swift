@@ -10,31 +10,57 @@ import SwiftUI
 struct IconView: View {
 	@ObservedObject var icon: Icon
 	@ObservedObject var iconSet: IconSet
+//	@State var displaySelection: Bool
+	@State var mode: Mode
 	
-	let iconSize: CGFloat = 80.0
+	enum Mode {
+		case selecting
+		case editing
+	}
+	
+	let iconSize: CGFloat = 76.0
 	
     var body: some View {
 		ZStack {
 			VStack {
-				Button(action: { icon.toggleSelected() }) {
+				Button(action: {
+					if mode == .selecting {
+						icon.toggleSelected()
+					} else {
+						icon.toggleEditing()
+					}
+				}) {
 					image
 				}
-//				.background(bgColor)
-				.background(iconSet.iconsBackground)
-				.cornerRadius(14)
+				.background(icon.background)
 				.contentShape(Rectangle())
+				.cornerRadius(14)
+				.clipped()
 				.frame(width: iconSize, height: iconSize)
-				.overlay(Toggle("Selected", isOn: $icon.selected))
+				.overlay(Group {
+					if mode == .selecting {
+						Toggle("Selected", isOn: $icon.selected)
+					}
+				})
 				.toggleStyle(CircleToggleStyle(isLocked: iconSet.isLocked, iconSize: iconSize))
 				.disabled(iconSet.isLocked)
-				
+				.padding(8)
+
 				Text(icon.name)
 					.font(.caption)
 					.foregroundColor(iconSet.display.foregroundColor)
 					.bold()
-
+					.padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
+			}
+			
+			if mode == .editing && icon.editing {
+				Rectangle()
+					.fill(Color.clear)
+					.border(Color.red, width: 2)
+					.cornerRadius(6)
 			}
 		}
+		.padding(8)
 	}
 	
 	var image: some View {
@@ -43,6 +69,7 @@ struct IconView: View {
 				.resizable()
 				.aspectRatio(contentMode: .fill)
 				.frame(width: geo.size.width, height: geo.size.height)
+				.scaleEffect(icon.scale)
 		}
 		.accessibility(hidden: true)
 	}
@@ -86,7 +113,8 @@ struct CircleToggleStyle: ToggleStyle {
 struct IconView_Previews: PreviewProvider {
 	
     static var previews: some View {
-		IconView(icon: Icon(.appstore, group: IconSet.iconSet1.group, background: .white), iconSet: IconSet.iconSet1)
-			.frame(width:80, height:80)
+		IconView(icon: Icon(.appstore, group: IconSet.iconSet1.group, background: .clear), iconSet: IconSet.iconSet1, mode: .editing)
+			.frame(width:100, height:120)
+			.background(Color.yellow)
     }
 }

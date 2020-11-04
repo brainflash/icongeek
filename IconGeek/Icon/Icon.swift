@@ -11,8 +11,10 @@ import Combine
 class Icon: ObservableObject, Identifiable {
 	// User variables
 	@Published var selected: Bool = false
+	@Published var editing: Bool = false
 	@Published var labelStyle: LabelStyle = .normal
 	@Published var background: Color = .white
+	@Published var size: Double = 1.0
 	var cancellables = Set<AnyCancellable>()
 	
 	var app: AppData
@@ -86,5 +88,13 @@ extension Icon {
 	
 	func toggleSelected() {
 		selected.toggle()
+	}
+	
+	func toggleEditing() {
+		editing.toggle()
+	}
+	
+	var scale: CGFloat {
+		CGFloat(size)
 	}
 }

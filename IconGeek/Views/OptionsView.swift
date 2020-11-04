@@ -14,16 +14,13 @@ struct OptionsView: View {
 
 	@Binding var showLabels: Bool
 	@Binding var iconsBackground: Color
-	@Binding var onlySelected: Bool
-	
+	@Binding var iconsSize: Double
+
 	@State private var showingColorPicker = false
 	
 	var body: some View {
 		VStack {
 			Group {
-				Text("Icon Options")
-					.font(.title)
-
 				Button(action: { iconSet.toggleLabels() }) {
 					HStack {
 						VStack(alignment: .leading) {
@@ -60,14 +57,15 @@ struct OptionsView: View {
 								Spacer()
 								Spacer()
 
-								Button(action: {
-									// TODO: undo action
-									print("Undo button pressed")
-								}) {
-									Image(systemName: "arrow.counterclockwise")
-										.font(.title3)
-										.foregroundColor(.black)
-								}
+								// Undo/reset button
+//								Button(action: {
+//									// TODO: undo action
+//									print("Undo button pressed")
+//								}) {
+//									Image(systemName: "arrow.counterclockwise")
+//										.font(.title3)
+//										.foregroundColor(.black)
+//								}
 								
 								Spacer()
 
@@ -83,39 +81,28 @@ struct OptionsView: View {
 				.frame(height: 50)
 				.background(Color.lightGrey)
 				.cornerRadius(10)
-
-				// Apply only to selected
-				Button(action: { onlySelected.toggle() }) {
-					HStack {
-						VStack(alignment: .leading) {
-							Text("Apply only to selected icons")
-								.bold()
-								.foregroundColor(.black)
-								.padding()
-						}
-						
-						Spacer()
-						
-						Toggle("Apply only to selected", isOn: $onlySelected)
-							.frame(width: 50)
-							.padding(2)
-							.aspectRatio(contentMode: .fit)
-							.background(Color.lightGrey)
-					}
-					.frame(height: 50)
-				}
-				.buttonStyle(PlainButtonStyle())
-				.toggleStyle(OptionsToggleStyle())
-				.background(Color.lightGrey)
-				.cornerRadius(10)
-
 				
 				// Scale slider - TODO
-				
+				HStack {
+					Text("Icon size")
+						.bold()
+						.foregroundColor(.black)
+						.padding()
+					Slider(value: $iconsSize, in: 0.5...1.5)
+						.padding()
+					Text(String(format: "%.1f", iconsSize))
+						.bold()
+						.foregroundColor(.black)
+						.padding(20)
+				}
+				.frame(height: 50)
+				.background(Color.lightGrey)
+				.cornerRadius(10)
 			}
 			.padding()
 			.frame(height: 50)
 		}
+		.background(VisualEffectBlur())
 	}
 }
 
@@ -155,12 +142,12 @@ struct OptionsView_Previews: PreviewProvider {
 	static var iconSet = IconSet.iconSet1
 	static var showLabels = Binding<Bool>.constant(true)
 	static var iconsBackground = Binding<Color>.constant(.white)
-	static var onlySelected = Binding<Bool>.constant(true)
+	static var iconsSize = Binding<Double>.constant(1.0)
 
     static var previews: some View {
 		OptionsView(iconSet: iconSet,
 					showLabels: showLabels,
 					iconsBackground: iconsBackground,
-					onlySelected: onlySelected)
+					iconsSize: iconsSize)
     }
 }

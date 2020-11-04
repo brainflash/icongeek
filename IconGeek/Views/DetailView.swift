@@ -14,21 +14,21 @@ struct DetailView: View {
 	@EnvironmentObject private var store: Store
 	@EnvironmentObject private var sheetManager: PartialSheetManager
 	
-	@State private var isShowingSecondView = false
+	@State private var isShowingCustomizeView = false
 	@State private var isShowingAlert = false
 	@State private var showingColorPicker = false
 	@State private var errorTitle = ""
 	@State private var errorMessage = ""
+	@State var selected: Icon?
 	
 	@ObservedObject var iconSet: IconSet
 	
-	let pub = NotificationCenter.default
-		.publisher(for: .ReceivedMobileConfigResponse)
-	@State var mobileConfigUUID: UUID?
-	
 	init(_ iconSet: IconSet) {
 		self.iconSet = iconSet
-		UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.green]
+		
+//		$showCustomizeView
+//			.sink(receiveValue: self.backgroundChanged(value:))
+//			.store(in: &cancellables)
 	}
 	
 	var unlockButton: some View {
@@ -44,9 +44,9 @@ struct DetailView: View {
 		}
 	}
 	
-	var addToHomeButton: some View {
-		Button(action: addToHomeScreen) {
-			Text("Add to home screen")
+	var nextStepButton: some View {
+		Button(action: nextStepAction) {
+			Text("Next step")
 				.font(.headline)
 				.bold()
 				.padding(.horizontal, 16)
@@ -55,7 +55,7 @@ struct DetailView: View {
 				.foregroundColor(Color.white)
 				.background(Color.black)
 		}
-		.accessibility(label: Text("Add to Home Screen"))
+		.accessibility(label: Text("Next"))
 		.cornerRadius(20)
 		.overlay(
 			Capsule()
@@ -65,39 +65,21 @@ struct DetailView: View {
 		.padding(.horizontal, 16)
 		.frame(maxWidth: .infinity)
 	}
-	
+
     var body: some View {
 		ZStack {
 			VStack(alignment: .leading, spacing: 16) {
 				
 				HStack(alignment: .top) {
-					IconSetView(iconSet: iconSet)
+					IconSetView(iconSet: iconSet, iconMode: .selecting)
 				}
-
-				NavigationLink(destination: DownloadConfigView(mobileConfigUUID ?? UUID()), isActive: $isShowingSecondView) { EmptyView() }
 				
-				HStack(alignment: .bottom) {
-					Button(action: { sheetManager.showPartialSheet({
-							print("Sheet dismissed")
-						
-						}) {
-							OptionsView(iconSet: iconSet,
-										showLabels: $iconSet.showLabels,
-										iconsBackground: $iconSet.iconsBackground,
-										onlySelected: $iconSet.onlySelected)
-							}
-					}, label: {
-						Text("Options")
-					})
-					.padding()
-					.frame(maxWidth: .infinity)
-				}
+				NavigationLink(destination: CustomizeView(iconSet), isActive: $isShowingCustomizeView) { EmptyView() }
 				
 				HStack(alignment: .bottom) {
 					
 					if !iconSet.isLocked {
-						addToHomeButton
-//							.disabled(iconSet.selected.isEmpty)
+						nextStepButton
 					} else {
 						unlockButton
 					}
@@ -106,43 +88,21 @@ struct DetailView: View {
 					Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
 				}
 			}
-			.onReceive(pub) { obj in
-				if let userInfo = obj.userInfo {
-					if let info = userInfo[AppModel.ConfigResponseUUID] as? UUID {
-						self.mobileConfigUUID = info
-						isShowingSecondView = true
-					} else if let err = userInfo[AppModel.ConfigResponseError] as? MobileConfigError {
-						errorTitle = "Error message"
-						switch err {
-						case .jsonMissing:
-							errorMessage = "There was an error in the server response\n\n(Code: 0x01 JSON missing)\n\nPlease try again later."
-						case .signingError:
-							errorMessage = "There was an error in the server response\n\n(Code: 0x02 signing error)\n\nPlease try again later."
-						case .mobileConfigEmpty:
-							errorMessage = "There was an error generating the icon set\n\n(Code: 0x03 config empty)"
-						}
-						isShowingAlert = true
-					}
-				}
-			}
 		}
-		.addPartialSheet(style: PartialSheetStyle.optionsViewStyle(colorScheme))
-		.navigationTitle("Select your icons")
+		.navigationTitle("Select some icons")
 	}
 
-	func addToHomeScreen() {
-		NSLog("addToHomeScreen")
-		
+	func nextStepAction() {
 		guard !iconSet.selected.isEmpty else {
 			errorTitle = "No icons selected"
 			errorMessage = "Please select at least one icon. Tap on the icon image to toggle its selection"
 			isShowingAlert = true
 			return
 		}
-		
-		// TODO: - display a spinner alert here
-		model.addToHomeScreen(iconSet)
+
+		isShowingCustomizeView = true
 	}
+
 }
 
 // MARK: - Previews

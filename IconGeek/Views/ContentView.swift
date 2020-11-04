@@ -40,6 +40,7 @@ struct ContentView: View {
 			}
 			.navigationTitle("Choose an icon set")
 		}
+		.addPartialSheet()
 	}
 }
 

@@ -16,10 +16,12 @@ class IconSet: ObservableObject, Identifiable {
 	@Published var isLocked = false
 	@Published var labelStyle = Icon.LabelStyle.normal
 	@Published var showLabels = true
-	@Published var onlySelected = false
 	
 	/// The user-chosen colour that will be applied to the generated icons
 	@Published var iconsBackground: Color = .white
+	
+	/// The user-chosen scale of the icon
+	@Published var iconsSize: Double = 1.0
 	
 	var cancellables = [AnyCancellable]()
 	
@@ -38,6 +40,30 @@ class IconSet: ObservableObject, Identifiable {
 		var tintColor: Color = Color.white
 	}
 	var display = IconSetOptions()
+
+//	convenience init(iconSet: IconSet, icons: [Icon]) {
+//		self.init(id: iconSet.id, title: iconSet.title, group: iconSet.group, UUID: iconSet.UUID, isLocked: iconSet.isLocked, options: iconSet.options, icons: icons)
+
+	init(iconSet: IconSet, icons: [Icon]) {
+		self.id = iconSet.id
+		self.title = iconSet.title
+		self.group = iconSet.group
+		self.UUID = iconSet.UUID
+		self.isLocked = iconSet.isLocked
+		self.options = iconSet.options
+		self.display.foregroundColor = iconSet.options["foreground"] as? Color ?? Color.appForeground
+		self.display.backgroundColor = iconSet.options["background"] as? Color ?? Color.appBackground
+		self.display.iconBackground = iconSet.options["icon-background"] as? Color ?? Color.iconBackground
+		self.display.tintColor = iconSet.options["tint"] as? Color ?? Color.appTint
+		self.icons = icons
+		self.icons.forEach({
+			let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
+
+			// Important: You have to keep the returned value allocated,
+			// otherwise the sink subscription gets cancelled
+			self.cancellables.append(c)
+		})
+	}
 	
 	init(id: String, title: String, group: String, UUID: String, isLocked: Bool, options: Dictionary<String, Any>? = nil) {
 		self.id = id
@@ -50,7 +76,6 @@ class IconSet: ObservableObject, Identifiable {
 		self.display.backgroundColor = self.options["background"] as? Color ?? Color.appBackground
 		self.display.iconBackground = self.options["icon-background"] as? Color ?? Color.iconBackground
 		self.display.tintColor = self.options["tint"] as? Color ?? Color.appTint
-
 		self.icons = Icon.allWithGroup(group, background: iconsBackground)
 		self.icons.forEach({
 			let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
@@ -59,9 +84,13 @@ class IconSet: ObservableObject, Identifiable {
 			// otherwise the sink subscription gets cancelled
 			self.cancellables.append(c)
 		})
-		
+
 		$iconsBackground
 			.sink(receiveValue: self.iconsBackgroundChanged(value:))
+			.store(in: &cancellables)
+		
+		$iconsSize
+			.sink(receiveValue: self.iconsSizeChanged(value:))
 			.store(in: &cancellables)
 	}
 }
@@ -88,14 +117,24 @@ extension IconSet {
 	}
 	
 	func iconsBackgroundChanged(value: Color) {
-		print("IconSet bg color changed")
+		let editing = icons.filter { $0.editing }
+		editing.forEach { icon in
+			icon.background = value
+		}
+	}
+	
+	func iconsSizeChanged(value: Double) {
+		let editing = icons.filter { $0.editing }
+		editing.forEach { icon in
+			icon.size = value
+		}
 	}
 	
 	func toggleLabels() {
 		self.showLabels = !self.showLabels
 		
-		// TODO: should be able to do this more elegantly, i.e. using Combine
-		icons.forEach { icon in
+		let editing = icons.filter { $0.editing }
+		editing.forEach { icon in
 			icon.labelStyle = showLabels ? .normal : .none
 		}
 	}
@@ -104,6 +143,12 @@ extension IconSet {
 	var selected: [Icon] {
 		icons.filter { icon in
 			icon.selected
+		}
+	}
+	
+	func clearEditing() {
+		icons.forEach { icon in
+			icon.editing = false
 		}
 	}
 }

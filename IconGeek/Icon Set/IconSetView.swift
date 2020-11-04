@@ -26,7 +26,8 @@ struct IconSetView: View {
 	@Environment(\.colorScheme) var colorScheme
 	
 	@ObservedObject var iconSet: IconSet = IconSet.iconSet1
-
+	@State var iconMode: IconView.Mode
+	
 	var body: some View {
 		ZStack {
 			ScrollView {
@@ -40,12 +41,12 @@ struct IconSetView: View {
 	var content: some View {
 		VStack(spacing: 0) {
 			VStack(alignment: .leading) {
-				LazyVGrid(columns: [GridItem(.adaptive(minimum: 70), spacing: 16, alignment: .top)],
+				LazyVGrid(columns: [GridItem(.adaptive(minimum: 80), spacing: 20, alignment: .top)],
 						  alignment: .center,
 						  spacing: 16) {
 					ForEach(iconSet.icons) { icon in
 						VStack(alignment: .center) {
-							IconView(icon: icon, iconSet: iconSet)
+							IconView(icon: icon, iconSet: iconSet, mode: iconMode)
 								.contentShape(Rectangle())
 								.aspectRatio(contentMode: .fit)
 						}
@@ -60,6 +61,6 @@ struct IconSetView: View {
 // MARK: - Previews
 struct IconSetView_Previews: PreviewProvider {
     static var previews: some View {
-        IconSetView()
+		IconSetView(iconMode: .selecting)
     }
 }
