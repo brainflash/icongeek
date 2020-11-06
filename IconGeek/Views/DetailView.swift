@@ -13,6 +13,9 @@ struct DetailView: View {
 	@EnvironmentObject private var model: AppModel
 	@EnvironmentObject private var store: Store
 	@EnvironmentObject private var sheetManager: PartialSheetManager
+
+	@State private var helpText: String = "Select the icons you'd like to add as shortcuts on your Home Screen. \n\nFor the shortcuts to work, the apps you select must already be installed."
+	@State private var isHelpPresented = false
 	
 	@State private var isShowingCustomizeView = false
 	@State private var isShowingAlert = false
@@ -31,16 +34,18 @@ struct DetailView: View {
 //			.store(in: &cancellables)
 	}
 	
-	var unlockButton: some View {
-		Group {
-			if let product = store.product(for: iconSet.id) {
-				UnlockButton(product: .init(for: product), purchaseAction: {
-					store.purchaseProduct(product)
-				})
-			} else {
-				Text("🔴 Product ID not found for '\(iconSet.title)'")
-					.padding()
+	var helpButton: some View {
+		Button(action: { self.isHelpPresented = true }) {
+			HStack {
+				Image(systemName: "questionmark.circle")
+					.imageScale(.large)
 			}
+			.frame(width: 40, height: 40)
+		}
+		.partialSheet(isPresented: $isHelpPresented) {
+			HelpView(helpText: helpText, isPresented: $isHelpPresented)
+				.padding()
+				.frame(height: 200)
 		}
 	}
 	
@@ -69,27 +74,32 @@ struct DetailView: View {
     var body: some View {
 		ZStack {
 			VStack(alignment: .leading, spacing: 16) {
-				
-				HStack(alignment: .top) {
-					IconSetView(iconSet: iconSet, iconMode: .selecting)
-				}
-				
+
 				NavigationLink(destination: CustomizeView(iconSet), isActive: $isShowingCustomizeView) { EmptyView() }
-				
-				HStack(alignment: .bottom) {
-					
-					if !iconSet.isLocked {
-						nextStepButton
+
+				HStack(alignment: .top) {
+					if iconSet.isLocked {
+						ZStack {
+							IconSetView(iconSet: iconSet, iconMode: .selecting)
+								.overlay(UnlockPanel(iconSet: iconSet), alignment: .bottom)
+						}
 					} else {
-						unlockButton
+						VStack {
+							IconSetView(iconSet: iconSet, iconMode: .selecting)
+						
+							nextStepButton
+						}
+						.background(VisualEffectBlur())
 					}
 				}
-				.alert(isPresented: $isShowingAlert) {
-					Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-				}
+//				.overlay(UnlockPanel(iconSet: iconSet), alignment: .bottom)
 			}
 		}
 		.navigationTitle("Select some icons")
+		.navigationBarItems(trailing: HStack { helpButton })
+		.alert(isPresented: $isShowingAlert) {
+			Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+		}
 	}
 
 	func nextStepAction() {

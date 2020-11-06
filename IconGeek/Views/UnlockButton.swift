@@ -34,18 +34,19 @@ struct UnlockButton: View {
 					.padding(.horizontal, 16)
 					.padding(.vertical, 8)
 					.frame(minWidth: minWidth)
-					.background(colorScheme == .light ? Color.black : .white)
+					.background(Color.blue)
 					.clipShape(Capsule())
 					.contentShape(Rectangle())
 			}
 			.buttonStyle(SquishableButtonStyle())
 			.accessibility(label: Text("Unlock icon set for \(displayPrice)"))
+			.background(Color.clear)
 		}
 	}
 	
 	var bar: some View {
 		HStack {
-			Button(action: purchaseAction) {
+//			Button(action: purchaseAction) {
 				VStack(alignment: .leading) {
 					Text(product.title)
 						.foregroundColor(.primary)
@@ -55,12 +56,12 @@ struct UnlockButton: View {
 						.foregroundColor(.secondary)
 						.font(.subheadline)
 				}
-			}
 			
 			Spacer()
 			
 			purchaseButton
 		}
+//		}
 		.padding()
 		.frame(maxWidth: .infinity)
 		.accessibilityElement(children: .combine)
@@ -72,11 +73,14 @@ struct UnlockButton: View {
 	
     var body: some View {
 		ZStack(alignment: .bottom) {
-			bar.background(VisualEffectBlur())
+			Button(action: purchaseAction) {
+				bar.background(Color.lightGrey)
+			}
 		}
 		.clipShape(shape)
 		.padding()
-		.background(colorScheme == .light ? Color.black : .white)
+//		.background(colorScheme == .light ? Color.black : .white)
+		.background(VisualEffectBlur())
 //		.cornerRadius(10)
 		.shadow(color: colorScheme == .light ? Color.white.opacity(0.25) : Color.black.opacity(0.25), radius: 10, x: 0, y: 5)
 		.accessibilityElement(children: .contain)

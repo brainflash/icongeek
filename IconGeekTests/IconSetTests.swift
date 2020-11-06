@@ -7,6 +7,8 @@
 
 import XCTest
 
+import SwiftUI
+
 // Things still to test:
 //
 // 1. Make sure selected flag on Icon works
@@ -93,7 +95,7 @@ class IconSetTests: XCTestCase {
 				//
 				// Proposed XCTFailIf will keep test running and only fail test if test condition is not met.
 				//
-				if (actual != expected) { XCTFail("\n\t🔴 Actual missing icons different to expected (\(actual) vs \(expected))") }
+				if (actual != expected) { XCTFail("\n\t🔴 Actual missing icons different to expected for \(dict.key) (\(actual) vs \(expected))") }
 				// XCTAssert(actual == expected, "\n\t🔴 Actual missing icons different to expected (\(actual) vs \(expected))")
 			} else {
 				XCTFail("\n\t🔴 Test code error: no expected value for key '\(dict.key)'\n")
@@ -110,7 +112,7 @@ extension Icon {
 	static func testAllWithGroup(_ group: String) -> [Icon] {
 		var icons: [Icon] = []
 		AppList.all.forEach { (app) in
-			let icon = Icon(app, group: group)
+			let icon = Icon(app, group: group, background: Color.black)
 			if app.isValid() {
 				icons.append(icon)
 			}

@@ -10,7 +10,6 @@ import SwiftUI
 struct IconView: View {
 	@ObservedObject var icon: Icon
 	@ObservedObject var iconSet: IconSet
-//	@State var displaySelection: Bool
 	@State var mode: Mode
 	
 	enum Mode {
@@ -18,7 +17,14 @@ struct IconView: View {
 		case editing
 	}
 	
-	let iconSize: CGFloat = 76.0
+	// iconSize returns larger size when selecting. When editing the size should match the home screen icon size,
+	// just so the user gets an accurate representation of their chosen icons
+	var iconSize: CGFloat {
+		switch mode {
+		case .selecting:	return 72.0
+		case .editing: 		return 60.0
+		}
+	}
 	
     var body: some View {
 		ZStack {
@@ -57,16 +63,18 @@ struct IconView: View {
 				Rectangle()
 					.fill(Color.clear)
 					.border(Color.red, width: 2)
-					.cornerRadius(6)
+					.padding(2)
 			}
 		}
-		.padding(8)
+		.padding(6)
 	}
 	
 	var image: some View {
 		GeometryReader { geo in
 			icon.image
 				.resizable()
+				.renderingMode(.template)
+				.foregroundColor(icon.tint)
 				.aspectRatio(contentMode: .fill)
 				.frame(width: geo.size.width, height: geo.size.height)
 				.scaleEffect(icon.scale)

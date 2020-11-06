@@ -81,24 +81,23 @@ struct CustomizeView: View {
 
 				HStack(alignment: .bottom) {
 					VStack {
-						let iconsForEditing = selectedIcons.icons.filter { $0.editing }
-						if iconsForEditing.count > 0 {
+						// TODO: need to select the first icon in iconset
+						
+//						let editing = iconSet.editing
+//						if editing.count > 0 {
 							OptionsView(iconSet: iconSet,
 										showLabels: $showLabels,
 										iconsBackground: $iconSet.iconsBackground,
+										iconsTint: $iconSet.iconsTint,
 										iconsSize: $iconSet.iconsSize)
-						}
+//						}
 
 						addToHomeButton
 					}
 				}
-		}
+			}
 		.navigationTitle("Customize your icons").font(.subheadline)
-		.navigationBarItems(trailing:
-								HStack {
-									helpButton
-								}
-		)
+		.navigationBarItems(trailing: HStack { helpButton })
 		.alert(isPresented: $isShowingAlert) {
 			Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
 		}

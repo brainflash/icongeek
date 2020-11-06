@@ -41,9 +41,9 @@ struct IconSetView: View {
 	var content: some View {
 		VStack(spacing: 0) {
 			VStack(alignment: .leading) {
-				LazyVGrid(columns: [GridItem(.adaptive(minimum: 80), spacing: 20, alignment: .top)],
+				LazyVGrid(columns: [GridItem(.adaptive(minimum: 70), spacing: 16, alignment: .top)],
 						  alignment: .center,
-						  spacing: 16) {
+						  spacing: 12) {
 					ForEach(iconSet.icons) { icon in
 						VStack(alignment: .center) {
 							IconView(icon: icon, iconSet: iconSet, mode: iconMode)

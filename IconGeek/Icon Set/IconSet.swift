@@ -17,9 +17,11 @@ class IconSet: ObservableObject, Identifiable {
 	@Published var labelStyle = Icon.LabelStyle.normal
 	@Published var showLabels = true
 	
-	/// The user-chosen colour that will be applied to the generated icons
+	/// The user-chosen colour that will be applied to the background of generated icons
 	@Published var iconsBackground: Color = .white
-	
+	/// The user-chosen colour that will be applied to the icon image of generated icons
+	@Published var iconsTint: Color = .black
+
 	/// The user-chosen scale of the icon
 	@Published var iconsSize: Double = 1.0
 	
@@ -38,6 +40,7 @@ class IconSet: ObservableObject, Identifiable {
 		var backgroundColor: Color = Color.appBackground
 		var iconBackground: Color = Color.iconBackground
 		var tintColor: Color = Color.white
+		var defaultScale: Double = 1.0
 	}
 	var display = IconSetOptions()
 
@@ -55,6 +58,7 @@ class IconSet: ObservableObject, Identifiable {
 		self.display.backgroundColor = iconSet.options["background"] as? Color ?? Color.appBackground
 		self.display.iconBackground = iconSet.options["icon-background"] as? Color ?? Color.iconBackground
 		self.display.tintColor = iconSet.options["tint"] as? Color ?? Color.appTint
+		self.display.defaultScale = self.options["default-scale"] as? Double ?? 1.0
 		self.icons = icons
 		self.icons.forEach({
 			let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
@@ -75,8 +79,9 @@ class IconSet: ObservableObject, Identifiable {
 		self.display.foregroundColor = self.options["foreground"] as? Color ?? Color.appForeground
 		self.display.backgroundColor = self.options["background"] as? Color ?? Color.appBackground
 		self.display.iconBackground = self.options["icon-background"] as? Color ?? Color.iconBackground
+		self.display.defaultScale = self.options["default-scale"] as? Double ?? 1.0
 		self.display.tintColor = self.options["tint"] as? Color ?? Color.appTint
-		self.icons = Icon.allWithGroup(group, background: iconsBackground)
+		self.icons = Icon.allWithGroup(group, background: self.display.iconBackground, scale: self.display.defaultScale)
 		self.icons.forEach({
 			let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
 
@@ -87,6 +92,10 @@ class IconSet: ObservableObject, Identifiable {
 
 		$iconsBackground
 			.sink(receiveValue: self.iconsBackgroundChanged(value:))
+			.store(in: &cancellables)
+		
+		$iconsTint
+			.sink(receiveValue: self.iconsTintChanged(value:))
 			.store(in: &cancellables)
 		
 		$iconsSize
@@ -101,7 +110,7 @@ extension IconSet {
 	func isValid() -> Bool {
 		return UUID != ""
 	}
-	
+
 	func lock() {
 		isLocked = true
 	}
@@ -123,13 +132,20 @@ extension IconSet {
 		}
 	}
 	
+	func iconsTintChanged(value: Color) {
+		let editing = icons.filter { $0.editing }
+		editing.forEach { icon in
+			icon.tint = value
+		}
+	}
+	
 	func iconsSizeChanged(value: Double) {
 		let editing = icons.filter { $0.editing }
 		editing.forEach { icon in
 			icon.size = value
 		}
 	}
-	
+
 	func toggleLabels() {
 		self.showLabels = !self.showLabels
 		
@@ -146,6 +162,11 @@ extension IconSet {
 		}
 	}
 	
+	/// Returns an array of Icons that are editing and selected
+	var editing: [Icon] {
+		selected.filter { $0.editing }
+	}
+
 	func clearEditing() {
 		icons.forEach { icon in
 			icon.editing = false
@@ -218,10 +239,13 @@ extension IconSet {
 		title: "Dotty",
 		group: "icon-set-dotty",
 		UUID: "E58F53CD-CA0C-424C-BADA-C1CA434D7A9D",
-		isLocked: true,
+		// TODO: set to locked
+//		isLocked: true,
+		isLocked: false,
 		options: [
 			"icon-background": Color.white,
-			"background": Color.gray
+			"background": Color.gray,
+			"default-scale": 0.9
 		]
 	)
 

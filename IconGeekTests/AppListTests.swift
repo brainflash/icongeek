@@ -35,4 +35,14 @@ class AppListTests: XCTestCase {
 		}
 	}
 	
+
+	func testForUniqueTargetAppIDs() throws {
+		var appIDs: [String:AppData] = [:]
+		AppList.all.forEach { app in
+			let existing: AppData? = appIDs[app.targetAppID]
+			XCTAssert(existing == nil, "🔴 targetAppID exists already (\(existing!.name) / \(app.name) - \(existing!.targetAppID))")
+			appIDs[app.targetAppID] = app
+		}
+	}
+	
 }

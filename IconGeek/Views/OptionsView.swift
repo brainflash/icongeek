@@ -14,43 +14,70 @@ struct OptionsView: View {
 
 	@Binding var showLabels: Bool
 	@Binding var iconsBackground: Color
+	@Binding var iconsTint: Color
 	@Binding var iconsSize: Double
 
+	@State private var multiSelect = false
 	@State private var showingColorPicker = false
 	
 	var body: some View {
 		VStack {
 			Group {
-				Button(action: { iconSet.toggleLabels() }) {
-					HStack {
-						VStack(alignment: .leading) {
-							Text("Show icon labels")
-								.bold()
-								.foregroundColor(.black)
-								.padding()
+				HStack {
+					Button(action: { iconSet.toggleLabels() }) {
+						HStack {
+							VStack(alignment: .leading) {
+								Text("Icon labels")
+									.bold()
+									.foregroundColor(.black)
+									.padding()
+							}
+							
+							Spacer()
+							
+							Toggle("Icon Labels", isOn: $showLabels)
+								.frame(width: 50)
+								.padding(2)
+								.aspectRatio(contentMode: .fit)
+								.background(Color.lightGrey)
 						}
-						
-						Spacer()
-						
-						Toggle("Show Icon Labels", isOn: $showLabels)
-							.frame(width: 50)
-							.padding(2)
-							.aspectRatio(contentMode: .fit)
-							.background(Color.lightGrey)
+						.frame(height: 50)
 					}
-					.frame(height: 50)
+					.buttonStyle(PlainButtonStyle())
+					.toggleStyle(OptionsToggleStyle())
+					.background(Color.lightGrey)
+					.cornerRadius(10)
+					
+					Button(action: { multiSelect.toggle() }) {
+						HStack {
+							VStack(alignment: .leading) {
+								Text("Multi-select")
+									.bold()
+									.foregroundColor(.black)
+									.padding()
+							}
+							
+							Spacer()
+							
+							Toggle("Multi-select", isOn: $multiSelect)
+								.frame(width: 50)
+								.padding(2)
+								.aspectRatio(contentMode: .fit)
+								.background(Color.lightGrey)
+						}
+						.frame(height: 50)
+					}
+					.buttonStyle(PlainButtonStyle())
+					.toggleStyle(OptionsToggleStyle())
+					.background(Color.lightGrey)
+					.cornerRadius(10)
 				}
-				.buttonStyle(PlainButtonStyle())
-				.toggleStyle(OptionsToggleStyle())
-				.background(Color.lightGrey)
-				.cornerRadius(10)
-
 				HStack {
 					ColorPicker(selection: $iconsBackground, supportsOpacity: false, label: {
 						Label {
 						} icon: {
 							HStack {
-								Text("Background color")
+								Text("Background")
 									.bold()
 									.foregroundColor(.black)
 								
@@ -77,10 +104,45 @@ struct OptionsView: View {
 						.labelStyle(IconOnlyLabelStyle())
 					})
 					.padding()
+					.frame(height: 50)
+					.background(Color.lightGrey)
+					.cornerRadius(10)
+
+					ColorPicker(selection: $iconsTint, supportsOpacity: false, label: {
+						Label {
+						} icon: {
+							HStack {
+								Text("Tint color")
+									.bold()
+									.foregroundColor(.black)
+								
+								Spacer()
+								Spacer()
+
+								// Undo/reset button
+//								Button(action: {
+//									// TODO: undo action
+//									print("Undo button pressed")
+//								}) {
+//									Image(systemName: "arrow.counterclockwise")
+//										.font(.title3)
+//										.foregroundColor(.black)
+//								}
+								
+								Spacer()
+
+//							Circle()
+//								.fill(iconsBackground)
+							}
+							.contentShape(Rectangle())
+						}
+						.labelStyle(IconOnlyLabelStyle())
+					})
+					.padding()
+					.frame(height: 50)
+					.background(Color.lightGrey)
+					.cornerRadius(10)
 				}
-				.frame(height: 50)
-				.background(Color.lightGrey)
-				.cornerRadius(10)
 				
 				// Scale slider - TODO
 				HStack {
@@ -142,12 +204,14 @@ struct OptionsView_Previews: PreviewProvider {
 	static var iconSet = IconSet.iconSet1
 	static var showLabels = Binding<Bool>.constant(true)
 	static var iconsBackground = Binding<Color>.constant(.white)
+	static var iconsTint = Binding<Color>.constant(.pink)
 	static var iconsSize = Binding<Double>.constant(1.0)
 
     static var previews: some View {
 		OptionsView(iconSet: iconSet,
 					showLabels: showLabels,
 					iconsBackground: iconsBackground,
+					iconsTint: iconsTint,
 					iconsSize: iconsSize)
     }
 }

@@ -14,6 +14,7 @@ class Icon: ObservableObject, Identifiable {
 	@Published var editing: Bool = false
 	@Published var labelStyle: LabelStyle = .normal
 	@Published var background: Color = .white
+	@Published var tint: Color = .black
 	@Published var size: Double = 1.0
 	var cancellables = Set<AnyCancellable>()
 	
@@ -51,7 +52,7 @@ class Icon: ObservableObject, Identifiable {
 	}
 	
 	func backgroundChanged(value: Color) {
-		print ("Color changed")
+//		print ("Color changed")
 		
 //		self.background = value
 	}
@@ -66,10 +67,11 @@ class Icon: ObservableObject, Identifiable {
 // MARK: - Icon API
 
 extension Icon {
-	static func allWithGroup(_ group: String, background: Color) -> [Icon] {
+	static func allWithGroup(_ group: String, background: Color, scale: Double) -> [Icon] {
 		var icons: [Icon] = []
 		AppList.all.forEach { (app) in
 			let icon = Icon(app, group: group, background: background)
+			icon.size = scale
 			let iconExists = icon.imageExists
 			// Added a unit test: IconSetTest.testIconSetIconsExist which outputs the missing icon names to the console
 //			if !iconExists {
