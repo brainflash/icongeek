@@ -71,10 +71,12 @@ struct IconView: View {
 	
 	var image: some View {
 		GeometryReader { geo in
+			let renderingMode: Image.TemplateRenderingMode = icon.tint != nil ? .template : .original
+			
 			icon.image
 				.resizable()
-				.renderingMode(.template)
-				.foregroundColor(icon.tint)
+				.renderingMode(renderingMode)
+				.foregroundColor(icon.tint ?? nil)
 				.aspectRatio(contentMode: .fill)
 				.frame(width: geo.size.width, height: geo.size.height)
 				.scaleEffect(icon.scale)

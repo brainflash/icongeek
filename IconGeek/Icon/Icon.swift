@@ -14,7 +14,7 @@ class Icon: ObservableObject, Identifiable {
 	@Published var editing: Bool = false
 	@Published var labelStyle: LabelStyle = .normal
 	@Published var background: Color = .white
-	@Published var tint: Color = .black
+	@Published var tint: Color? = nil
 	@Published var size: Double = 1.0
 	var cancellables = Set<AnyCancellable>()
 	

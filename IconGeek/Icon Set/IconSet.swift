@@ -40,6 +40,7 @@ class IconSet: ObservableObject, Identifiable {
 		var backgroundColor: Color = Color.appBackground
 		var iconBackground: Color = Color.iconBackground
 		var tintColor: Color = Color.white
+		var supportsTint: Bool = true
 		var defaultScale: Double = 1.0
 	}
 	var display = IconSetOptions()
@@ -58,7 +59,8 @@ class IconSet: ObservableObject, Identifiable {
 		self.display.backgroundColor = iconSet.options["background"] as? Color ?? Color.appBackground
 		self.display.iconBackground = iconSet.options["icon-background"] as? Color ?? Color.iconBackground
 		self.display.tintColor = iconSet.options["tint"] as? Color ?? Color.appTint
-		self.display.defaultScale = self.options["default-scale"] as? Double ?? 1.0
+		self.display.supportsTint = iconSet.options["supportsTint"] as? Bool ?? true
+		self.display.defaultScale = iconSet.options["default-scale"] as? Double ?? 1.0
 		self.icons = icons
 		self.icons.forEach({
 			let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
@@ -81,6 +83,7 @@ class IconSet: ObservableObject, Identifiable {
 		self.display.iconBackground = self.options["icon-background"] as? Color ?? Color.iconBackground
 		self.display.defaultScale = self.options["default-scale"] as? Double ?? 1.0
 		self.display.tintColor = self.options["tint"] as? Color ?? Color.appTint
+		self.display.supportsTint = self.options["supportsTint"] as? Bool ?? true
 		self.icons = Icon.allWithGroup(group, background: self.display.iconBackground, scale: self.display.defaultScale)
 		self.icons.forEach({
 			let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
@@ -195,7 +198,10 @@ extension IconSet {
 		title: "Cute Color",
 		group: "icon-set-cutecolor",
 		UUID: "01832E06-B08F-4935-A916-0A2AD7B81BE5",
-		isLocked: false
+		isLocked: false,
+		options: [
+			"supportsTint" : false
+		]
 	)
 	
 	// MARK: - Icon sets for purchase

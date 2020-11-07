@@ -11,6 +11,7 @@
 		183990110707A291268AC5C9 /* libPods-IconGeekTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DF2DB5694F7D965A0F8F3D /* libPods-IconGeekTests.a */; };
 		56B3FCB09BEEF4862B6F05F8 /* libPods-IconGeek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 995433D291668EF860D06313 /* libPods-IconGeek.a */; };
 		CD308BB22551D3FC00F361CD /* CustomizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD308BB12551D3FC00F361CD /* CustomizeView.swift */; };
+		CD47CEC825561E920059BA95 /* AppModel+Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9785CF25540E37005D879B /* AppModel+Templates.swift */; };
 		CD69E06F254C322400FD8C8C /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CD69E06E254C322400FD8C8C /* PartialSheet */; };
 		CD69E07B254CBE5400FD8C8C /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD69E07A254CBE5400FD8C8C /* OptionsView.swift */; };
 		CD7C0EEC25435FF600CB62DC /* IconGeekApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0EEB25435FF600CB62DC /* IconGeekApp.swift */; };
@@ -579,6 +580,7 @@
 				CD9104CC254DBD25006CAA98 /* AppModel+MobileConfig.swift in Sources */,
 				CD9104C8254DBD11006CAA98 /* AppModel.swift in Sources */,
 				CD8D01CE254A06E000D47459 /* AppListTests.swift in Sources */,
+				CD47CEC825561E920059BA95 /* AppModel+Templates.swift in Sources */,
 				CD8D029A254B1A8300D47459 /* IconSet.swift in Sources */,
 				CD9104D4254DBD49006CAA98 /* AppNotifications.swift in Sources */,
 				CD7C0FD7254823E500CB62DC /* IconTests.swift in Sources */,

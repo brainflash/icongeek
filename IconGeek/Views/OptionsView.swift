@@ -108,40 +108,42 @@ struct OptionsView: View {
 					.background(Color.lightGrey)
 					.cornerRadius(10)
 
-					ColorPicker(selection: $iconsTint, supportsOpacity: false, label: {
-						Label {
-						} icon: {
-							HStack {
-								Text("Tint color")
-									.bold()
-									.foregroundColor(.black)
-								
-								Spacer()
-								Spacer()
+					if iconSet.display.supportsTint {
+						ColorPicker(selection: $iconsTint, supportsOpacity: false, label: {
+							Label {
+							} icon: {
+								HStack {
+									Text("Tint color")
+										.bold()
+										.foregroundColor(.black)
+									
+									Spacer()
+									Spacer()
 
-								// Undo/reset button
-//								Button(action: {
-//									// TODO: undo action
-//									print("Undo button pressed")
-//								}) {
-//									Image(systemName: "arrow.counterclockwise")
-//										.font(.title3)
-//										.foregroundColor(.black)
-//								}
-								
-								Spacer()
+									// Undo/reset button
+//									Button(action: {
+//										// TODO: undo action
+//										print("Undo button pressed")
+//									}) {
+//										Image(systemName: "arrow.counterclockwise")
+//											.font(.title3)
+//											.foregroundColor(.black)
+//									}
+									
+									Spacer()
 
-//							Circle()
-//								.fill(iconsBackground)
+//								Circle()
+//									.fill(iconsBackground)
+								}
+								.contentShape(Rectangle())
 							}
-							.contentShape(Rectangle())
-						}
-						.labelStyle(IconOnlyLabelStyle())
-					})
-					.padding()
-					.frame(height: 50)
-					.background(Color.lightGrey)
-					.cornerRadius(10)
+							.labelStyle(IconOnlyLabelStyle())
+						})
+						.padding()
+						.frame(height: 50)
+						.background(Color.lightGrey)
+						.cornerRadius(10)
+					}
 				}
 				
 				// Scale slider - TODO
