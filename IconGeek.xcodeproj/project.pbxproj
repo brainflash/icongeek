@@ -316,8 +316,8 @@
 			children = (
 				CD7C0F80254719E200CB62DC /* AppModel.swift */,
 				CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */,
-				CD8D026E254A3B7900D47459 /* Store.swift */,
 				CD9785CF25540E37005D879B /* AppModel+Templates.swift */,
+				CD8D026E254A3B7900D47459 /* Store.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

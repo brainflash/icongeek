@@ -182,11 +182,11 @@ extension IconSet {
 extension IconSet {
 	static let all: [IconSet] = [
 		.iconSetFree1,	// Cute Color
-		.iconSet1,		// Doodle
-		.iconSet2,		// Gradient Line
-		.iconSet3,		// Line
+//		.iconSet1,		// Doodle
+//		.iconSet2,		// Gradient Line
+//		.iconSet3,		// Line
 		.iconSet4,		// Dotty
-//		.iconSet5		//
+		.iconSet5		// Font Awesome
 	]
 	
 	static let defaultSet: IconSet = .iconSet1
@@ -252,6 +252,21 @@ extension IconSet {
 			"icon-background": Color.white,
 			"background": Color.gray,
 			"default-scale": 0.9
+		]
+	)
+	
+	static let iconSet5 = IconSet(
+		id: "app.icongeek.iconset5",
+		title: "Font Awesome",
+		group: "icon-set-fontawesome",
+		UUID: "CCEA19B5-BC1A-4629-AAF0-E113B52385FB",
+		// TODO: set to locked
+//		isLocked: true,
+		isLocked: false,
+		options: [
+			"icon-background": Color.white,
+			"background": Color.gray
+//			"default-scale": 0.9
 		]
 	)
 
