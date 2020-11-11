@@ -10,8 +10,11 @@ import Combine
 
 class Icon: ObservableObject, Identifiable {
 	// User variables
-	@Published var selected: Bool = false
-	@Published var editing: Bool = false
+	// TODO: default values for these two should be false
+//	@Published var selected: Bool = false
+//	@Published var editing: Bool = false
+	@Published var selected: Bool = true
+	@Published var editing: Bool = true
 	@Published var labelStyle: LabelStyle = .normal
 	@Published var background: Color = .white
 	@Published var tint: Color? = nil

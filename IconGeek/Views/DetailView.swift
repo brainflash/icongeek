@@ -23,6 +23,7 @@ struct DetailView: View {
 	@State private var errorTitle = ""
 	@State private var errorMessage = ""
 	@State var selected: Icon?
+	@State var multiSelect = true
 	
 	@ObservedObject var iconSet: IconSet
 	
@@ -71,21 +72,54 @@ struct DetailView: View {
 		.frame(maxWidth: .infinity)
 	}
 
+	var selectionButtons: some View {
+		HStack {
+			Text("Select:")
+				.font(.headline)
+				.bold()
+				.padding(4)
+			
+			Button(action: { iconSet.selectAll(selected: true) }) {
+				Text("All")
+					.font(.headline)
+					.bold()
+			}
+			.padding(4)
+
+			Button(action: { iconSet.selectAll(selected: false) }) {
+				Text("None")
+					.font(.headline)
+					.bold()
+			}
+			.padding(4)
+			
+			Button(action: { iconSet.invertSelection() }) {
+				Text("Invert")
+					.font(.headline)
+					.bold()
+			}
+			.padding(4)
+
+		}
+	}
+	
     var body: some View {
 		ZStack {
 			VStack(alignment: .leading, spacing: 16) {
 
 				NavigationLink(destination: CustomizeView(iconSet), isActive: $isShowingCustomizeView) { EmptyView() }
+				
+				selectionButtons
 
 				HStack(alignment: .top) {
 					if iconSet.isLocked {
 						ZStack {
-							IconSetView(iconSet: iconSet, iconMode: .selecting)
+							IconSetView(iconSet: iconSet, iconMode: .selecting, viewBackground: $iconSet.viewBackground)
 								.overlay(UnlockPanel(iconSet: iconSet), alignment: .bottom)
 						}
 					} else {
 						VStack {
-							IconSetView(iconSet: iconSet, iconMode: .selecting)
+							IconSetView(iconSet: iconSet, iconMode: .selecting, viewBackground: $iconSet.viewBackground)
 						
 							nextStepButton
 						}

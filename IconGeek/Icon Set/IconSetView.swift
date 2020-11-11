@@ -27,7 +27,15 @@ struct IconSetView: View {
 	
 	@ObservedObject var iconSet: IconSet = IconSet.iconSet1
 	@State var iconMode: IconView.Mode
+	@Binding var viewBackground: Color
 	
+	var selectionMode: SelectionMode = .multiple
+
+	enum SelectionMode {
+		case single
+		case multiple
+	}
+		
 	var body: some View {
 		ZStack {
 			ScrollView {
@@ -35,7 +43,7 @@ struct IconSetView: View {
 			}
 			.clipped()
 		}
-		.background(iconSet.display.backgroundColor)
+		.background(viewBackground)
 	}
 	
 	var content: some View {
@@ -58,9 +66,20 @@ struct IconSetView: View {
 	}
 }
 
+// MARK: - API
+extension IconSetView {
+	mutating func setMultiSelect(multi: Bool) {
+		iconSet.multiSelect = multi
+		self.selectionMode = (multi == true ? .multiple : .single)
+	}
+}
+
 // MARK: - Previews
 struct IconSetView_Previews: PreviewProvider {
+	static var multiSelect = Binding<Bool>.constant(true)
+	static var viewBackground = Binding<Color>.constant(Color.white)
+
     static var previews: some View {
-		IconSetView(iconMode: .selecting)
+		IconSetView(iconMode: .selecting, viewBackground: viewBackground)
     }
 }

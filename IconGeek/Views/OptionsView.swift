@@ -13,6 +13,7 @@ struct OptionsView: View {
 	@ObservedObject var iconSet: IconSet
 
 	@Binding var showLabels: Bool
+	@Binding var viewBackground: Color
 	@Binding var iconsBackground: Color
 	@Binding var iconsTint: Color
 	@Binding var iconsSize: Double
@@ -24,6 +25,25 @@ struct OptionsView: View {
 		VStack {
 			Group {
 				HStack {
+					// View background
+					ColorPicker(selection: $iconSet.viewBackground, supportsOpacity: false, label: {
+						Label {
+						} icon: {
+							HStack {
+								Text("Background")
+									.bold()
+									.foregroundColor(.black)
+							}
+							.contentShape(Rectangle())
+						}
+						.labelStyle(IconOnlyLabelStyle())
+					})
+					.padding()
+					.frame(height: 50)
+					.background(Color.lightGrey)
+					.cornerRadius(10)
+					
+					// Icon labels
 					Button(action: { iconSet.toggleLabels() }) {
 						HStack {
 							VStack(alignment: .leading) {
@@ -48,31 +68,32 @@ struct OptionsView: View {
 					.background(Color.lightGrey)
 					.cornerRadius(10)
 					
-					Button(action: { multiSelect.toggle() }) {
-						HStack {
-							VStack(alignment: .leading) {
-								Text("Multi-select")
-									.bold()
-									.foregroundColor(.black)
-									.padding()
-							}
-							
-							Spacer()
-							
-							Toggle("Multi-select", isOn: $multiSelect)
-								.frame(width: 50)
-								.padding(2)
-								.aspectRatio(contentMode: .fit)
-								.background(Color.lightGrey)
-						}
-						.frame(height: 50)
-					}
-					.buttonStyle(PlainButtonStyle())
-					.toggleStyle(OptionsToggleStyle())
-					.background(Color.lightGrey)
-					.cornerRadius(10)
+//					Button(action: { multiSelect.toggle() }) {
+//						HStack {
+//							VStack(alignment: .leading) {
+//								Text("Multi-select")
+//									.bold()
+//									.foregroundColor(.black)
+//									.padding()
+//							}
+//
+//							Spacer()
+//
+//							Toggle("Multi-select", isOn: $multiSelect)
+//								.frame(width: 50)
+//								.padding(2)
+//								.aspectRatio(contentMode: .fit)
+//								.background(Color.lightGrey)
+//						}
+//						.frame(height: 50)
+//					}
+//					.buttonStyle(PlainButtonStyle())
+//					.toggleStyle(OptionsToggleStyle())
+//					.background(Color.lightGrey)
+//					.cornerRadius(10)
 				}
 				HStack {
+					// Icons background
 					ColorPicker(selection: $iconsBackground, supportsOpacity: false, label: {
 						Label {
 						} icon: {
@@ -80,24 +101,6 @@ struct OptionsView: View {
 								Text("Background")
 									.bold()
 									.foregroundColor(.black)
-								
-								Spacer()
-								Spacer()
-
-								// Undo/reset button
-//								Button(action: {
-//									// TODO: undo action
-//									print("Undo button pressed")
-//								}) {
-//									Image(systemName: "arrow.counterclockwise")
-//										.font(.title3)
-//										.foregroundColor(.black)
-//								}
-								
-								Spacer()
-
-//							Circle()
-//								.fill(iconsBackground)
 							}
 							.contentShape(Rectangle())
 						}
@@ -108,6 +111,7 @@ struct OptionsView: View {
 					.background(Color.lightGrey)
 					.cornerRadius(10)
 
+					// Icon tint
 					if iconSet.display.supportsTint {
 						ColorPicker(selection: $iconsTint, supportsOpacity: false, label: {
 							Label {
@@ -205,6 +209,7 @@ struct OptionsToggleStyle: ToggleStyle {
 struct OptionsView_Previews: PreviewProvider {
 	static var iconSet = IconSet.iconSet1
 	static var showLabels = Binding<Bool>.constant(true)
+	static var viewBackground = Binding<Color>.constant(.lightGrey)
 	static var iconsBackground = Binding<Color>.constant(.white)
 	static var iconsTint = Binding<Color>.constant(.pink)
 	static var iconsSize = Binding<Double>.constant(1.0)
@@ -212,6 +217,7 @@ struct OptionsView_Previews: PreviewProvider {
     static var previews: some View {
 		OptionsView(iconSet: iconSet,
 					showLabels: showLabels,
+					viewBackground: viewBackground,
 					iconsBackground: iconsBackground,
 					iconsTint: iconsTint,
 					iconsSize: iconsSize)

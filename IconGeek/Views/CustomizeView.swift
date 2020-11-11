@@ -14,15 +14,18 @@ struct CustomizeView: View {
 	@EnvironmentObject private var sheetManager: PartialSheetManager
 
 	@ObservedObject var iconSet: IconSet
-	
-	@State private var isHelpPresented = false
+
+	@State private var viewBackground = Binding<Color>.constant(Color.white)
+ 	@State private var isHelpPresented = false
 	@State private var isShowingDownloadConfig = false
 	@State private var isShowingAlert = false
+	@State private var isPreviewShowing = false
 
-	@State private var helpText: String = "Select any icons that you wish to customize by tapping on them.\n\nTap the 'Add to home screen' button when ready."
+	@State private var helpText: String = "Select the icons that you wish to customize, either by tapping on them or using the Select All, None and Invert buttons. A panel will appear with customization options.\n\nTap the 'Add to home screen' button when ready."
 	@State private var errorTitle = ""
 	@State private var errorMessage = ""
 
+	@State var multiSelect = true
 	@State var showLabels = true
 	@State var bgColor = Color.white
 	
@@ -50,6 +53,33 @@ struct CustomizeView: View {
 		}
 	}
 	
+	var multiSelectToggle: some View {
+		Button(action: { iconSet.editMultiSelect(multi: !iconSet.multiSelect) }) {
+			HStack {
+				VStack(alignment: .leading) {
+					Text("Multi-select")
+						.bold()
+						.foregroundColor(.black)
+						.padding()
+				}
+				
+				Spacer()
+				
+				Toggle("Multi-select", isOn: $iconSet.multiSelect)
+					.frame(width: 50)
+					.padding(2)
+					.aspectRatio(contentMode: .fit)
+					.background(Color.lightGrey)
+			}
+			.frame(height: 50)
+		}
+		.buttonStyle(PlainButtonStyle())
+		.toggleStyle(OptionsToggleStyle())
+		.background(Color.lightGrey)
+		.cornerRadius(10)
+		.frame(width: 100)
+	}
+	
 	var addToHomeButton: some View {
 		Button(action: { addToHomeScreen() }) {
 			Text("Add to home screen")
@@ -72,38 +102,109 @@ struct CustomizeView: View {
 		.frame(maxWidth: .infinity)
 	}
 	
+	var previewButton: some View {
+		Button(action: { self.isPreviewShowing = true }) {
+			Text("Preview")
+				.font(.headline)
+				.bold()
+				.padding(.horizontal, 16)
+				.padding(.vertical, 16)
+				.contentShape(Capsule())
+				.foregroundColor(Color.white)
+				.background(Color.black)
+		}
+		.accessibility(label: Text("Preview"))
+		.cornerRadius(20)
+		.overlay(
+			Capsule()
+				.stroke(iconSet.display.tintColor, lineWidth: 6)
+		)
+		.padding(.vertical, 20)
+		.padding(.horizontal, 16)
+//		.frame(maxWidth: .infinity)
+		.frame(width: 400)
+	}
+	
+	var selectionButtons: some View {
+		HStack {
+			Text("Select:")
+				.font(.headline)
+				.bold()
+				.padding(4)
+			
+			Button(action: { iconSet.editSelectAll(editing: true) }) {
+				Text("All")
+					.font(.headline)
+					.bold()
+			}
+			.padding(4)
+
+			Button(action: { iconSet.editSelectAll(editing: false) }) {
+				Text("None")
+					.font(.headline)
+					.bold()
+			}
+			.padding(4)
+			
+			Button(action: { iconSet.editInvertSelection() }) {
+				Text("Invert")
+					.font(.headline)
+					.bold()
+			}
+			.padding(4)
+
+		}
+	}
+	
     var body: some View {
-			VStack(alignment: .leading, spacing: 16) {
-				NavigationLink(destination: DownloadConfigView(mobileConfigUUID ?? UUID()), isActive: $isShowingDownloadConfig) { EmptyView() }
+		VStack(alignment: .leading, spacing: 16) {
+			NavigationLink(destination: PreviewIconsView(iconSet: iconSet), isActive: $isPreviewShowing) { EmptyView() }
+
+			HStack {
+				selectionButtons
 				
-				let selectedIcons = IconSet(iconSet: iconSet, icons: iconSet.selected)
-				IconSetView(iconSet: selectedIcons, iconMode: .editing)
+//				Spacer()
 
-				HStack(alignment: .bottom) {
-					VStack {
-						// TODO: need to select the first icon in iconset
+//				multiSelectToggle
+			}
+			
+			let selectedIcons = IconSet(iconSet: iconSet, icons: iconSet.selected)
+			IconSetView(iconSet: selectedIcons, iconMode: .editing, viewBackground: $iconSet.viewBackground)
+
+			HStack(alignment: .bottom) {
+				VStack {
+					let editing = iconSet.editing
+					if editing.count > 0 {
+						OptionsView(iconSet: iconSet,
+									showLabels: $showLabels,
+									viewBackground: $iconSet.viewBackground,
+									iconsBackground: $iconSet.iconsBackground,
+									iconsTint: $iconSet.iconsTint,
+									iconsSize: $iconSet.iconsSize)
+					}
+
+					HStack {
+						Spacer()
 						
-//						let editing = iconSet.editing
-//						if editing.count > 0 {
-							OptionsView(iconSet: iconSet,
-										showLabels: $showLabels,
-										iconsBackground: $iconSet.iconsBackground,
-										iconsTint: $iconSet.iconsTint,
-										iconsSize: $iconSet.iconsSize)
-//						}
-
 						addToHomeButton
+						
+						previewButton
+						
+						Spacer()
 					}
 				}
 			}
+		}
 		.navigationTitle("Customize your icons").font(.subheadline)
 		.navigationBarItems(trailing: HStack { helpButton })
 		.alert(isPresented: $isShowingAlert) {
 			Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
 		}
+		.onAppear() {
+			iconSet.editSelectAll(editing: true)
+		}
 		.onDisappear() {
-			print("CustomizeView onDisappear")
-			iconSet.clearEditing()
+			iconSet.editSelectAll(editing: false)
 		}
 		.onReceive(pub) { obj in
 			if let userInfo = obj.userInfo {

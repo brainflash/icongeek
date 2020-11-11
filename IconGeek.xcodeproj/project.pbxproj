@@ -62,6 +62,7 @@
 		CD9785D025540E37005D879B /* AppModel+Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9785CF25540E37005D879B /* AppModel+Templates.swift */; };
 		CD9785DB2554C642005D879B /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9785DA2554C642005D879B /* SafariView.swift */; };
 		CD9785E32554C918005D879B /* SafariBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9785E22554C918005D879B /* SafariBrowserView.swift */; };
+		CDD810C6255BF85600BB0739 /* PreviewIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD810C5255BF85600BB0739 /* PreviewIconsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		CD9785CF25540E37005D879B /* AppModel+Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppModel+Templates.swift"; sourceTree = "<group>"; };
 		CD9785DA2554C642005D879B /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		CD9785E22554C918005D879B /* SafariBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariBrowserView.swift; sourceTree = "<group>"; };
+		CDD810C5255BF85600BB0739 /* PreviewIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewIconsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 		CD7C0EEA25435FF600CB62DC /* IconGeek */ = {
 			isa = PBXGroup;
 			children = (
+				CDD810C0255BF3A700BB0739 /* Resources */,
 				CD7C0EEB25435FF600CB62DC /* IconGeekApp.swift */,
 				CD7C0F3225449AB600CB62DC /* App Support */,
 				CD7C0F7F254719C300CB62DC /* Model */,
@@ -267,6 +270,7 @@
 				CD7C0EED25435FF600CB62DC /* ContentView.swift */,
 				CD97859625534DD8005D879B /* Product View */,
 				CD308BB12551D3FC00F361CD /* CustomizeView.swift */,
+				CDD810C5255BF85600BB0739 /* PreviewIconsView.swift */,
 				CD97858D2552F6BF005D879B /* HelpView.swift */,
 				CD69E07A254CBE5400FD8C8C /* OptionsView.swift */,
 				CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */,
@@ -346,6 +350,21 @@
 				CD8D027E254AFE7400D47459 /* UnlockButton.swift */,
 			);
 			name = "Product View";
+			sourceTree = "<group>";
+		};
+		CDD810C0255BF3A700BB0739 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CDD810C1255BF3AD00BB0739 /* FontAwesome */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CDD810C1255BF3AD00BB0739 /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FontAwesome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -534,6 +553,7 @@
 			files = (
 				CD7C0FCA254820D200CB62DC /* VisualEffectBlur.swift in Sources */,
 				CD97858E2552F6BF005D879B /* HelpView.swift in Sources */,
+				CDD810C6255BF85600BB0739 /* PreviewIconsView.swift in Sources */,
 				CD8A7E982548A5400042FC6E /* AppConfig.swift in Sources */,
 				CD7C0F9F25472F3900CB62DC /* AppNotifications.swift in Sources */,
 				CD69E07B254CBE5400FD8C8C /* OptionsView.swift in Sources */,
@@ -751,7 +771,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Icon Geek Development";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -776,7 +796,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Icon Geek Distribution";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

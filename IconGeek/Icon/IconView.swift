@@ -15,6 +15,7 @@ struct IconView: View {
 	enum Mode {
 		case selecting
 		case editing
+		case preview
 	}
 	
 	// iconSize returns larger size when selecting. When editing the size should match the home screen icon size,
@@ -23,6 +24,7 @@ struct IconView: View {
 		switch mode {
 		case .selecting:	return 72.0
 		case .editing: 		return 60.0
+		case .preview: 		return 60.0
 		}
 	}
 	
@@ -30,10 +32,13 @@ struct IconView: View {
 		ZStack {
 			VStack {
 				Button(action: {
-					if mode == .selecting {
+					switch mode {
+					case .selecting:
 						icon.toggleSelected()
-					} else {
+					case .editing:
 						icon.toggleEditing()
+					case .preview:
+						break
 					}
 				}) {
 					image
@@ -52,11 +57,13 @@ struct IconView: View {
 				.disabled(iconSet.isLocked)
 				.padding(8)
 
-				Text(icon.name)
-					.font(.caption)
-					.foregroundColor(iconSet.display.foregroundColor)
-					.bold()
-					.padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
+				if mode != .preview {
+					Text(icon.name)
+						.font(.caption)
+						.foregroundColor(iconSet.display.foregroundColor)
+						.bold()
+						.padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
+				}
 			}
 			
 			if mode == .editing && icon.editing {

@@ -16,10 +16,13 @@ class IconSet: ObservableObject, Identifiable {
 	@Published var isLocked = false
 	@Published var labelStyle = Icon.LabelStyle.normal
 	@Published var showLabels = true
-	
-	/// The user-chosen colour that will be applied to the background of generated icons
+	@Published var multiSelect = true
+
+	/// The user-chosen colour for the preview background
+	@Published var viewBackground: Color = Color.appBackground
+	/// The user-chosen colour that will be applied to the icon background
 	@Published var iconsBackground: Color = .white
-	/// The user-chosen colour that will be applied to the icon image of generated icons
+	/// The user-chosen colour that will be applied to the icon image/foreground
 	@Published var iconsTint: Color = .black
 
 	/// The user-chosen scale of the icon
@@ -69,6 +72,12 @@ class IconSet: ObservableObject, Identifiable {
 			// otherwise the sink subscription gets cancelled
 			self.cancellables.append(c)
 		})
+
+//		let observables = icons.map { $0.objectWillChange }
+//		
+//		Publishers.MergeMany(observables)
+//			.sink(receiveValue: self.objectWillChange.send)
+//			.store(in: &cancellables)
 	}
 	
 	init(id: String, title: String, group: String, UUID: String, isLocked: Bool, options: Dictionary<String, Any>? = nil) {
@@ -104,6 +113,16 @@ class IconSet: ObservableObject, Identifiable {
 		$iconsSize
 			.sink(receiveValue: self.iconsSizeChanged(value:))
 			.store(in: &cancellables)
+		
+		$icons
+			.sink(receiveValue: self.iconChanged(value:))
+			.store(in: &cancellables)
+
+//		let observables = icons.map { $0.objectWillChange }
+//
+//		Publishers.MergeMany(observables)
+//			.sink(receiveValue: self.objectWillChange.send)
+//			.store(in: &cancellables)
 	}
 }
 
@@ -148,6 +167,10 @@ extension IconSet {
 			icon.size = value
 		}
 	}
+	
+	func iconChanged(value: [Icon]) {
+		print("icon changed")
+	}
 
 	func toggleLabels() {
 		self.showLabels = !self.showLabels
@@ -155,6 +178,43 @@ extension IconSet {
 		let editing = icons.filter { $0.editing }
 		editing.forEach { icon in
 			icon.labelStyle = showLabels ? .normal : .none
+		}
+	}
+	
+	// MARK: - selection and editing modes
+	func editMultiSelect(multi: Bool) {
+		if multi == false {
+			let first = self.editing.first
+			self.editSelectAll(editing: false)
+			first?.editing = true
+		}
+	}
+
+	// MARK: - selection and editing flags
+	
+	/// Set selected flag of all icons
+	func selectAll(selected: Bool) {
+		icons.forEach { icon in
+			icon.selected = selected
+		}
+	}
+	
+	func invertSelection() {
+		icons.forEach { icon in
+			icon.selected.toggle()
+		}
+	}
+
+	/// Set editing flag of all selected icons
+	func editSelectAll(editing: Bool) {
+		selected.forEach { icon in
+			icon.editing = editing
+		}
+	}
+	
+	func editInvertSelection() {
+		selected.forEach { icon in
+			icon.editing.toggle()
 		}
 	}
 	
@@ -168,12 +228,6 @@ extension IconSet {
 	/// Returns an array of Icons that are editing and selected
 	var editing: [Icon] {
 		selected.filter { $0.editing }
-	}
-
-	func clearEditing() {
-		icons.forEach { icon in
-			icon.editing = false
-		}
 	}
 }
 
