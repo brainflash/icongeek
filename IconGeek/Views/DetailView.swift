@@ -144,6 +144,7 @@ struct DetailView: View {
 			return
 		}
 
+		// TODO: support 'pre-rendered' icons. Pre-rendered icons don't have transparency, so limited options in Customize view (just icon labels on/off?)
 		isShowingCustomizeView = true
 	}
 

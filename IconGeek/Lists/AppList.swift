@@ -130,6 +130,7 @@ extension AppData {
 	// MARK: - Third party apps
 	static let amazon =			AppData(id: "amazon",			name: "Amazon",			targetAppID: "com.amazon.Amazon",				UUID: "A0273876-5214-444C-9988-E06A328A2574",	appURL: " ")
 //  amazon music
+//	chrome
 //	dribble
 //  dropbox
 	static let facebook = 		AppData(id: "facebook", 		name: "Facebook", 		targetAppID: "com.facebook.Facebook", 			UUID: "CCDDE505-9953-4F3E-AAE5-E4DCFFF83869", 	appURL: "fb://")
@@ -141,6 +142,7 @@ extension AppData {
 	static let instagram = 		AppData(id: "instagram",		name: "Instagram", 		targetAppID: "com.burbn.instagram", 			UUID: "658340D3-CFB0-4A4A-A47D-68C4F90348C2", 	appURL: " ")
 	static let kik = 			AppData(id: "kik", 				name: "Kik", 			targetAppID: "com.kik.chat", 					UUID: "71D52F2C-DE6A-496C-87DE-F18D4A1050EF", 	appURL: "kik://")
 	static let linkedIn =		AppData(id: "linkedin",			name: "LinkedIn",		targetAppID: "com.linkedin.LinkedIn",			UUID: "5FD2F0C5-0A82-4BDA-BF5D-2C243E5A57A7", 	appURL: " ")
+// Napster
 // Netflix
 	static let pinterest = 		AppData(id: "pinterest", 		name: "Pinterest", 		targetAppID: "pinterest", 						UUID: "1D9FF76A-C419-4243-B6EE-3FFE48C3B9DC", 	appURL: " ")
 	static let reddit = 		AppData(id: "reddit", 			name: "Reddit", 		targetAppID: "com.reddit.Reddit",				UUID: "BD904A52-764F-43A7-A2E0-E60D34485649", 	appURL: " ")
@@ -159,6 +161,17 @@ extension AppData {
 	static let youtubemusic = 	AppData(id: "youtubemusic",		name: "YouTube Music",	targetAppID: "com.google.ios.youtubemusic",		UUID: "0E224B91-5B1A-497D-84D2-2D8E9DD16D1C",	appURL: " ")
 //	waze
 //	zoom
+	// TODO: get the proper data for these ones:
+	static let zoom = 	AppData(id: "zoom",		name: "Zoom",	targetAppID: "app.icongeek",		UUID: "AE224B91-5B1A-497D-84D2-2D8E9DD16D1C",	appURL: " ")
+	static let shortcuts = 	AppData(id: "shortcuts",		name: "Shortcuts",	targetAppID: "app.icongeek",		UUID: "BE224B91-5B1A-497D-84D2-2D8E9DD16D1C",	appURL: " ")
+	static let jetpackjoyride = 	AppData(id: "jetpackjoyride",		name: "Jetpack Joyride",	targetAppID: "app.icongeek",		UUID: "CE224B91-5B1A-497D-84D2-2D8E9DD16D1C",	appURL: " ")
+	static let camera = 	AppData(id: "camera",		name: "Camera",	targetAppID: "app.icongeek",		UUID: "DE224B91-5B1A-497D-84D2-2D8E9DD16D1C",	appURL: " ")
+	static let health = 	AppData(id: "health",		name: "Health",	targetAppID: "app.icongeek",		UUID: "E18CC373-AC76-4DFB-A674-59A0D10A2A7E",	appURL: " ")
+	static let calculator = 	AppData(id: "calculator",		name: "Calculator",	targetAppID: "app.icongeek",		UUID: "FE9D4DDA-DE1C-4DA1-BA95-10A89D65B99B",	appURL: " ")
+	static let vimeo = 	AppData(id: "vimeo",		name: "Vimeo",	targetAppID: "app.icongeek",		UUID: "C08954FE-D280-4F5E-BBB7-E949B3F216B2",	appURL: " ")
+	static let safari = 	AppData(id: "safari",		name: "Safari",	targetAppID: "app.icongeek",		UUID: "9B520E82-27C0-4FA0-8FBE-F99B78D1FDDF",	appURL: " ")
+	static let notes = 	AppData(id: "notes",		name: "Notes",	targetAppID: "app.icongeek",		UUID: "40C4EFF6-B4E9-4A25-BC53-B0DE301AA7AC",	appURL: " ")
+
 	
 	// MARK: - Games
 	
@@ -201,8 +214,19 @@ extension AppList {
 		.youtube,
 		.youtubemusic,
 		
+		// TODO: these apps have dummy info, need to update
+		.shortcuts,
+		.zoom,
+		.jetpackjoyride,
+		.camera,
+		.health,
+		.calculator,
+		.vimeo,
+		.safari,
+		.notes,
+
 		// Games
-//		.amongus,
+		.amongus,
 //		.steve
 	]
 	

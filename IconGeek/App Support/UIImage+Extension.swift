@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreGraphics
 
 public extension UIImage {
 	/// Create a UIImage with solid color background with specified image overlaid
@@ -15,10 +16,12 @@ public extension UIImage {
 	/// - Parameter image: An image to draw over the background.
 	/// - Parameter scale: The scale at which to draw the image.
 	/// - Parameter tint: Tint color to be applied to the supplied image
+	/// - Parameter newSize: Created image will be at this new size
 	/// - Returns
 	/// 	UIImage
-	convenience init?(color: UIColor, image: UIImage, scale: CGFloat, tint: UIColor? = nil) {
-		let rect = CGRect(origin: .zero, size: image.size)
+	convenience init?(color: UIColor, image: UIImage, scale: CGFloat, tint: UIColor? = nil, newSize: CGSize? = nil) {
+		let newImageSize = newSize ?? image.size
+		let rect = CGRect(origin: .zero, size: newImageSize)
 		UIGraphicsBeginImageContextWithOptions(rect.size, false, 1.0)
 		color.setFill()
 		UIRectFill(rect)
@@ -26,9 +29,10 @@ public extension UIImage {
 		guard let context = UIGraphicsGetCurrentContext() else { return nil }
 		
 		UIGraphicsPushContext(context)
-		let imageSize = scale == 1.0 ? image.size : CGSize(width: image.size.width * scale, height: image.size.height * scale)
-		let offset = scale == 1.0 ? .zero : CGPoint(x: (image.size.width - imageSize.width) / 2,
-													y: (image.size.height - imageSize.height) / 2)
+		let imageSize = scale == 1.0 ? newImageSize : CGSize(width: newImageSize.width * scale,
+																  height: newImageSize.height * scale)
+		let offset = scale == 1.0 ? .zero : CGPoint(x: (newImageSize.width - imageSize.width) / 2,
+													y: (newImageSize.height - imageSize.height) / 2)
 		let imageRect = CGRect(origin: offset, size: imageSize)
 
 		var imageToDraw = image

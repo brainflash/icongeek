@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FASwiftUI
 
 struct IconView: View {
 	@ObservedObject var icon: Icon
@@ -28,6 +29,23 @@ struct IconView: View {
 		}
 	}
 	
+	var fontAwesome: some View {
+		HStack {
+			let iconName = iconSet.resourceName(for: icon.app.name) ?? icon.app.name
+//			let faIcon = FontAwesome.shared.icon(byName: iconName)
+//			let style: FAStyle = faIcon != nil ? .brands : .solid
+				//(faIcon != nil ? faIcon!.styles.contains(FAStyle.regular) ? .regular : .solid)
+//			let exists = faIcon?.label == "Question Circle"
+			let fontSize = iconSize * CGFloat(iconSet.display.scaleFactor)
+//			FAText(iconName: iconName, size: fontSize, style: style)
+			FAText(iconName: iconName, size: fontSize)
+				.foregroundColor(icon.tint ?? nil)
+				.aspectRatio(contentMode: .fit)
+				.frame(width: iconSize, height: iconSize)
+				.scaleEffect(icon.scale)
+		}
+	}
+	
     var body: some View {
 		ZStack {
 			VStack {
@@ -38,12 +56,19 @@ struct IconView: View {
 					case .editing:
 						icon.toggleEditing()
 					case .preview:
+//						self.saveImage()
 						break
 					}
 				}) {
 					image
+//						.shadow(radius: icon.hasShadow ? 3 : 0)
+//						.modifier(NeonStyle(color: .green, blurRadius: 5))
+
+//					fontAwesome
+//						.shadow(radius: icon.hasShadow ? 3 : 0)
 				}
-				.background(icon.background)
+				// TODO: support 'pre-rendered' icons (don't set background)
+//				.background(icon.background)
 				.contentShape(Rectangle())
 				.cornerRadius(14)
 				.clipped()
@@ -73,13 +98,15 @@ struct IconView: View {
 					.padding(2)
 			}
 		}
-		.padding(6)
+		.padding(4)
 	}
 	
 	var image: some View {
 		GeometryReader { geo in
-			let renderingMode: Image.TemplateRenderingMode = icon.tint != nil ? .template : .original
-			
+			// TODO: support 'pre-rendered' icons
+//			let renderingMode: Image.TemplateRenderingMode = icon.tint != nil ? .template : .original
+			let renderingMode: Image.TemplateRenderingMode = .original
+
 			icon.image
 				.resizable()
 				.renderingMode(renderingMode)
@@ -128,10 +155,9 @@ struct CircleToggleStyle: ToggleStyle {
 
 // MARK: - Previews
 struct IconView_Previews: PreviewProvider {
-	
-    static var previews: some View {
-		IconView(icon: Icon(.appstore, group: IconSet.iconSet1.group, background: .clear), iconSet: IconSet.iconSet1, mode: .editing)
+	static var previews: some View {
+		IconView(icon: Icon(.appstore, group: IconSet.iconSet6.group, background: .black, tint: .red), iconSet: IconSet.iconSet1, mode: .editing)
 			.frame(width:100, height:120)
-			.background(Color.yellow)
+			.background(Color.black)
     }
 }

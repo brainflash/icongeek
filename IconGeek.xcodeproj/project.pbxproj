@@ -53,6 +53,7 @@
 		CD8D02A6254B1AC100D47459 /* Icon+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F4A25461E4900CB62DC /* Icon+SwiftUI.swift */; };
 		CD8D02AA254B1AEC00D47459 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D026E254A3B7900D47459 /* Store.swift */; };
 		CD8D02DE254B9A2C00D47459 /* SettingsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */; };
+		CD8EEA41256309D200490C55 /* IconView+Neon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEA40256309D200490C55 /* IconView+Neon.swift */; };
 		CD9104C8254DBD11006CAA98 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F80254719E200CB62DC /* AppModel.swift */; };
 		CD9104CC254DBD25006CAA98 /* AppModel+MobileConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */; };
 		CD9104D0254DBD34006CAA98 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7E972548A5400042FC6E /* AppConfig.swift */; };
@@ -63,6 +64,13 @@
 		CD9785DB2554C642005D879B /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9785DA2554C642005D879B /* SafariView.swift */; };
 		CD9785E32554C918005D879B /* SafariBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9785E22554C918005D879B /* SafariBrowserView.swift */; };
 		CDD810C6255BF85600BB0739 /* PreviewIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD810C5255BF85600BB0739 /* PreviewIconsView.swift */; };
+		CDD810D5255C3BE200BB0739 /* FASwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CDD810D4255C3BE200BB0739 /* FASwiftUI */; };
+		CDD810F3255C40E400BB0739 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDD810F0255C40E400BB0739 /* Font Awesome 5 Brands-Regular-400.otf */; };
+		CDD810F4255C40E400BB0739 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDD810F1255C40E400BB0739 /* Font Awesome 5 Free-Regular-400.otf */; };
+		CDD810F5255C40E400BB0739 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = CDD810F2255C40E400BB0739 /* Font Awesome 5 Free-Solid-900.otf */; };
+		CDD810FD255C413200BB0739 /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = CDD810FC255C413200BB0739 /* icons.json */; };
+		CDD81102255C41A500BB0739 /* FontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD81101255C41A500BB0739 /* FontView.swift */; };
+		CDD8110C255C8E5200BB0739 /* AppModel+Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD8110B255C8E5200BB0739 /* AppModel+Export.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,12 +140,19 @@
 		CD8D0287254B007F00D47459 /* SquishableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquishableButtonStyle.swift; sourceTree = "<group>"; };
 		CD8D0292254B048500D47459 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsForm.swift; sourceTree = "<group>"; };
+		CD8EEA40256309D200490C55 /* IconView+Neon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IconView+Neon.swift"; sourceTree = "<group>"; };
 		CD97858D2552F6BF005D879B /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		CD97859725534E3E005D879B /* UnlockPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockPanel.swift; sourceTree = "<group>"; };
 		CD9785CF25540E37005D879B /* AppModel+Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppModel+Templates.swift"; sourceTree = "<group>"; };
 		CD9785DA2554C642005D879B /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		CD9785E22554C918005D879B /* SafariBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariBrowserView.swift; sourceTree = "<group>"; };
 		CDD810C5255BF85600BB0739 /* PreviewIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewIconsView.swift; sourceTree = "<group>"; };
+		CDD810F0255C40E400BB0739 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
+		CDD810F1255C40E400BB0739 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
+		CDD810F2255C40E400BB0739 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
+		CDD810FC255C413200BB0739 /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = icons.json; path = "../../../../../Libraries/Icons/Font-Awesome/metadata/icons.json"; sourceTree = "<group>"; };
+		CDD81101255C41A500BB0739 /* FontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontView.swift; sourceTree = "<group>"; };
+		CDD8110B255C8E5200BB0739 /* AppModel+Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppModel+Export.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8D026A254A348400D47459 /* StoreKit.framework in Frameworks */,
+				CDD810D5255C3BE200BB0739 /* FASwiftUI in Frameworks */,
 				023ED6EC8024075FF003F55A /* (null) in Frameworks */,
 				CD69E06F254C322400FD8C8C /* PartialSheet in Frameworks */,
 				56B3FCB09BEEF4862B6F05F8 /* libPods-IconGeek.a in Frameworks */,
@@ -276,6 +292,7 @@
 				CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */,
 				CD9785E22554C918005D879B /* SafariBrowserView.swift */,
 				CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */,
+				CDD81101255C41A500BB0739 /* FontView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -301,6 +318,7 @@
 				CD7C0F4225461C4600CB62DC /* Icon.swift */,
 				CD7C0F4A25461E4900CB62DC /* Icon+SwiftUI.swift */,
 				CD7C0F3425449AF500CB62DC /* IconView.swift */,
+				CD8EEA40256309D200490C55 /* IconView+Neon.swift */,
 			);
 			path = Icon;
 			sourceTree = "<group>";
@@ -319,8 +337,9 @@
 			isa = PBXGroup;
 			children = (
 				CD7C0F80254719E200CB62DC /* AppModel.swift */,
-				CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */,
+				CDD8110B255C8E5200BB0739 /* AppModel+Export.swift */,
 				CD9785CF25540E37005D879B /* AppModel+Templates.swift */,
+				CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */,
 				CD8D026E254A3B7900D47459 /* Store.swift */,
 			);
 			path = Model;
@@ -363,8 +382,28 @@
 		CDD810C1255BF3AD00BB0739 /* FontAwesome */ = {
 			isa = PBXGroup;
 			children = (
+				CDD81106255C519300BB0739 /* svgs */,
+				CDD810F0255C40E400BB0739 /* Font Awesome 5 Brands-Regular-400.otf */,
+				CDD810F1255C40E400BB0739 /* Font Awesome 5 Free-Regular-400.otf */,
+				CDD810F2255C40E400BB0739 /* Font Awesome 5 Free-Solid-900.otf */,
+				CDD810FC255C413200BB0739 /* icons.json */,
 			);
 			path = FontAwesome;
+			sourceTree = "<group>";
+		};
+		CDD81106255C519300BB0739 /* svgs */ = {
+			isa = PBXGroup;
+			children = (
+				CDD81107255C51A000BB0739 /* solid */,
+			);
+			path = svgs;
+			sourceTree = "<group>";
+		};
+		CDD81107255C51A000BB0739 /* solid */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = solid;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,6 +425,7 @@
 			name = IconGeek;
 			packageProductDependencies = (
 				CD69E06E254C322400FD8C8C /* PartialSheet */,
+				CDD810D4255C3BE200BB0739 /* FASwiftUI */,
 			);
 			productName = IconGeek;
 			productReference = CD7C0EE825435FF600CB62DC /* IconGeek.app */;
@@ -461,6 +501,7 @@
 			mainGroup = CD7C0EDF25435FF600CB62DC;
 			packageReferences = (
 				CD69E06D254C322400FD8C8C /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				CDD810D3255C3BE200BB0739 /* XCRemoteSwiftPackageReference "FASwiftUI" */,
 			);
 			productRefGroup = CD7C0EE925435FF600CB62DC /* Products */;
 			projectDirPath = "";
@@ -478,8 +519,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDD810FD255C413200BB0739 /* icons.json in Resources */,
 				CD7C0EF325435FF700CB62DC /* Preview Assets.xcassets in Resources */,
 				CD7C0EF025435FF700CB62DC /* Assets.xcassets in Resources */,
+				CDD810F5255C40E400BB0739 /* Font Awesome 5 Free-Solid-900.otf in Resources */,
+				CDD810F3255C40E400BB0739 /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
+				CDD810F4255C40E400BB0739 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +605,7 @@
 				CD7C0F2E25449A7E00CB62DC /* IconSetNameView.swift in Sources */,
 				CD7C0F3525449AF500CB62DC /* IconView.swift in Sources */,
 				CD9785D025540E37005D879B /* AppModel+Templates.swift in Sources */,
+				CDD8110C255C8E5200BB0739 /* AppModel+Export.swift in Sources */,
 				CD97859825534E3E005D879B /* UnlockPanel.swift in Sources */,
 				CD7C0F29254499C600CB62DC /* IconSetView.swift in Sources */,
 				CD308BB22551D3FC00F361CD /* CustomizeView.swift in Sources */,
@@ -577,7 +623,9 @@
 				CD7C0F512546C16700CB62DC /* IconSet.swift in Sources */,
 				CD7C0F4325461C4600CB62DC /* Icon.swift in Sources */,
 				CD8A7EB42548BBF00042FC6E /* AppList.swift in Sources */,
+				CD8EEA41256309D200490C55 /* IconView+Neon.swift in Sources */,
 				CD7C0F81254719E200CB62DC /* AppModel.swift in Sources */,
+				CDD81102255C41A500BB0739 /* FontView.swift in Sources */,
 				CD8D0288254B007F00D47459 /* SquishableButtonStyle.swift in Sources */,
 				CD8A7EC325499EA70042FC6E /* UIImage+Extension.swift in Sources */,
 				CD8D026F254A3B7900D47459 /* Store.swift in Sources */,
@@ -936,6 +984,14 @@
 				minimumVersion = 2.1.11;
 			};
 		};
+		CDD810D3255C3BE200BB0739 /* XCRemoteSwiftPackageReference "FASwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mattmaddux/FASwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -943,6 +999,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CD69E06D254C322400FD8C8C /* XCRemoteSwiftPackageReference "PartialSheet" */;
 			productName = PartialSheet;
+		};
+		CDD810D4255C3BE200BB0739 /* FASwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDD810D3255C3BE200BB0739 /* XCRemoteSwiftPackageReference "FASwiftUI" */;
+			productName = FASwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

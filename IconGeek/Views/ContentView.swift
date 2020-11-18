@@ -36,7 +36,9 @@ struct ContentView: View {
 										settingsButton
 									}
 			).sheet(isPresented: $isSettingsPresented) {
-				SettingsForm()
+				// TODO: temporarily showing FontView
+//				SettingsForm()
+				FontView()
 			}
 			.navigationTitle("Choose an icon set")
 		}

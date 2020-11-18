@@ -39,13 +39,16 @@ extension AppModel {
 		selected.forEach { icon in
 			// Create a UIImage with the background color of the icon set and icon image overlaid
 			let tint = icon.tint != nil ? UIColor(icon.tint!) : nil
-			if let iconImage = UIImage(named: icon.imageName),
+//			if let iconImage = UIImage(named: icon.imageName),
 			   // TODO: add a max image size parameter + scale down. Some icons are 256x256 which is more than supported icon size of 144x144
-			   let image = UIImage(color: UIColor(icon.background),
-								   image: iconImage,
-								   scale: icon.scale,
-								   tint: tint) {
-				
+//			   let image = UIImage(color: UIColor(icon.background),
+//								   image: iconImage,
+//								   scale: icon.scale,
+//								   tint: tint) {
+			// TODO: Add support for pre-rendered icons
+			if let iconImage = UIImage(named: icon.imageName) {
+			   let image = iconImage
+
 				let app = icon.app
 				if app.isValid() {
 					if let imageData = image.pngData() {

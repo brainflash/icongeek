@@ -16,6 +16,9 @@ class Icon: ObservableObject, Identifiable {
 	@Published var selected: Bool = true
 	@Published var editing: Bool = true
 	@Published var labelStyle: LabelStyle = .normal
+	@Published var hasShadow: Bool = false
+	@Published var hasGlow: Bool = false
+	@Published var shadow: Color = .black
 	@Published var background: Color = .white
 	@Published var tint: Color? = nil
 	@Published var size: Double = 1.0
@@ -31,10 +34,11 @@ class Icon: ObservableObject, Identifiable {
 		case uppercase
 	}
 
-	init(_ app: AppData, group: String, background: Color) {
+	init(_ app: AppData, group: String, background: Color, tint: Color? = nil) {
 		self.app = app
 		self.group = group
 		self.background = background
+		self.tint = tint
 		
 		$background
 			.sink(receiveValue: self.backgroundChanged(value:))
@@ -70,18 +74,30 @@ class Icon: ObservableObject, Identifiable {
 // MARK: - Icon API
 
 extension Icon {
-	static func allWithGroup(_ group: String, background: Color, scale: Double) -> [Icon] {
+	static func allWithGroup(_ group: String, background: Color, scale: Double, iconList: [String]?) -> [Icon] {
 		var icons: [Icon] = []
-		AppList.all.forEach { (app) in
-			let icon = Icon(app, group: group, background: background)
-			icon.size = scale
-			let iconExists = icon.imageExists
-			// Added a unit test: IconSetTest.testIconSetIconsExist which outputs the missing icon names to the console
-//			if !iconExists {
-//				print("No icon with asset name \(icon.imageName)")
-//			}
-			if app.isValid() && iconExists {
+		
+		if let iconList = iconList {
+			iconList.forEach { iconName in
+				let app = AppData(id: iconName, name: iconName, targetAppID: "app.icongeek")
+				let icon = Icon(app, group: group, background: background)
+				icon.size = scale
 				icons.append(icon)
+			}
+		} else {
+			AppList.all.forEach { (app) in
+				let icon = Icon(app, group: group, background: background)
+				icon.size = scale
+				// TODO: temporarily adding all icons (Font Awesome)
+	//			let iconExists = icon.imageExists
+				let iconExists = true
+				// Added a unit test: IconSetTest.testIconSetIconsExist which outputs the missing icon names to the console
+	//			if !iconExists {
+	//				print("No icon with asset name \(icon.imageName)")
+	//			}
+				if app.isValid() && iconExists {
+					icons.append(icon)
+				}
 			}
 		}
 		return icons

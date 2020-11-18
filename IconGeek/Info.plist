@@ -85,5 +85,13 @@
 			</dict>
 		</dict>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Font Awesome 5 Brands-Regular-400.otf</string>
+		<string>Font Awesome 5 Free-Regular-400.otf</string>
+		<string>Font Awesome 5 Free-Solid-900.otf</string>
+	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app would like access to Photo Library to import and export icon images.</string>
 </dict>
 </plist>

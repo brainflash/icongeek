@@ -158,6 +158,7 @@ struct CustomizeView: View {
 	
     var body: some View {
 		VStack(alignment: .leading, spacing: 16) {
+			NavigationLink(destination: DownloadConfigView(mobileConfigUUID ?? UUID()), isActive: $isShowingDownloadConfig) { EmptyView() }
 			NavigationLink(destination: PreviewIconsView(iconSet: iconSet), isActive: $isPreviewShowing) { EmptyView() }
 
 			HStack {
@@ -177,6 +178,8 @@ struct CustomizeView: View {
 					if editing.count > 0 {
 						OptionsView(iconSet: iconSet,
 									showLabels: $showLabels,
+									hasShadow: $iconSet.hasShadow,
+									hasGlow: $iconSet.hasGlow,
 									viewBackground: $iconSet.viewBackground,
 									iconsBackground: $iconSet.iconsBackground,
 									iconsTint: $iconSet.iconsTint,
