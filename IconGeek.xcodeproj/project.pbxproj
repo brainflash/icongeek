@@ -11,7 +11,12 @@
 		183990110707A291268AC5C9 /* libPods-IconGeekTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DF2DB5694F7D965A0F8F3D /* libPods-IconGeekTests.a */; };
 		56B3FCB09BEEF4862B6F05F8 /* libPods-IconGeek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 995433D291668EF860D06313 /* libPods-IconGeek.a */; };
 		CD308BB22551D3FC00F361CD /* CustomizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD308BB12551D3FC00F361CD /* CustomizeView.swift */; };
+		CD32CBE625AF1EA4001776C8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32CBE525AF1EA4001776C8 /* SettingsView.swift */; };
+		CD32CBEF25AF21BA001776C8 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32CBEE25AF21BA001776C8 /* HelpView.swift */; };
+		CD32CBFA25AF2280001776C8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32CBF925AF227F001776C8 /* WebView.swift */; };
 		CD47CEC825561E920059BA95 /* AppModel+Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9785CF25540E37005D879B /* AppModel+Templates.swift */; };
+		CD4A908C25A64B5A0079EEC1 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A908B25A64B5A0079EEC1 /* MenuView.swift */; };
+		CD4A909125A64BD40079EEC1 /* IconSetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A909025A64BD40079EEC1 /* IconSetRow.swift */; };
 		CD69E06F254C322400FD8C8C /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CD69E06E254C322400FD8C8C /* PartialSheet */; };
 		CD69E07B254CBE5400FD8C8C /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD69E07A254CBE5400FD8C8C /* OptionsView.swift */; };
 		CD7C0EEC25435FF600CB62DC /* IconGeekApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0EEB25435FF600CB62DC /* IconGeekApp.swift */; };
@@ -58,7 +63,7 @@
 		CD9104CC254DBD25006CAA98 /* AppModel+MobileConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F8825471D0D00CB62DC /* AppModel+MobileConfig.swift */; };
 		CD9104D0254DBD34006CAA98 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A7E972548A5400042FC6E /* AppConfig.swift */; };
 		CD9104D4254DBD49006CAA98 /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C0F9E25472F3900CB62DC /* AppNotifications.swift */; };
-		CD97858E2552F6BF005D879B /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97858D2552F6BF005D879B /* HelpView.swift */; };
+		CD97858E2552F6BF005D879B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97858D2552F6BF005D879B /* HintView.swift */; };
 		CD97859825534E3E005D879B /* UnlockPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97859725534E3E005D879B /* UnlockPanel.swift */; };
 		CD9785D025540E37005D879B /* AppModel+Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9785CF25540E37005D879B /* AppModel+Templates.swift */; };
 		CD9785DB2554C642005D879B /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9785DA2554C642005D879B /* SafariView.swift */; };
@@ -98,6 +103,11 @@
 		7A967909B7C9EF63A8D2ECC0 /* Pods-IconGeekTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconGeekTests.debug.xcconfig"; path = "Target Support Files/Pods-IconGeekTests/Pods-IconGeekTests.debug.xcconfig"; sourceTree = "<group>"; };
 		995433D291668EF860D06313 /* libPods-IconGeek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IconGeek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD308BB12551D3FC00F361CD /* CustomizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeView.swift; sourceTree = "<group>"; };
+		CD32CBE525AF1EA4001776C8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CD32CBEE25AF21BA001776C8 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		CD32CBF925AF227F001776C8 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		CD4A908B25A64B5A0079EEC1 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		CD4A909025A64BD40079EEC1 /* IconSetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSetRow.swift; sourceTree = "<group>"; };
 		CD69E07A254CBE5400FD8C8C /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		CD7C0EE825435FF600CB62DC /* IconGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IconGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7C0EEB25435FF600CB62DC /* IconGeekApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGeekApp.swift; sourceTree = "<group>"; };
@@ -141,7 +151,7 @@
 		CD8D0292254B048500D47459 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsForm.swift; sourceTree = "<group>"; };
 		CD8EEA40256309D200490C55 /* IconView+Neon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IconView+Neon.swift"; sourceTree = "<group>"; };
-		CD97858D2552F6BF005D879B /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		CD97858D2552F6BF005D879B /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		CD97859725534E3E005D879B /* UnlockPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockPanel.swift; sourceTree = "<group>"; };
 		CD9785CF25540E37005D879B /* AppModel+Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppModel+Templates.swift"; sourceTree = "<group>"; };
 		CD9785DA2554C642005D879B /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
@@ -205,6 +215,14 @@
 				1E525A8650D4A29BE52997AA /* Pods-IconGeekTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CD32CBEA25AF1EAD001776C8 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */,
+			);
+			name = Legacy;
 			sourceTree = "<group>";
 		};
 		CD7C0EDF25435FF600CB62DC = {
@@ -284,15 +302,19 @@
 			isa = PBXGroup;
 			children = (
 				CD7C0EED25435FF600CB62DC /* ContentView.swift */,
+				CD4A908B25A64B5A0079EEC1 /* MenuView.swift */,
+				CD4A909025A64BD40079EEC1 /* IconSetRow.swift */,
 				CD97859625534DD8005D879B /* Product View */,
 				CD308BB12551D3FC00F361CD /* CustomizeView.swift */,
 				CDD810C5255BF85600BB0739 /* PreviewIconsView.swift */,
-				CD97858D2552F6BF005D879B /* HelpView.swift */,
+				CD97858D2552F6BF005D879B /* HintView.swift */,
 				CD69E07A254CBE5400FD8C8C /* OptionsView.swift */,
 				CD7C0FA3254737AF00CB62DC /* DownloadConfigView.swift */,
 				CD9785E22554C918005D879B /* SafariBrowserView.swift */,
-				CD8D02DD254B9A2C00D47459 /* SettingsForm.swift */,
 				CDD81101255C41A500BB0739 /* FontView.swift */,
+				CD32CBE525AF1EA4001776C8 /* SettingsView.swift */,
+				CD32CBEE25AF21BA001776C8 /* HelpView.swift */,
+				CD32CBEA25AF1EAD001776C8 /* Legacy */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -307,6 +329,7 @@
 				CD9785DA2554C642005D879B /* SafariView.swift */,
 				CD8D0276254ABE5200D47459 /* String+Extension.swift */,
 				CD8A7EC225499EA70042FC6E /* UIImage+Extension.swift */,
+				CD32CBF925AF227F001776C8 /* WebView.swift */,
 				CD8D0292254B048500D47459 /* Configuration.storekit */,
 			);
 			path = "App Support";
@@ -596,17 +619,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD4A909125A64BD40079EEC1 /* IconSetRow.swift in Sources */,
+				CD4A908C25A64B5A0079EEC1 /* MenuView.swift in Sources */,
 				CD7C0FCA254820D200CB62DC /* VisualEffectBlur.swift in Sources */,
-				CD97858E2552F6BF005D879B /* HelpView.swift in Sources */,
+				CD97858E2552F6BF005D879B /* HintView.swift in Sources */,
 				CDD810C6255BF85600BB0739 /* PreviewIconsView.swift in Sources */,
 				CD8A7E982548A5400042FC6E /* AppConfig.swift in Sources */,
+				CD32CBE625AF1EA4001776C8 /* SettingsView.swift in Sources */,
 				CD7C0F9F25472F3900CB62DC /* AppNotifications.swift in Sources */,
 				CD69E07B254CBE5400FD8C8C /* OptionsView.swift in Sources */,
 				CD7C0F2E25449A7E00CB62DC /* IconSetNameView.swift in Sources */,
 				CD7C0F3525449AF500CB62DC /* IconView.swift in Sources */,
+				CD32CBEF25AF21BA001776C8 /* HelpView.swift in Sources */,
 				CD9785D025540E37005D879B /* AppModel+Templates.swift in Sources */,
 				CDD8110C255C8E5200BB0739 /* AppModel+Export.swift in Sources */,
 				CD97859825534E3E005D879B /* UnlockPanel.swift in Sources */,
+				CD32CBFA25AF2280001776C8 /* WebView.swift in Sources */,
 				CD7C0F29254499C600CB62DC /* IconSetView.swift in Sources */,
 				CD308BB22551D3FC00F361CD /* CustomizeView.swift in Sources */,
 				CD8D027F254AFE7400D47459 /* UnlockButton.swift in Sources */,

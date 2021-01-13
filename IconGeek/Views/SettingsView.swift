@@ -1,5 +1,5 @@
 //
-//  HelpView.swift
+//  SettingsView.swift
 //  IconGeek
 //
 //  Created by Brainflash on 13/01/2021.
@@ -7,29 +7,28 @@
 
 import SwiftUI
 
-struct HelpView: View {
+struct SettingsView: View {
 	@Environment(\.presentationMode) var presentation
 	
     var body: some View {
 		NavigationView {
 			Group {
-				WebView(AppConfig.SupportURL)
+				Text("Settings View")
 			}
 			.preferredColorScheme(.dark)		// white status bar tint
 			.navigationBarItems(trailing:
 				Button(action: { self.presentation.wrappedValue.dismiss() }) {
-						Image(systemName: "xmark")
+						Text("Done")
 							.foregroundColor(.white)
-							.padding()
 					}
 			)
-			.navigationBarTitle(Text("Help"), displayMode: .inline)
+			.navigationBarTitle(Text("Settings"))
 		}
-	}
+    }
 }
 
-struct HelpView_Previews: PreviewProvider {
+struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        HelpView()
+        SettingsView()
     }
 }

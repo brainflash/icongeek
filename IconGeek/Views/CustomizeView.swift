@@ -16,12 +16,12 @@ struct CustomizeView: View {
 	@ObservedObject var iconSet: IconSet
 
 	@State private var viewBackground = Binding<Color>.constant(Color.white)
- 	@State private var isHelpPresented = false
+ 	@State private var isHintPresented = false
 	@State private var isShowingDownloadConfig = false
 	@State private var isShowingAlert = false
 	@State private var isPreviewShowing = false
 
-	@State private var helpText: String = "Select the icons that you wish to customize, either by tapping on them or using the Select All, None and Invert buttons. A panel will appear with customization options.\n\nTap the 'Add to home screen' button when ready."
+	@State private var hintText: String = "Select the icons that you wish to customize, either by tapping on them or using the Select All, None and Invert buttons. A panel will appear with customization options.\n\nTap the 'Add to home screen' button when ready."
 	@State private var errorTitle = ""
 	@State private var errorMessage = ""
 
@@ -39,15 +39,15 @@ struct CustomizeView: View {
 	}
 	
 	var helpButton: some View {
-		Button(action: { self.isHelpPresented = true }) {
+		Button(action: { self.isHintPresented = true }) {
 			HStack {
 				Image(systemName: "questionmark.circle")
 					.imageScale(.large)
 			}
 			.frame(width: 30, height: 30)
 		}
-		.partialSheet(isPresented: $isHelpPresented) {
-			HelpView(helpText: helpText, isPresented: $isHelpPresented)
+		.partialSheet(isPresented: $isHintPresented) {
+			HintView(hintText: hintText, isPresented: $isHintPresented)
 				.padding()
 				.frame(height: 200)
 		}

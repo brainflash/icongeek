@@ -14,8 +14,8 @@ struct DetailView: View {
 	@EnvironmentObject private var store: Store
 	@EnvironmentObject private var sheetManager: PartialSheetManager
 
-	@State private var helpText: String = "Select the icons you'd like to add as shortcuts on your Home Screen. \n\nFor the shortcuts to work, the apps you select must already be installed."
-	@State private var isHelpPresented = false
+	@State private var hintText: String = "Select the icons you'd like to add as shortcuts on your Home Screen. \n\nFor the shortcuts to work, the apps you select must already be installed."
+	@State private var isHintPresented = false
 	
 	@State private var isShowingCustomizeView = false
 	@State private var isShowingAlert = false
@@ -36,15 +36,15 @@ struct DetailView: View {
 	}
 	
 	var helpButton: some View {
-		Button(action: { self.isHelpPresented = true }) {
+		Button(action: { self.isHintPresented = true }) {
 			HStack {
 				Image(systemName: "questionmark.circle")
 					.imageScale(.large)
 			}
 			.frame(width: 40, height: 40)
 		}
-		.partialSheet(isPresented: $isHelpPresented) {
-			HelpView(helpText: helpText, isPresented: $isHelpPresented)
+		.partialSheet(isPresented: $isHintPresented) {
+			HintView(hintText: hintText, isPresented: $isHintPresented)
 				.padding()
 				.frame(height: 200)
 		}
@@ -144,7 +144,8 @@ struct DetailView: View {
 			return
 		}
 
-		// TODO: support 'pre-rendered' icons. Pre-rendered icons don't have transparency, so limited options in Customize view (just icon labels on/off?)
+		// TODO: support 'pre-rendered' icons. Pre-rendered icons don't have transparency, so limited options in Customize view
+		//		 	(just icon labels on/off and size perhaps? If resized smaller then background colour might be needed?)
 		isShowingCustomizeView = true
 	}
 

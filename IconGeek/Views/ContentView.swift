@@ -24,25 +24,8 @@ struct ContentView: View {
 	
     var body: some View {
 		NavigationView {
-			List {
-				ForEach(model.iconSets) { iconSet in
-					NavigationLink(destination: DetailView(iconSet)) {
-						TableRow(iconSet: iconSet)
-					}
-				}
-			}
-			.navigationBarItems(trailing:
-									HStack {
-										settingsButton
-									}
-			).sheet(isPresented: $isSettingsPresented) {
-				// TODO: temporarily showing FontView
-//				SettingsForm()
-				FontView()
-			}
-			.navigationTitle("Choose an icon set")
+			MenuView()
 		}
-		.addPartialSheet()
 	}
 }
 
